@@ -1,0 +1,14 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Table of truth{% endblock %}
+{% block content %}
+
+<div class="page-header">
+  <h1>Truth table generator</h1>
+</div>
+<p class="lead">Enter the formula in the input field.</p>
+<form action='truth_table' method='POST'>
+	<input class='form-control' type='text' name='formula' id='formula' placeholder="Enter the formula here"></input>
+	<button class="btn btn-default" type='submit' name='submit'>Enter</button>
+</form>
+
+{% endblock %}
