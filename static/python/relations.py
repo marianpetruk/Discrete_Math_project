@@ -6,7 +6,7 @@ def change_matrix(matrix_):
     >>> change_matrix([(1,1),(2,3),(1,2)])
     [[1, 1, 0], [0, 0, 1], [0, 0, 0]]
     
-    ! ! ! ATTENTION ! ! !  all modules work only with matrixes like 
+    ! ! ! ATTENTION ! ! !  all modules work only with matriсes like 
     [[1, 1, 0], [0, 0, 1], [0, 0, 0]]
     '''
     width = 0
@@ -124,3 +124,5 @@ def main(matrix_):
                                              return_text(anti_symmetric_relation(matrix_)),
                                              return_text(transitive_relation(matrix_)))
     return text.split('\n')
+
+print(main('[(1,1),(2,3),(1,2)]'))
