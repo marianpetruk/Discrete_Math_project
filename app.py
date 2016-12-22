@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request
-import os
+import os, sys
+sys.path.append('static/python/')
+import truth_table
 
 app = Flask(__name__)
 
@@ -17,8 +19,8 @@ def about():
 def truth():
     if request.method == 'GET':
         return render_template('pages/placeholder.truth_table.html', result=None)
-    data = eval(request.form.get('formula'))
-    return render_template('pages/placeholder.truth_table.html', result=data*data)
+    data = request.form.get('formula')
+    return render_template('pages/placeholder.truth_table.html', result=truth_table.start(data))
 
 
 @app.route('/worshell', methods=['GET', 'POST'])

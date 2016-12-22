@@ -209,6 +209,3 @@ def start(exp):
             tmp = find_op(tmp)
             exp = exp.replace("(" + min_exp + ")", tmp)
     return render_table(exps, order, vals)
-
-
-print(start("a^b"))
