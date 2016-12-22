@@ -26,9 +26,17 @@
   <div class="panel-heading">
     <h3 class="panel-title">Result:</h3>
   </div>
-  <div class="panel-body">
-    {{result}}
-  </div>
+<table class="table table-boardered">
+      <tbody>
+          {%for row in result%}
+<tr >
+    {% for col in row%}
+    <td>{{col}}</td>
+  {%endfor%}
+    </tr>
+          {%endfor%}
+    </tbody>
+    </table>
 </div>
 {%endif%}
 
