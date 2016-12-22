@@ -107,7 +107,12 @@ def main(matrix_):
     ... 'anti symmetric relation: yes', 'transitive relation: no', '']
     
     '''
-    matrix_ = eval(matrix_)
+    if matrix_[0] == '(':
+        matrix_ = '[' + matrix_ + ']'
+        matrix_ = eval(matrix_)
+        matrix_ = change_matrix(matrix_)
+    else:
+        matrix_ = eval(matrix_)
     text = 'relations of your matrix:\n' \
            'reflexive relation: {0}\n' \
            'symmetric relation: {1}\n' \
