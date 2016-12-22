@@ -16,11 +16,22 @@
     <input class="form-control" type='text' name='formula' id='formula' placeholder="Enter the formula here">
     <span class="input-group-btn">
       <button class="btn btn-primary" type="submit" name='submit'>Enter</button>
+      <a href="#" class="btn btn-info" id="info_button">Info</a>
     </span>
   </div>
 </div>
 </form>
 <br>
+
+<div class="alert alert-dismissible alert-info" id="info_table" style="display:none;">
+  <strong>Important!</strong>  You can use: ^(and), V(or), %(xor), ~(equal), 
+!(-)(not), ->(>)(implication), ()(brackets), T(True), F(False). <br>
+Use small letters, like: !p, o^r, (a^b)Vc, !!x, etc.. <br>
+More examples: 
+AVB <br>
+((A^B)->C)->D
+</div>
+
 {%if result%}
 <div class="panel panel-success">
   <div class="panel-heading">
@@ -37,7 +48,7 @@
           {%endfor%}
     </tbody>
     </table>
-</div>
+
 {%endif%}
 
 </div>
