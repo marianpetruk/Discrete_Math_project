@@ -67,7 +67,7 @@ def return_text(question):
     return 'no'
 
 
-def main(matrix_):
+def matrix_check(matrix_):
     matrix_ = eval(matrix_)
     matrix_ = change_matrix(matrix_)
     text = 'relations of your matrix:\n' \
@@ -81,3 +81,5 @@ def main(matrix_):
                                              return_text(anti_symmetric_relation(matrix_)),
                                              return_text(transitive_relation(matrix_)))
     return text.split('\n')
+
+print(matrix_check('(1,1)'))

@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request
 import os, sys
 sys.path.append('static/python/')
-import truth_table
+import truth_table, relations
+
 
 app = Flask(__name__)
 
@@ -32,7 +33,9 @@ def worshell():
 @app.route('/relations', methods=['GET', 'POST'])
 def relations():
     if request.method == 'GET':
-        return render_template('pages/placeholder.relations.html')
+        return render_template('pages/placeholder.relations.html', result=None)
+    data = request.form.get('relation')
+    return render_template('pages/placeholder.relations.html', result=relations.matrix_check(data))
 
 
 @app.errorhandler(500)
