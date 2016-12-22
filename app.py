@@ -35,7 +35,7 @@ def relations():
     if request.method == 'GET':
         return render_template('pages/placeholder.relations.html', result=None)
     data = request.form.get('relation')
-    return render_template('pages/placeholder.relations.html', result=relations.matrix_check(data))
+    return render_template('pages/placeholder.relations.html', result=relations.main(data))
 
 
 @app.errorhandler(500)
