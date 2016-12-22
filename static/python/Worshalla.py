@@ -4,7 +4,7 @@ def read_file(smatrix):
     bCheckIsSecondEl = False
     stringF = ''
     stringS = ''
-    for el in smatrix[1:-1]:
+    for el in smatrix:
         if el == ' ':
             pass
         elif el == '(':
