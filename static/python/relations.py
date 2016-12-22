@@ -1,4 +1,14 @@
 def change_matrix(matrix_):
+    '''
+    list(tuple(int, int)) -> list(list(int {1 or 0}))
+    change type of matrix
+    
+    >>> change_matrix([(1,1),(2,3),(1,2)])
+    [[1, 1, 0], [0, 0, 1], [0, 0, 0]]
+    
+    ! ! ! ATTENTION ! ! !  all modules work only with matrixes like 
+    [[1, 1, 0], [0, 0, 1], [0, 0, 0]]
+    '''
     width = 0
     for i in matrix_:
         if max(i) > width:
@@ -10,6 +20,9 @@ def change_matrix(matrix_):
 
 
 def reflexive_relation(lines):
+    '''
+    list(list(int {1 or 0})) -> bool
+    '''
     if not lines[0]:
         return False
     for i in range(len(lines)):
@@ -19,6 +32,9 @@ def reflexive_relation(lines):
 
 
 def symmetric_relation(lines):
+    '''
+    list(list(int {1 or 0})) -> bool
+    '''
     if not lines[0]:
         return True
     for i in range(len(lines)):
@@ -30,6 +46,9 @@ def symmetric_relation(lines):
 
 
 def asymmetric_relation(lines):
+    '''
+    list(list(int {1 or 0})) -> bool
+    '''
     if not lines[0]:
         return True
     for i in range(len(lines)):
@@ -40,6 +59,9 @@ def asymmetric_relation(lines):
 
 
 def anti_symmetric_relation(lines):
+    '''
+    list(list(int {1 or 0})) -> bool
+    '''
     if not lines[0]:
         return True
     for i in range(len(lines)):
@@ -50,6 +72,10 @@ def anti_symmetric_relation(lines):
 
 
 def transitive_relation(lines):
+    '''
+    list(list(int {1 or 0})) -> bool
+    contains warshall algorithm
+    '''
     from copy import deepcopy
     if not lines[0]:
         return True
@@ -62,14 +88,26 @@ def transitive_relation(lines):
 
 
 def return_text(question):
+    '''
+    function(matrix_) -> str {'yes' or 'no'}
+    no need to import this module, it's only helpful part for main() module
+    '''
     if question:
         return 'yes'
     return 'no'
 
 
-def matrix_check(matrix_):
+def main(matrix_):
+    '''
+    string - > list(string)
+    if you have to work with matrix like [(1,1),(2,3),(1,2)], necessarily use module change_matrix() before using this
+    
+    >>> main('[[1, 1, 0], [0, 0, 1], [0, 0, 0]]')
+    ['relations of your matrix:', 'reflexive relation: no', 'symmetric relation: no', 'asymmetric relation: no',
+    ... 'anti symmetric relation: yes', 'transitive relation: no', '']
+    
+    '''
     matrix_ = eval(matrix_)
-    matrix_ = change_matrix(matrix_)
     text = 'relations of your matrix:\n' \
            'reflexive relation: {0}\n' \
            'symmetric relation: {1}\n' \
@@ -81,5 +119,3 @@ def matrix_check(matrix_):
                                              return_text(anti_symmetric_relation(matrix_)),
                                              return_text(transitive_relation(matrix_)))
     return text.split('\n')
-
-print(matrix_check('(1,1)'))
