@@ -5,25 +5,10 @@
 <div class="page-header">
   <h1>Truth table generator</h1>
 </div>
-<div class="row">
-<div class=".col-md-8">
-<p class="lead">Enter the formula in the input field:</p>
+<p class="lead">Enter the formula in the input field.</p>
 <form action='truth_table' method='POST'>
-  </fieldset>
-   <div class="col-lg-5">
 	<input class='form-control' type='text' name='formula' id='formula' placeholder="Enter the formula here"></input>
-	</div>
-	<button class="btn btn-primary" type='submit' name='submit'>Enter</button>
-	  </fieldset>
+	<button class="btn btn-default" type='submit' name='submit'>Enter</button>
 </form>
-<br>
-{%if result%}
-<div class="well">
-  {{result}}
-</div>
-{%endif%}
-
-</div>
-</div>
 
 {% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Discrete Calculator{% endblock %}
+{% block content %}
+<div class="jumbotron">
+  <h1><a href="http://cs.ucu.edu.ua" target="_blank"><span style="color:#631F8B;">CS</span></a><span style="color:#8F9095;">@</span><a href="http://ucu.edu.ua" target="_blank"><span style="color:#84C543;">UCU</span></a> first-year Discrete Mathematics project</h1>
+  <p>Here you can:
+  <ol>
+<div class="btn-group-vertical">
+  <li><a href="{{ url_for('truth') }}" class="btn btn-default">Generate Truth Table</a></li>
+  <li><a href="{{ url_for('worshell') }}" class="btn btn-default">Utilize Worshell Algorithm</a></li>
+  <li><a href="{{ url_for('relations') }}" class="btn btn-default">Check Relations</a></li>
+  </div>
+  </ol>
+  </p>
+</div>
+{% endblock %}

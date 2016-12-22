@@ -16,8 +16,9 @@ def about():
 @app.route('/truth_table', methods=['GET', 'POST'])
 def truth():
     if request.method == 'GET':
-        return render_template('pages/placeholder.truth_table.html')
-    
+        return render_template('pages/placeholder.truth_table.html', result=None)
+    data = request.form.get('formula')
+    return render_template('pages/placeholder.truth_table.html', result=data)
 
 
 @app.route('/worshell', methods=['GET', 'POST'])
