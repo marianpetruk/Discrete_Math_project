@@ -128,9 +128,3 @@ def main(matrix_):
                                                return_text(anti_symmetric_relation(matrix_)),
                                                return_text(transitive_relation(matrix_)))
     return text.split('\n')
-<<<<<<< HEAD
-=======
-
-
-print(main('[(1,1),(2,3),(1,2)]'))
->>>>>>> 6121c644715cdaea00be07282136d8b63049b789
