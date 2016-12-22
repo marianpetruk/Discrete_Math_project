@@ -6,20 +6,29 @@
   <h1>Truth table generator</h1>
 </div>
 <div class="row">
-<div class=".col-md-8">
-<p class="lead">Enter the formula in the input field:</p>
+<div class="col-md-8">
 <form action='truth_table' method='POST'>
-  </fieldset>
-   <div class="col-lg-5">
-	<input class='form-control' type='text' name='formula' id='formula' placeholder="Enter the formula here"></input>
-	</div>
-	<button class="btn btn-primary" type='submit' name='submit'>Enter</button>
-	  </fieldset>
+
+<div class="form-group">
+  <label class="control-label lead">Enter the formula to generate the table of truth:</label>
+  <div class="input-group">
+    <span class="input-group-addon">&#402;</span>
+    <input class="form-control" type='text' name='formula' id='formula' placeholder="Enter the formula here">
+    <span class="input-group-btn">
+      <button class="btn btn-primary" type="submit" name='submit'>Enter</button>
+    </span>
+  </div>
+</div>
 </form>
 <br>
 {%if result%}
-<div class="well">
-  {{result}}
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h3 class="panel-title">Result:</h3>
+  </div>
+  <div class="panel-body">
+    {{result}}
+  </div>
 </div>
 {%endif%}
 
