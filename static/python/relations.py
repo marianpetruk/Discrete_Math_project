@@ -100,10 +100,14 @@ def return_text(question):
 def main(matrix_):
     '''
     string - > list(string)
-    if you have to work with matrix like [(1,1),(2,3),(1,2)], necessarily use module change_matrix() before using this
+    if you have to work with matrix like (1,1),(2,3),(1,2), necessarily use module change_matrix() before using this
     
     >>> main('[[1, 1, 0], [0, 0, 1], [0, 0, 0]]')
     ['relations of your matrix:', 'reflexive relation: no', 'symmetric relation: no', 'asymmetric relation: no',
+    ... 'anti symmetric relation: yes', 'transitive relation: no', '']
+    
+    >>> main('(1,1),(2,3),(1,2)')
+    ['relations of your matrix:', 'reflexive relation: no', 'symmetric relation: no', 'asymmetric relation: no', 
     ... 'anti symmetric relation: yes', 'transitive relation: no', '']
     
     '''
