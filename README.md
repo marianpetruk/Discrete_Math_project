@@ -1,5 +1,5 @@
-# Descrete_Math_project
-CS@UCU first-year project for Descrete Mathematics
+# Discrete_Math_project
+CS@UCU first-year project for Discrete Mathematics
 
 
 1. Таблиця істинності
