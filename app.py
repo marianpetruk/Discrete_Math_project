@@ -21,21 +21,32 @@ def truth():
     if request.method == 'GET':
         return render_template('pages/placeholder.truth_table.html', result=None)
     data = request.form.get('formula')
-    return render_template('pages/placeholder.truth_table.html', result=truth_table.start(data))
+    if data == "" or data == None:
+        return render_template('pages/placeholder.truth_table.html', result=None)
+    else:
+        return render_template('pages/placeholder.truth_table.html', result=truth_table.start(data))
 
 
 @app.route('/worshell', methods=['GET', 'POST'])
 def worshell():
     if request.method == 'GET':
         return render_template('pages/placeholder.worshell.html')
+    if data == "" or data == None:
+        return render_template('pages/placeholder.worshell.html')
+    else:
+        return render_template('pages/placeholder.worshell.html')
 
 
 @app.route('/relations', methods=['GET', 'POST'])
-def relations():
+def check_relation():
     if request.method == 'GET':
         return render_template('pages/placeholder.relations.html', result=None)
     data = request.form.get('relation')
-    return render_template('pages/placeholder.relations.html', result=relations.main(data))
+    if data == "" or data == None:
+        return render_template('pages/placeholder.relations.html', result=None)
+    else:
+        print(relations.main(data))
+        return render_template('pages/placeholder.relations.html', result=relations.main(data))
 
 
 @app.errorhandler(500)

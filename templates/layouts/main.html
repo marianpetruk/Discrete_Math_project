@@ -58,7 +58,7 @@
               <ul class="dropdown-menu">
                 <li {% if request.endpoint == 'truth' %} class="active" {% endif %}><a href="{{ url_for('truth') }}">Table of truth</a></li>
                 <li {% if request.endpoint == 'worshell' %} class="active" {% endif %}><a href="{{ url_for('worshell') }}">Worshell algorithm</a></li>
-                <li {% if request.endpoint == 'relations' %} class="active" {% endif %}><a href="{{ url_for('relations') }}">Relation checker</a></li>
+                <li {% if request.endpoint == 'relations' %} class="active" {% endif %}><a href="{{ url_for('check_relation') }}">Relation checker</a></li>
               </ul>
             </li>
             

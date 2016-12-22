@@ -13,26 +13,32 @@
   <label class="control-label lead">Enter a <b>relation</b> to check its properties:</label>
   <div class="input-group">
     <span class="input-group-addon">R</span>
-    <input class="form-control" type='text' name='relation' id='relation' placeholder="For example: [[1, 1, 0], [0, 0, 1], [0, 0, 0]] or (1,1),(2,3),(1,2)">
+    <input class="form-control" type='text' name='relation' id='relation' placeholder="Enter the relation here">
     <span class="input-group-btn">
       <button class="btn btn-primary" type="submit" name='submit'>Enter</button>
+      <a href="#" class="btn btn-info" id="info_button">Info</a>
     </span>
   </div>
 </div>
 </form>
 <br>
+
+<div class="alert alert-dismissible alert-info" id="info_table" style="display:none;">
+  <strong>Important!</strong>  <br>
+  For example: [[1, 1, 0], [0, 0, 1], [0, 0, 0]] or (1,1),(2,3),(1,2)
+</div>
+
+
 {%if result%}
 <div class="panel panel-success">
   <div class="panel-heading">
     <h3 class="panel-title">Result:</h3>
   </div>
-  <div class="panel-body">
-{% for result in result[1] %}
-<div class="row">
-{{ result }} 
-</div>
+ <ul>
+{% for res in result %}
+<li>{{ res }}</li> 
 {% endfor %}
-</div>
+</ul>
 {%endif%}
 
 </div>
