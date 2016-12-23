@@ -142,5 +142,3 @@ def main(matrix_):
                                                return_text(anti_symmetric_relation(matrix_)),
                                                return_text(transitive_relation(matrix_)))
     return text.split('\n')
-
-i = 0
