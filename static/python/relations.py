@@ -125,9 +125,9 @@ def main(matrix_):
             b = i
         if b:
             if ',' not in matrix_[a + 1:b]:
-                return None
+                return 'there is no comma between some numbers, please try again'
     if not close_num or not open_num or open_num != close_num:
-        return None
+        return 'something wrong with brackets, please try again'
 
     matrix_ = matrix_.replace(')(', '),(')
     matrix_ = matrix_.replace(' ', '')
