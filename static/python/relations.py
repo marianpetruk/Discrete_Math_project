@@ -97,15 +97,6 @@ def return_text(question):
     return 'no'
 
 
-def set_comas(m):
-    m += ','
-    for i in range(len(m)):
-        if m[i] == '(' and not m[i - 1] == ',':
-            m = m[:i] + ',' + m[i:]
-    m = m[:-1]
-    return m
-
-
 def main(matrix_):
     """
     string - > list(string)
@@ -121,10 +112,25 @@ def main(matrix_):
 
     """
     matrix_ = matrix_.strip()
+    b = 0
+    a = 0
+    open_num = 0
+    close_num = 0
+    for i in range(len(matrix_)):
+        if matrix_[i] == '(':
+            open_num += 1
+            a = i
+        if matrix_[i] == ')':
+            close_num += 1
+            b = i
+        if b:
+            if ',' not in matrix_[a + 1:b]:
+                return None
+    if not close_num or not open_num or open_num != close_num:
+        return None
 
-    matrix_ += ','
-
-    matrix_ = set_comas(matrix_)
+    matrix_ = matrix_.replace(')(', '),(')
+    matrix_ = matrix_.replace(' ', '')
 
     if matrix_[0] == '(':
         matrix_ = '[' + matrix_ + ']'
@@ -137,8 +143,8 @@ def main(matrix_):
            'asymmetric relation: {2}\n' \
            'anti symmetric relation: {3}\n' \
            'transitive relation: {4}'.format(return_text(reflexive_relation(matrix_)),
-                                               return_text(symmetric_relation(matrix_)),
-                                               return_text(asymmetric_relation(matrix_)),
-                                               return_text(anti_symmetric_relation(matrix_)),
-                                               return_text(transitive_relation(matrix_)))
+                                             return_text(symmetric_relation(matrix_)),
+                                             return_text(asymmetric_relation(matrix_)),
+                                             return_text(anti_symmetric_relation(matrix_)),
+                                             return_text(transitive_relation(matrix_)))
     return text.split('\n')
