@@ -1,4 +1,5 @@
 import copy
+from string import ascii_letters
 
 
 def read_file(smatrix):
@@ -10,6 +11,10 @@ def read_file(smatrix):
     bCheckIsSecondEl = False
     stringF = ''
     stringS = ''
+    # bCheckIsFirstEl = True
+    inuml = 0
+    inumr = 0
+    bstartmatrix = False
     for el in smatrix:
         if el == ' ':
             pass
@@ -17,20 +22,35 @@ def read_file(smatrix):
             bCheckIsFirstEl = True
             # if write {(2,4),(5,6)}
             bCheckIsSecondEl = False
+            inuml += 1
+            bstartmatrix = True
         elif bCheckIsFirstEl and el != ',' and el != ')':
             stringF += el
         elif el == ',':
-            bCheckIsFirstEl = False
-            bCheckIsSecondEl = True
+            if bCheckIsFirstEl or not bCheckIsSecondEl or inuml - inumr <= 1:
+                bCheckIsFirstEl = False
+                bCheckIsSecondEl = True
+            else:
+                return "Your input is incorrect. You may miss ',' between numbers. Please try again."
         elif bCheckIsSecondEl and el != ')':
             stringS += el
         elif el == ')':
-            if int(stringF) in dmatrix and int(stringS) not in dmatrix[int(stringF)]:
-                dmatrix[int(stringF)].append(int(stringS))
+            inumr += 1
+
+            if inuml >= inumr:
+                if stringF != '' or stringS != '':
+                    if int(stringF) in dmatrix and int(stringS) not in dmatrix[int(stringF)]:
+                        dmatrix[int(stringF)].append(int(stringS))
+                    else:
+                        dmatrix[int(stringF)] = [int(stringS), ]
+                    stringF = ''
+                    stringS = ''
+                else:
+                    return "Your input is incorrect. You may miss number or some of them. Please try again."
             else:
-                dmatrix[int(stringF)] = [int(stringS), ]
-            stringF = ''
-            stringS = ''
+                return "Your input is incorrect. Please check '(' and ')'."
+        elif el in ascii_letters:
+            return "Your input is incorrect. Please don\'t use letters and try again."
     return dmatrix
 
 
@@ -55,6 +75,7 @@ def print_matrix(dmat):
     pmmin = min(dmat)
     pmmax = max(dmat)
     for key in sorted(dmat):
+        # print(key)
         lmat += dmat[key]
         lmat.append(key)
         dpmmat[key] = sorted(dmat[key])
@@ -119,6 +140,12 @@ def start(inp):
 # print(print_matrix(read_file('{(5, 7), (4, 7), (0, 5), (0 , 7)}')))
 # [[0, 0, 1, 1], [0, 0, 0, 1], [0, 0, 0, 1], [0, 0, 0, 0]]
 # print(worshalla(print_matrix(read_file('{(5, 7), (4, 7), (0, 5), (5,4)}'))))
-# (1,2)(2,4)(4,1)
-# ([[0, 1, 0], [0, 0, 1], [1, 0, 0]], [[[0, 1, 0], [0, 0, 1], [1, 1, 0]], [[0, 1, 1], [0, 0, 1], [1, 1, 1]], [[1, 1, 1], [1, 1, 1], [1, 1, 1]]])
-
+'''
+>>> start('(1,2)(2,4)(4,1)')
+([[0, 1, 0], [0, 0, 1], [1, 0, 0]], [[[0, 1, 0], [0, 0, 1], [1, 1, 0]], [[0, 1, 1], [0, 0, 1], [1, 1, 1]], [[1, 1, 1], [1, 1, 1], [1, 1, 1]]])
+>>> start('{(5, 7), (4, 7), (0, 5), (0 , 7)}')
+([[0, 0, 1, 1], [0, 0, 0, 1], [0, 0, 0, 1], [0, 0, 0, 0]], [[[0, 0, 1, 1], [0, 0, 0, 1], [0, 0, 0, 1], [0, 0, 0, 0]], [[0, 0, 1, 1], [0, 0, 0, 1], [0, 0, 0, 1], [0, 0, 0, 0]], [[0, 0, 1, 1], [0, 0, 0, 1], [0, 0, 0, 1], [0, 0, 0, 0]], [[0, 0, 1, 1], [0, 0, 0, 1], [0, 0, 0, 1], [0, 0, 0, 0]]])
+>>> start('(1,1)(1,4)(2, 1)(2,3)(3,1)(3,2)(3,4)( 4, 2)')
+([[1, 0, 0, 1], [1, 0, 1, 0], [1, 1, 0, 1], [0, 1, 0, 0]], [[[1, 0, 0, 1], [1, 0, 1, 1], [1, 1, 0, 1], [0, 1, 0, 0]], [[1, 0, 0, 1], [1, 0, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]], [[1, 0, 0, 1], [1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]], [[1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]]])
+'''
+print(start('(1,1)(1,4)(2, 1)(2,3)(3,1)(3,2)(3,4)( 4, 2)'))
