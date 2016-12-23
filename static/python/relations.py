@@ -116,18 +116,21 @@ def main(matrix_):
     a = 0
     open_num = 0
     close_num = 0
+    for i in matrix_:
+        if i == '(':
+            open_num += 1
+        elif i == ')':
+            close_num += 1
+    if not close_num or not open_num or open_num != close_num:
+        return ['something wrong with brackets, please try again']
     for i in range(len(matrix_)):
         if matrix_[i] == '(':
-            open_num += 1
             a = i
         if matrix_[i] == ')':
-            close_num += 1
             b = i
         if b:
             if ',' not in matrix_[a + 1:b]:
                 return ['there is no comma between some numbers, please try again']
-    if not close_num or not open_num or open_num != close_num:
-        return ['something wrong with brackets, please try again']
 
     matrix_ = matrix_.replace(')(', '),(')
     matrix_ = matrix_.replace(' ', '')
