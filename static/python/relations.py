@@ -131,8 +131,6 @@ def main(matrix_):
         if b:
             if ',' not in matrix_[a + 1:b]:
                 return ['there is no comma between some numbers, please try again']
-                b = 0
-                a = 0
             else:
                 a = 0
                 b = 0
