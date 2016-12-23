@@ -108,8 +108,7 @@ def worshalla(lmatrix):
     return lmats
 
 
-def start():
-    inp = input('Please write matrix as {(5, 7), (4, 7), (0, 5), (0 , 7)} or {(5, 7)(4, 7)(0, 5)(0,7)}:  ')
+def start(inp):
     lsmatrix = print_matrix(read_file(inp))
     # print(lsmatrix)
     # print_matrix_col(lsmatrix)
@@ -122,4 +121,4 @@ def start():
 # print(worshalla(print_matrix(read_file('{(5, 7), (4, 7), (0, 5), (5,4)}'))))
 # (1,2)(2,4)(4,1)
 # ([[0, 1, 0], [0, 0, 1], [1, 0, 0]], [[[0, 1, 0], [0, 0, 1], [1, 1, 0]], [[0, 1, 1], [0, 0, 1], [1, 1, 1]], [[1, 1, 1], [1, 1, 1], [1, 1, 1]]])
-print(start())
+
