@@ -118,7 +118,7 @@ def main(matrix_):
     matrix_ = matrix_.replace(')(', '),(')
 
     while ' ' in matrix_:
-        matrix_.replace(' ')
+        matrix_.remove(' ')
 
     if matrix_[0] == '(':
         matrix_ = '[' + matrix_ + ']'
