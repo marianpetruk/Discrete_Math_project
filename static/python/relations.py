@@ -132,4 +132,3 @@ def main(matrix_):
                                                return_text(transitive_relation(matrix_)))
     return text.split('\n')
 
-print(main('(1,1)     (1,2),(1,3)   (1,1)'))
