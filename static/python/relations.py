@@ -97,15 +97,6 @@ def return_text(question):
     return 'no'
 
 
-def set_comas(m):
-    m += ','
-    for i in range(len(m)):
-        if m[i] == '(' and not m[i - 1] == ',':
-            m = m[:i] + ',' + m[i:]
-    m = m[:-1]
-    return m
-
-
 def main(matrix_):
     """
     string - > list(string)
@@ -124,7 +115,10 @@ def main(matrix_):
 
     matrix_ += ','
 
-    matrix_ = set_comas(matrix_)
+    matrix_ = matrix_.replace(')(', '),(')
+
+    while ' ' in matrix_:
+        matrix_.replace(' ')
 
     if matrix_[0] == '(':
         matrix_ = '[' + matrix_ + ']'
