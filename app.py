@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 import os, sys
-sys.path.append('static/python/')
+sys.path.append(os.path.join(os.path.dirname(__file__), 'static', 'python'))
 import truth_table, relations
 
 
