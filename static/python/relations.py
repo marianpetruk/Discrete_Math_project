@@ -112,13 +112,8 @@ def main(matrix_):
 
     """
     matrix_ = matrix_.strip()
-
-    matrix_ += ','
-
     matrix_ = matrix_.replace(')(', '),(')
-
-    while ' ' in matrix_:
-        matrix_.remove(' ')
+    matrix_ = matrix_.replace(' ', '')
 
     if matrix_[0] == '(':
         matrix_ = '[' + matrix_ + ']'
@@ -136,3 +131,5 @@ def main(matrix_):
                                                return_text(anti_symmetric_relation(matrix_)),
                                                return_text(transitive_relation(matrix_)))
     return text.split('\n')
+
+print(main('(1,1)     (1,2),(1,3)   (1,1)'))
