@@ -130,11 +130,15 @@ def worshalla(lmatrix):
 
 
 def start(inp):
-    lsmatrix = print_matrix(read_file(inp))
-    # print(lsmatrix)
-    # print_matrix_col(lsmatrix)
-    l = copy.deepcopy(lsmatrix)
-    return l, worshalla(lsmatrix)
+    lsmatrix = read_file(inp)
+    if lsmatrix[:10 ] != 'Your input':
+        lsmatrix = print_matrix(lsmatrix)
+        # print(lsmatrix)
+        # print_matrix_col(lsmatrix)
+        l = copy.deepcopy(lsmatrix)
+        return l, worshalla(lsmatrix)
+    else:
+        return lsmatrix
 
 
 # print(print_matrix(read_file('{(5, 7), (4, 7), (0, 5), (0 , 7)}')))
@@ -148,4 +152,4 @@ def start(inp):
 >>> start('(1,1)(1,4)(2, 1)(2,3)(3,1)(3,2)(3,4)( 4, 2)')
 ([[1, 0, 0, 1], [1, 0, 1, 0], [1, 1, 0, 1], [0, 1, 0, 0]], [[[1, 0, 0, 1], [1, 0, 1, 1], [1, 1, 0, 1], [0, 1, 0, 0]], [[1, 0, 0, 1], [1, 0, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]], [[1, 0, 0, 1], [1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]], [[1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]]])
 '''
-print(start('(1,1)(1,4)(2, 1)(2,3)(3,1)(3,2)(3,4)( 4, 2)'))
+print(start('hd)(1,4)(2, 1)(2,3)(3,1)(3,2)(3,4)( 4, 2)'))
