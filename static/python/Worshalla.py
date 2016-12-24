@@ -40,18 +40,22 @@ def read_file(smatrix):
             inumr += 1
 
             if inuml >= inumr:
-                if stringF != '' or stringS != '':
-                    if int(stringF) in dmatrix and int(stringS) not in dmatrix[int(stringF)]:
-                        dmatrix[int(stringF)].append(int(stringS))
+                if stringF != '' and stringS != '':
+                    if int(stringF) in dmatrix:
+                        if int(stringS) not in dmatrix[int(stringF)]:
+                            dmatrix[int(stringF)].append(int(stringS))
+
                     else:
                         dmatrix[int(stringF)] = [int(stringS), ]
+                    # print(dmatrix)
                     stringF = ''
                     stringS = ''
                 else:
                     return "Your input is incorrect. You may miss number or some of them. Please try again."
             else:
                 return "Your input is incorrect. Please check '(' and ')'."
-
+        else:
+            return "Your input is incorrect. Please try again."
     return dmatrix
 
 
@@ -93,7 +97,7 @@ def print_matrix(dmat):
         lmatrix2.append([0] * n)
     for key in dpmmat:
         for el in dpmmat[key]:
-            # print(lmatrix)
+            # print(lmatrix2)
             lmatrix2[lmat.index(key)][lmat.index(el)] = 1
     return lmatrix2
 
@@ -132,13 +136,13 @@ def worshalla(lmatrix):
 
 def start(inp):
     lsmatrix = read_file(inp)
-    if type(lsmatrix) != str :
+    if type(lsmatrix) != str:
         lsmatrix = print_matrix(lsmatrix)
         # print(lsmatrix)
         # print_matrix_col(lsmatrix)
         l = copy.deepcopy(lsmatrix)
         return l, worshalla(lsmatrix)
-    elif lsmatrix[:10 ] != 'Your input':
+    elif lsmatrix[:10] != 'Your input':
         return lsmatrix
 
 
@@ -152,5 +156,7 @@ def start(inp):
 ([[0, 0, 1, 1], [0, 0, 0, 1], [0, 0, 0, 1], [0, 0, 0, 0]], [[[0, 0, 1, 1], [0, 0, 0, 1], [0, 0, 0, 1], [0, 0, 0, 0]], [[0, 0, 1, 1], [0, 0, 0, 1], [0, 0, 0, 1], [0, 0, 0, 0]], [[0, 0, 1, 1], [0, 0, 0, 1], [0, 0, 0, 1], [0, 0, 0, 0]], [[0, 0, 1, 1], [0, 0, 0, 1], [0, 0, 0, 1], [0, 0, 0, 0]]])
 >>> start('(1,1)(1,4)(2, 1)(2,3)(3,1)(3,2)(3,4)( 4, 2)')
 ([[1, 0, 0, 1], [1, 0, 1, 0], [1, 1, 0, 1], [0, 1, 0, 0]], [[[1, 0, 0, 1], [1, 0, 1, 1], [1, 1, 0, 1], [0, 1, 0, 0]], [[1, 0, 0, 1], [1, 0, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]], [[1, 0, 0, 1], [1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]], [[1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]]])
+>>> start('(2, 1)(2,3)(3,1)(3,2)(3,4)( 4, 2)(3,4)')
+([[0, 0, 0, 0], [1, 0, 1, 0], [1, 1, 0, 1], [0, 1, 0, 0]], [[[0, 0, 0, 0], [1, 0, 1, 0], [1, 1, 0, 1], [0, 1, 0, 0]], [[0, 0, 0, 0], [1, 0, 1, 0], [1, 1, 1, 1], [1, 1, 1, 0]], [[0, 0, 0, 0], [1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]], [[0, 0, 0, 0], [1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]]])
 '''
-#print(start('( 55,7)(2, 1)(2,3)(3,1)(3,2)(3,4)( 4, 2)'))
+# print(start('(2, 1)(2,3)(3,1)(3,2)(3,4)( 4, 2)(3,4)'))
