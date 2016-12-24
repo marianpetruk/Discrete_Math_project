@@ -18,6 +18,8 @@ def read_file(smatrix):
     for el in smatrix:
         if el == ' ':
             pass
+        elif el in ascii_letters:
+            return "Your input is incorrect. Please don\'t use letters and try again."
         elif el == '(':
             bCheckIsFirstEl = True
             # if write {(2,4),(5,6)}
@@ -49,8 +51,7 @@ def read_file(smatrix):
                     return "Your input is incorrect. You may miss number or some of them. Please try again."
             else:
                 return "Your input is incorrect. Please check '(' and ')'."
-        elif el in ascii_letters:
-            return "Your input is incorrect. Please don\'t use letters and try again."
+
     return dmatrix
 
 
@@ -131,13 +132,13 @@ def worshalla(lmatrix):
 
 def start(inp):
     lsmatrix = read_file(inp)
-    if lsmatrix[:10 ] != 'Your input':
+    if type(lsmatrix) != str :
         lsmatrix = print_matrix(lsmatrix)
         # print(lsmatrix)
         # print_matrix_col(lsmatrix)
         l = copy.deepcopy(lsmatrix)
         return l, worshalla(lsmatrix)
-    else:
+    elif lsmatrix[:10 ] != 'Your input':
         return lsmatrix
 
 
@@ -152,4 +153,4 @@ def start(inp):
 >>> start('(1,1)(1,4)(2, 1)(2,3)(3,1)(3,2)(3,4)( 4, 2)')
 ([[1, 0, 0, 1], [1, 0, 1, 0], [1, 1, 0, 1], [0, 1, 0, 0]], [[[1, 0, 0, 1], [1, 0, 1, 1], [1, 1, 0, 1], [0, 1, 0, 0]], [[1, 0, 0, 1], [1, 0, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]], [[1, 0, 0, 1], [1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]], [[1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]]])
 '''
-print(start('hd)(1,4)(2, 1)(2,3)(3,1)(3,2)(3,4)( 4, 2)'))
+#print(start('( 55,7)(2, 1)(2,3)(3,1)(3,2)(3,4)( 4, 2)'))
