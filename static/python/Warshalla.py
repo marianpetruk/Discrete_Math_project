@@ -116,7 +116,7 @@ def worshalla_for_1_turn(lmatrix, k, n, i):
     return lmatrix
 
 
-def worshalla(lmatrix):
+def warshalla(lmatrix):
     '''
     (list) -> None
     :param lmatrix:
