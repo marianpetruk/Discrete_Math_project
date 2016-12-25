@@ -7,7 +7,7 @@
 </div>
 <div class="row">
 <div class="col-md-8">
-<form action='worshell' method='POST'>
+<form action='warshell' method='POST'>
 
 <div class="form-group">
   <label class="control-label lead">Enter a <b>relation</b> to use Warshell algorithm:</label>
@@ -26,10 +26,20 @@
   <div class="panel-heading">
     <h3 class="panel-title">Result:</h3>
   </div>
-  <div class="panel-body">
-    {{result}}
-  </div>
-</div>
+  <table class="table table-boardered">
+      <tbody>
+          {%for row in result%}
+          {% for col in row%}
+<tr >
+    
+    <td>{{col}}</td>
+     </tr>
+  {%endfor%}
+   
+          {%endfor%}
+    </tbody>
+    </table>
+
 {%endif%}
 
 </div>
