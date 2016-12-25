@@ -102,11 +102,11 @@ def print_matrix(dmat):
     return lmatrix2
 
 
-def worshalla_for_1_turn(lmatrix, k, n, i):
+def warshella_for_1_turn(lmatrix, k, n, i):
     '''
     (list, int, int) -> list
     :param lmatrix: list of matrix
-    :param k: iteration of  worshalla's algoritm
+    :param k: iteration of  warshella's algoritm
     :param n: len matrix
     :return: modificated matrix
     '''
@@ -116,7 +116,7 @@ def worshalla_for_1_turn(lmatrix, k, n, i):
     return lmatrix
 
 
-def warshalla(lmatrix):
+def warshella(lmatrix):
     '''
     (list) -> None
     :param lmatrix:
@@ -127,7 +127,7 @@ def warshalla(lmatrix):
     lmatrix1 = lmatrix
     for k in range(nlen):
         for i in range(nlen):
-            lmatrix1 = worshalla_for_1_turn(lmatrix1, k, nlen, i)
+            lmatrix1 = warshella_for_1_turn(lmatrix1, k, nlen, i)
         lmats.append(copy.deepcopy(lmatrix1))
         # print(lmats)
         # print_matrix_col( lmatrix)
@@ -159,13 +159,13 @@ def start(inp):
         # print(lsmatrix)
         # print_matrix_col(lsmatrix)
         l = copy.deepcopy(lsmatrix)
-        return l, worshalla(lsmatrix)
+        return l, warshella(lsmatrix)
     elif lsmatrix[:10] != 'Your input':
         return lsmatrix
 
 
 # print(print_matrix(read_file('{(5, 7), (4, 7), (0, 5), (0 , 7)}')))
 # [[0, 0, 1, 1], [0, 0, 0, 1], [0, 0, 0, 1], [0, 0, 0, 0]]
-# print(worshalla(print_matrix(read_file('{(5, 7), (4, 7), (0, 5), (5,4)}'))))
+# print(warshalla(print_matrix(read_file('{(5, 7), (4, 7), (0, 5), (5,4)}'))))
 
 # print(start('(2, 1)(2,3)(3,1)(3,2)(3,4)( 4, 2)(3,4)'))
