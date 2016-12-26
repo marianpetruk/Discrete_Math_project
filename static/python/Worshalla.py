@@ -159,7 +159,8 @@ def start(inp):
         # print(lsmatrix)
         # print_matrix_col(lsmatrix)
         l = copy.deepcopy(lsmatrix)
-        return l, worshalla(lsmatrix)
+        l = [l] + worshalla(lsmatrix)
+        return l
     elif lsmatrix[:10] != 'Your input':
         return lsmatrix
 
