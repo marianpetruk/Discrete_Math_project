@@ -26,6 +26,8 @@ def read_file(smatrix):
             bCheckIsSecondEl = False
             inuml += 1
             bstartmatrix = True
+        elif not bstartmatrix:
+            pass
         elif bCheckIsFirstEl and el != ',' and el != ')':
             stringF += el
         elif el == ',':
@@ -34,8 +36,9 @@ def read_file(smatrix):
                 bCheckIsSecondEl = True
             else:
                 return "Your input is incorrect. You may miss ',' between numbers. Please try again."
-        elif bCheckIsSecondEl and el != ')':
-            stringS += el
+        elif bCheckIsSecondEl and el != ')' :
+            if inuml > 0:
+                stringS += el
         elif el == ')':
             inumr += 1
 
@@ -180,4 +183,4 @@ def start(inp):
 # [[0, 0, 1, 1], [0, 0, 0, 1], [0, 0, 0, 1], [0, 0, 0, 0]]
 # print(warshalla(print_matrix(read_file('{(5, 7), (4, 7), (0, 5), (5,4)}'))))
 
-# print(start('(2,3)(3,2)(3,4)( 4, 2)(3,4)'))
+print(start('6(2,3)(3,2)(3,4)( 4, 2)(3,4)'))
