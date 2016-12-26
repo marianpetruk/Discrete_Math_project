@@ -26,19 +26,21 @@
   <div class="panel-heading">
     <h3 class="panel-title">Result:</h3>
   </div>
+{%for i in range(result|length)%}
+    <p class="text-center"><b>W({{i}})</b></p>
   <table class="table table-boardered">
       <tbody>
-          {%for row in result%}
-          {% for col in row%}
+
+          {% for col in result[i]%}
 <tr >
-    
-    <td>{{col}}</td>
+    {% for elem in col%}
+    <td>{{elem}}</td>
+        {% endfor %}
      </tr>
   {%endfor%}
-   
-          {%endfor%}
     </tbody>
     </table>
+    {%endfor%}
 
 {%endif%}
 
