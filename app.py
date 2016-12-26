@@ -30,12 +30,12 @@ def truth():
 @app.route('/warshell', methods=['GET', 'POST'])
 def warshell():
     if request.method == 'GET':
-        return render_template('pages/placeholder.warshell.html', result=None)
+        return render_template('pages/placeholder.warshell.html', result=None, query="")
     data = request.form.get('warshalla')
     if data == "" or data == None:
-        return render_template('pages/placeholder.warshell.html', result=None)
+        return render_template('pages/placeholder.warshell.html', result=None, query="")
     else:
-        return render_template('pages/placeholder.warshell.html', result=Warshalla.start(data))
+        return render_template('pages/placeholder.warshell.html', result=Warshalla.start(data), query=data)
 
 
 @app.route('/relations', methods=['GET', 'POST'])
