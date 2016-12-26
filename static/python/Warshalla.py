@@ -91,14 +91,25 @@ def print_matrix(dmat):
     # print(lmat)
     lmat = sorted(list(set(lmat)))
     # print(lmat)
-    n = len(lmat)
+    '''
+        n = len(lmat)
+        lmatrix2 = []
+        for i in range(n):
+            lmatrix2.append([0] * n)
+        for key in dpmmat:
+            for el in dpmmat[key]:
+                # print(lmatrix2)
+                lmatrix2[lmat.index(key)][lmat.index(el)] = 1
+        # print(lmatrix2)
+        '''
+    n = pmmax
     lmatrix2 = []
     for i in range(n):
         lmatrix2.append([0] * n)
     for key in dpmmat:
         for el in dpmmat[key]:
             # print(lmatrix2)
-            lmatrix2[lmat.index(key)][lmat.index(el)] = 1
+            lmatrix2[key-1][el-1] = 1
     return lmatrix2
 
 
@@ -169,4 +180,4 @@ def start(inp):
 # [[0, 0, 1, 1], [0, 0, 0, 1], [0, 0, 0, 1], [0, 0, 0, 0]]
 # print(warshalla(print_matrix(read_file('{(5, 7), (4, 7), (0, 5), (5,4)}'))))
 
-# print(start('(2, 1)(2,3)(3,1)(3,2)(3,4)( 4, 2)(3,4)'))
+print(start('(2,3)(3,2)(3,4)( 4, 2)(3,4)'))
