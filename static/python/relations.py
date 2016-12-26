@@ -111,39 +111,40 @@ def main(matrix_):
     ... 'anti symmetric relation: yes', 'transitive relation: no', '']
 
     """
-    matrix_ = matrix_.strip()
-    if matrix_[0] == '(':
-        b = 0
-        a = 0
-        open_num = 0
-        close_num = 0
-        for i in matrix_:
-            if i == '(':
-                open_num += 1
-            elif i == ')':
-                close_num += 1
-        if not close_num or not open_num or open_num != close_num:
-            return ['something wrong with brackets, please try again']
-        for i in range(len(matrix_)):
-            if matrix_[i] == '(':
-                a = i
-            if matrix_[i] == ')':
-                b = i
-            if b:
-                if ',' not in matrix_[a + 1:b]:
-                    return ['there is no comma between some numbers, please try again']
-                else:
-                    a = 0
-                    b = 0
-
-        matrix_ = matrix_.replace(')(', '),(')
-        matrix_ = matrix_.replace(' ', '')
-        matrix_ = '[' + matrix_ + ']'
-        matrix_ = eval(matrix_)
-        matrix_ = change_matrix(matrix_)
-    else:
-        matrix_ = eval(matrix_)
     try:
+        matrix_ = matrix_.strip()
+        if matrix_[0] == '(':
+            b = 0
+            a = 0
+            open_num = 0
+            close_num = 0
+            for i in matrix_:
+                if i == '(':
+                    open_num += 1
+                elif i == ')':
+                    close_num += 1
+            if not close_num or not open_num or open_num != close_num:
+                return ['something wrong with brackets, please try again']
+            for i in range(len(matrix_)):
+                if matrix_[i] == '(':
+                    a = i
+                if matrix_[i] == ')':
+                    b = i
+                if b:
+                    if ',' not in matrix_[a + 1:b]:
+                        return ['there is no comma between some numbers, please try again']
+                    else:
+                        a = 0
+                        b = 0
+
+            matrix_ = matrix_.replace(')(', '),(')
+            matrix_ = matrix_.replace(' ', '')
+            matrix_ = '[' + matrix_ + ']'
+            matrix_ = eval(matrix_)
+            matrix_ = change_matrix(matrix_)
+        else:
+            matrix_ = eval(matrix_)
+        
         text = 'reflexive relation: {0}\n' \
                'symmetric relation: {1}\n' \
                'asymmetric relation: {2}\n' \
@@ -154,5 +155,5 @@ def main(matrix_):
                                                  return_text(anti_symmetric_relation(matrix_)),
                                                  return_text(transitive_relation(matrix_)))
     except: 
-        text = ['something wrong, please try again']
+        return ['something wrong, please try again']
     return text.split('\n')
