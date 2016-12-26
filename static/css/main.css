@@ -34,3 +34,52 @@ a {
  ****************************************************************************/
 
 /* Various other styles end */
+
+.fa-custom{
+	font-size: 128%;
+    color:black;
+}
+/*
+.fa-custom-left{
+	margin-right:6%;
+	font-size: 200%;
+	position: absolute;
+    margin-top: -0.5%;
+    color:black;
+}
+
+*/
+
+.font-custom{
+	font-family: "Raleway","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+#particles {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    top: 0;                        
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    z-index: -2;
+}
+.iconmelon,
+.im {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  display: block;
+  fill: #525151;
+}
+
+.iconmelon:after,
+.im:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
