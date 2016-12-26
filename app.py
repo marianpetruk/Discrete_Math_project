@@ -27,15 +27,15 @@ def truth():
         return render_template('pages/placeholder.truth_table.html', result=truth_table.start(data))
 
 
-@app.route('/warshell', methods=['GET', 'POST'])
-def warshell():
+@app.route('/warshall', methods=['GET', 'POST'])
+def warshall():
     if request.method == 'GET':
-        return render_template('pages/placeholder.warshell.html', result=None, query="")
+        return render_template('pages/placeholder.warshall.html', result=None, query="")
     data = request.form.get('warshalla')
     if data == "" or data == None:
-        return render_template('pages/placeholder.warshell.html', result=None, query="")
+        return render_template('pages/placeholder.warshall.html', result=None, query="")
     else:
-        return render_template('pages/placeholder.warshell.html', result=Warshalla.start(data), query=data)
+        return render_template('pages/placeholder.warshall.html', result=Warshalla.start(data), query=data)
 
 
 @app.route('/relations', methods=['GET', 'POST'])

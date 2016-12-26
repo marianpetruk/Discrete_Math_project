@@ -1,16 +1,16 @@
 {% extends 'layouts/main.html' %}
-{% block title %}Warshell algorithm{% endblock %}
+{% block title %}Warshall algorithm{% endblock %}
 {% block content %}
 
 <div class="page-header">
-  <h1>Utilize Warshell algorithm</h1>
+  <h1>Utilize Warshall algorithm</h1>
 </div>
 <div class="row">
 <div class="col-md-8">
-<form action='warshell' method='POST'>
+<form action='warshall' method='POST'>
 
 <div class="form-group">
-  <label class="control-label lead">Enter a <b>relation</b> to use Warshell algorithm:</label>
+  <label class="control-label lead">Enter a <b>relation</b> to use Warshall algorithm:</label>
   <div class="input-group">
     <span class="input-group-addon">R</span>
     <input class="form-control" type='text' name='warshalla' id='warshalla' {%if query%}value={{ query }}{% endif %} placeholder="Enter the relation here">

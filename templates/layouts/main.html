@@ -56,11 +56,11 @@
           <ul class="nav navbar-nav">
             <li {% if request.endpoint == 'home' %} class="active" {% endif %}><a href="{{ url_for('home') }}">Home</a></li>
             <li {% if request.endpoint == 'about' %} class="active" {% endif %}><a href="{{ url_for('about') }}">About</a></li>
-            <li {% if request.endpoint == 'truth' or request.endpoint == 'worshell' or request.endpoint == 'relations' %} class="active dropdown" {% endif %} class="dropdown">
+            <li {% if request.endpoint == 'truth' or request.endpoint == 'warshall' or request.endpoint == 'relations' %} class="active dropdown" {% endif %} class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown">Tools <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li {% if request.endpoint == 'truth' %} class="active" {% endif %}><a href="{{ url_for('truth') }}">Table of truth</a></li>
-                <li {% if request.endpoint == 'warshell' %} class="active" {% endif %}><a href="{{ url_for('warshell') }}">Worshell algorithm</a></li>
+                <li {% if request.endpoint == 'warshall' %} class="active" {% endif %}><a href="{{ url_for('warshall') }}">Warshall algorithm</a></li>
                 <li {% if request.endpoint == 'relations' %} class="active" {% endif %}><a href="{{ url_for('check_relation') }}">Relation checker</a></li>
               </ul>
             </li>
