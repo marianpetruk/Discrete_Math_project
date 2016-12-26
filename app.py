@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 import os, sys
 sys.path.append(os.path.join(os.path.dirname(__file__), 'static', 'python'))
-import truth_table, relations, Worshalla
+import truth_table, relations, Warshalla
 
 
 app = Flask(__name__)
@@ -27,15 +27,15 @@ def truth():
         return render_template('pages/placeholder.truth_table.html', result=truth_table.start(data))
 
 
-@app.route('/worshell', methods=['GET', 'POST'])
-def worshell():
+@app.route('/warshell', methods=['GET', 'POST'])
+def warshell():
     if request.method == 'GET':
-        return render_template('pages/placeholder.worshell.html', result=None)
-    data = request.form.get('worshalla')
+        return render_template('pages/placeholder.warshell.html', result=None)
+    data = request.form.get('warshalla')
     if data == "" or data == None:
-        return render_template('pages/placeholder.worshell.html', result=None)
+        return render_template('pages/placeholder.warshell.html', result=None)
     else:
-        return render_template('pages/placeholder.worshell.html', result=Worshalla.start(data))
+        return render_template('pages/placeholder.warshell.html', result=Warshalla.start(data))
 
 
 @app.route('/relations', methods=['GET', 'POST'])

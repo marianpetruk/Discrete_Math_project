@@ -60,7 +60,7 @@
               <a class="dropdown-toggle" data-toggle="dropdown">Tools <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li {% if request.endpoint == 'truth' %} class="active" {% endif %}><a href="{{ url_for('truth') }}">Table of truth</a></li>
-                <li {% if request.endpoint == 'worshell' %} class="active" {% endif %}><a href="{{ url_for('worshell') }}">Worshell algorithm</a></li>
+                <li {% if request.endpoint == 'warshell' %} class="active" {% endif %}><a href="{{ url_for('warshell') }}">Worshell algorithm</a></li>
                 <li {% if request.endpoint == 'relations' %} class="active" {% endif %}><a href="{{ url_for('check_relation') }}">Relation checker</a></li>
               </ul>
             </li>

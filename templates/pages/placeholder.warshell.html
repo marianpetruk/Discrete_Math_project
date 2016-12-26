@@ -1,0 +1,48 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Warshell algorithm{% endblock %}
+{% block content %}
+
+<div class="page-header">
+  <h1>Utilize Warshell algorithm</h1>
+</div>
+<div class="row">
+<div class="col-md-8">
+<form action='warshell' method='POST'>
+
+<div class="form-group">
+  <label class="control-label lead">Enter a <b>relation</b> to use Warshell algorithm:</label>
+  <div class="input-group">
+    <span class="input-group-addon">R</span>
+    <input class="form-control" type='text' name='warshalla' id='warshalla' placeholder="Enter the relation here">
+    <span class="input-group-btn">
+      <button class="btn btn-primary" type="submit" name='submit'>Enter</button>
+    </span>
+  </div>
+</div>
+</form>
+<br>
+{%if result%}
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h3 class="panel-title">Result:</h3>
+  </div>
+  <table class="table table-boardered">
+      <tbody>
+          {%for row in result%}
+          {% for col in row%}
+<tr >
+    
+    <td>{{col}}</td>
+     </tr>
+  {%endfor%}
+   
+          {%endfor%}
+    </tbody>
+    </table>
+
+{%endif%}
+
+</div>
+</div>
+
+{% endblock %}
