@@ -13,7 +13,7 @@
   <label class="control-label lead">Enter a <b>relation</b> to use Warshell algorithm:</label>
   <div class="input-group">
     <span class="input-group-addon">R</span>
-    <input class="form-control" type='text' name='warshalla' id='warshalla' placeholder="Enter the relation here">
+    <input class="form-control" type='text' name='warshalla' id='warshalla' {%if query%}value={{ query }}{% endif %} placeholder="Enter the relation here">
     <span class="input-group-btn">
       <button class="btn btn-primary" type="submit" name='submit'>Enter</button>
     </span>
@@ -27,7 +27,7 @@
     <h3 class="panel-title">Result:</h3>
   </div>
 {%for i in range(result|length)%}
-    <p class="text-center"><b>W({{i}})</b></p>
+    <p class="text-center" style="margin-top: 20px; margin-bottom: 20px;"><b>W({{i}})</b></p>
   <table class="table table-boardered table-condensed table-hover table-striped">
       <tbody>
 
