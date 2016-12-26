@@ -144,13 +144,16 @@ def main(matrix_):
         matrix_ = change_matrix(matrix_)
     else:
         matrix_ = eval(matrix_)
-    text = 'reflexive relation: {0}\n' \
-           'symmetric relation: {1}\n' \
-           'asymmetric relation: {2}\n' \
-           'anti symmetric relation: {3}\n' \
-           'transitive relation: {4}'.format(return_text(reflexive_relation(matrix_)),
-                                             return_text(symmetric_relation(matrix_)),
-                                             return_text(asymmetric_relation(matrix_)),
-                                             return_text(anti_symmetric_relation(matrix_)),
-                                             return_text(transitive_relation(matrix_)))
+    try:
+        text = 'reflexive relation: {0}\n' \
+               'symmetric relation: {1}\n' \
+               'asymmetric relation: {2}\n' \
+               'anti symmetric relation: {3}\n' \
+               'transitive relation: {4}'.format(return_text(reflexive_relation(matrix_)),
+                                                 return_text(symmetric_relation(matrix_)),
+                                                 return_text(asymmetric_relation(matrix_)),
+                                                 return_text(anti_symmetric_relation(matrix_)),
+                                                 return_text(transitive_relation(matrix_)))
+    except: 
+        text = ['something wrong, please try again']
     return text.split('\n')
