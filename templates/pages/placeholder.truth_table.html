@@ -8,7 +8,7 @@
         <form action='truth_table' method='POST'>
 
             <div class="form-group">
-                <label class="control-label lead">Enter a formula to generate the table of truth:</label>
+                <label class="control-label lead">Enter a <b>formula</b> to generate the table of truth:</label>
                 <div class="input-group">
                     <span class="input-group-addon">&#402; <i class="fa fa-caret-right" aria-hidden="true"></i></span>
                     <input class="form-control" type='text' name='formula' id='formula' placeholder="Enter the formula here">
@@ -21,7 +21,7 @@
         </form>
         <br>
 
-        <div class="alert alert-dismissible alert-info" id="info_table" style="display:none;">
+        <div class="animated zoomOut alert alert-dismissible alert-info" id="info_table" style="display:none;">
         <p class="text-center font-custom">
             <strong><span class="lead"><i class="fa fa-hand-paper-o" aria-hidden="true"></i> Important!</span></strong> <br><b>You can use</b>: <code>^</code> (and), <code>V</code> (or), <code>%</code> (xor), <code>~</code> (equal), <code>!(-)</code> (not), <code>->(>)</code> (implication), <code>()</code> (brackets), <code>T</code> (True), <code>F</code> (False).
             <br> <b>Use small letters</b>, like: <code>!p</code> , <code>o^r</code> , <code>(a^b)Vc</code> , <code>!!x</code> , etc..
@@ -30,7 +30,7 @@
         </div>
 
         {%if result%}
-        <div class="panel panel-success">
+        <div class="panel panel-success animated fadeIn">
             <div class="panel-heading">
                 <h3 class="panel-title">Result:</h3>
             </div>
