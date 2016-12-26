@@ -16,18 +16,25 @@
     <input class="form-control" type='text' name='warshalla' id='warshalla' {%if query%}value={{ query }}{% endif %} placeholder="Enter the relation here">
     <span class="input-group-btn">
       <button class="btn btn-primary" type="submit" name='submit'>Enter</button>
+      <a href="#" class="btn btn-info" id="info_button">Info</a>
     </span>
   </div>
 </div>
 </form>
 <br>
+
+<div class="alert alert-dismissible alert-info" id="info_table" style="display:none;">
+  <strong>Important!</strong>  <br>
+  Your expression must be like [(3,4)(4,5)] or [(3,4),(4,5)] or {(3,4),(5,6)} or ((4,5)(5,6))
+</div>
+
 {%if result%}
 <div class="panel panel-success">
   <div class="panel-heading">
     <h3 class="panel-title">Result:</h3>
   </div>
 {%for i in range(result|length)%}
-    <p class="text-center" style="margin-top: 20px; margin-bottom: 20px;"><b>W({{i}})</b></p>
+    <p class="text-center" style="margin-top: 20px; margin-bottom: 20px;"><b>W<sup>({{i}})</sup></b></p>
   <table class="table table-boardered table-condensed table-hover table-striped">
       <tbody>
 
