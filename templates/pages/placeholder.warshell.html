@@ -28,13 +28,13 @@
   </div>
 {%for i in range(result|length)%}
     <p class="text-center"><b>W({{i}})</b></p>
-  <table class="table table-boardered">
+  <table class="table table-boardered table-condensed table-hover table-striped">
       <tbody>
 
           {% for col in result[i]%}
 <tr >
     {% for elem in col%}
-    <td>{{elem}}</td>
+    <td class = "text-center">{{elem}}</td>
         {% endfor %}
      </tr>
   {%endfor%}
