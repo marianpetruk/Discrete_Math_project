@@ -23,9 +23,16 @@ def reflexive_relation(lines):
     """
     list(list(int {1 or 0})) -> bool
     """
+    
     if not lines[0]:
         return False
+    lst = []
     for i in range(len(lines)):
+        for j in range(len(lines[i])):
+            if lines[i][j]:
+                lst.append(j)
+                lst.append(i)
+    for i in lst:
         if not lines[i][i]:
             return False
     return True
