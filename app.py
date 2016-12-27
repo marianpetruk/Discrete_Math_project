@@ -50,7 +50,6 @@ def check_relation():
     if data == "" or data == None:
         return render_template('pages/placeholder.relations.html', result=None, query="")
     else:
-        print(relations.main(data))
         return render_template('pages/placeholder.relations.html', result=relations.main(data), query=data)
 
 
