@@ -312,7 +312,7 @@
                             <ul class="dropdown-menu">
                                 <li {% if request.endpoint=='truth' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('truth', **request.args) }}"><i class="fa fa-table" aria-hidden="true"></i> Таблиця істинності</a></li>
                                 <li {% if request.endpoint=='warshall' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('warshall', **request.args) }}"><i class="fa fa-wikipedia-w" aria-hidden="true"></i> Алгоритм Уоршала</a></li>
-                                <li {% if request.endpoint=='relations' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('check_relation', **request.args) }}"><i class="fa fa-arrows-h" aria-hidden="true"></i> Перевірка відношень</a></li>
+                                <li {% if request.endpoint=='check_relation' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('check_relation', **request.args) }}"><i class="fa fa-arrows-h" aria-hidden="true"></i> Перевірка відношень</a></li>
                             </ul>
                         </li>
 
