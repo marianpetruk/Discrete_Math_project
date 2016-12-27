@@ -2,23 +2,23 @@ import sys
 
 
 def gen_vals(s, order):
-    vals = []
+    vals = list()
     symbs = ["(", ")", "^", "!", "V", ">", "~", "%", "T", "F"]
     for wrd in s:
         if wrd not in symbs:
             if wrd not in order:
                 order.append(wrd)
                 vals.append(wrd)
-    dict = {}
+    dictionary = dict()
     for i in range(len(vals)):
-        dict[vals[i]] = []
-        for col_fors in range(int((2 ** len(vals)) / (2 ** (len(vals) - i - 1)))):
+        dictionary[vals[i]] = []
+        for col_for in range(int((2 ** len(vals)) / (2 ** (len(vals) - i - 1)))):
             for j in range(int(2 ** (len(vals) - i - 1))):
-                if col_fors % 2 == 0:
-                    dict[vals[i]].append("T")
+                if col_for % 2 == 0:
+                    dictionary[vals[i]].append("T")
                 else:
-                    dict[vals[i]].append("F")
-    return dict
+                    dictionary[vals[i]].append("F")
+    return dictionary
 
 
 def render_table(exps, order, vals):

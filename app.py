@@ -19,16 +19,16 @@ def about():
 @app.route('/truth_table', methods=['GET', 'POST'])
 def truth():
     if request.method == 'GET':
-        return render_template('pages/placeholder.truth_table.html', result=None, errors=None)
+        return render_template('pages/placeholder.truth_table.html', result=None, errors=None, query="")
     data = request.form.get('formula')
     if data == "" or data == None:
-        return render_template('pages/placeholder.truth_table.html', result=None, errors="Expression can`t be empty")
+        return render_template('pages/placeholder.truth_table.html', result=None, errors="Expression can`t be empty", query="")
     else:
         try:
             res, e = truth_table.start(data)
         except:
             res, e = None, "Incorrect input"
-        return render_template('pages/placeholder.truth_table.html', result=res, errors=e)
+        return render_template('pages/placeholder.truth_table.html', result=res, errors=e, query=data)
 
 
 @app.route('/warshall', methods=['GET', 'POST'])
@@ -45,13 +45,13 @@ def warshall():
 @app.route('/relations', methods=['GET', 'POST'])
 def check_relation():
     if request.method == 'GET':
-        return render_template('pages/placeholder.relations.html', result=None)
+        return render_template('pages/placeholder.relations.html', result=None, query="")
     data = request.form.get('relation')
     if data == "" or data == None:
-        return render_template('pages/placeholder.relations.html', result=None)
+        return render_template('pages/placeholder.relations.html', result=None, query="")
     else:
         print(relations.main(data))
-        return render_template('pages/placeholder.relations.html', result=relations.main(data))
+        return render_template('pages/placeholder.relations.html', result=relations.main(data), query=data)
 
 
 @app.errorhandler(500)
