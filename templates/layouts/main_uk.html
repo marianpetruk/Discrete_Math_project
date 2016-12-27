@@ -301,18 +301,18 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/?lg=uk"><i class="fa fa-calculator" aria-hidden="true"></i> "Дискретний калькулятор"</a>
+                    <a class="navbar-brand  noselect" href="/?lg=uk"><i class="fa fa-calculator" aria-hidden="true"></i> Дискретний Калькулятор</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li {% if request.endpoint=='home' %} class="active" {% endif %}><a href="{{ url_for('home', **request.args ) }}"><i class="fa fa-home" aria-hidden="true"></i> Головна</a></li>
-                        <li {% if request.endpoint=='about' %} class="active" {% endif %}><a href="{{ url_for('about', **request.args) }}"><i class="fa fa-info" aria-hidden="true"></i> Про</a></li>
+                        <li {% if request.endpoint=='home' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('home', **request.args ) }}"><i class="fa fa-home" aria-hidden="true"></i> Головна</a></li>
+                        <li {% if request.endpoint=='about' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('about', **request.args) }}"><i class="fa fa-info" aria-hidden="true"></i> Про проект </a></li>
                         <li {% if request.endpoint=='truth' or request.endpoint=='warshall' or request.endpoint=='relations' %} class="active dropdown" {% endif %} class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cubes" aria-hidden="true"></i> Іструменти <b class="caret"></b></a>
+                            <a class="dropdown-toggle noselect" data-toggle="dropdown"><i class="fa fa-cubes" aria-hidden="true"></i> Іструменти <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li {% if request.endpoint=='truth' %} class="active" {% endif %}><a href="{{ url_for('truth', **request.args) }}"><i class="fa fa-table" aria-hidden="true"></i> Таблиця істинності</a></li>
-                                <li {% if request.endpoint=='warshall' %} class="active" {% endif %}><a href="{{ url_for('warshall', **request.args) }}"><i class="fa fa-wikipedia-w" aria-hidden="true"></i> Алгоритм Уоршала</a></li>
-                                <li {% if request.endpoint=='relations' %} class="active" {% endif %}><a href="{{ url_for('check_relation', **request.args) }}"><i class="fa fa-arrows-h" aria-hidden="true"></i> Перевірка відношень</a></li>
+                                <li {% if request.endpoint=='truth' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('truth', **request.args) }}"><i class="fa fa-table" aria-hidden="true"></i> Таблиця істинності</a></li>
+                                <li {% if request.endpoint=='warshall' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('warshall', **request.args) }}"><i class="fa fa-wikipedia-w" aria-hidden="true"></i> Алгоритм Уоршала</a></li>
+                                <li {% if request.endpoint=='relations' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('check_relation', **request.args) }}"><i class="fa fa-arrows-h" aria-hidden="true"></i> Перевірка відношень</a></li>
                             </ul>
                         </li>
 
@@ -321,9 +321,9 @@
                     <li><a href="https://github.com/marianpetruk/Discrete_Math_project" target="_blank"><i class="fa fa-github faa-parent animated-hover faa-tada fa-custom" aria-hidden="true"></i></a></li>
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-language" aria-hidden="true"></i> Мова <b class="caret"></b></a>
-                            <ul class="dropdown-menu ">
-                                <li><a class="active" href="javascript:window.location.href = location.protocol + '//' + location.host + location.pathname"><span class="flag-icon flag-icon-gb"></span> English</a></li>
-                                <li><a href="javascript:window.location.href = location.protocol + '//' + location.host + location.pathname + '?lg=uk'"><span class="flag-icon flag-icon-ua"></span> Українська</a></li>
+                            <ul class="dropdown-menu">
+                                <li><a class="noselect" href="javascript:window.location.href = location.protocol + '//' + location.host + location.pathname"><span class="flag-icon flag-icon-gb"></span> English</a></li>
+                                <li class="active"><a class="noselect" href="javascript:window.location.href = location.protocol + '//' + location.host + location.pathname + '?lg=uk'"><span class="flag-icon flag-icon-ua"></span> Солов'їною</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -347,7 +347,7 @@
     <nav class="navbar navbar-default navbar-fixed-bottom" id="footer">
         <div class="container">
             <div class="col-sm-12 text-center navbar-text">
-                <p class=""><a href="http://cs.ucu.edu.ua" target="_blank"><span style="color:#631F8B;"><abbr title="Computer Science"><i class="fa fa-laptop" aria-hidden="true"></i> CS</abbr></span></a><span style="color:#8F9095;"><i class="fa fa-at" aria-hidden="true"></i></span><a href="http://ucu.edu.ua" target="_blank"><span style="color:#84C543;"><abbr title="Ukrainian Catholic University">UCU <i class="fa fa-university" aria-hidden="true"></i></abbr></span></a> 2016 </p>
+                <p class=""><a href="http://cs.ucu.edu.ua" target="_blank"><span style="color:#631F8B;"><abbr title="Комп'ютерні науки"><i class="fa fa-laptop" aria-hidden="true"></i> CS</abbr></span></a><span style="color:#8F9095;"><i class="fa fa-at" aria-hidden="true"></i></span><a href="http://ucu.edu.ua" target="_blank"><span style="color:#84C543;"><abbr title="Український Католицький Університет">UCU <i class="fa fa-university" aria-hidden="true"></i></abbr></span></a> 2016 </p>
                 {% block footer %}{% endblock %}
             </div>
         </div>

@@ -1,12 +1,12 @@
- {% extends 'layouts/main_uk.html' %} {% block title %}Дискретний калькулятор{% endblock %} {% block content %}
+ {% extends 'layouts/main_uk.html' %} {% block title %}Дискретний Калькулятор{% endblock %} {% block content %}
 <div class="jumbotron">
-    <h1><a href="http://cs.ucu.edu.ua" target="_blank"><span style="color:#631F8B;">CS</span></a><span style="color:#8F9095;">@</span><a href="http://ucu.edu.ua" target="_blank"><span style="color:#84C543;">UCU</span></a> Дискретний <i class="fa fa-calculator" aria-hidden="true"></i> калькулятор </h1>
+    <h1><a href="http://cs.ucu.edu.ua" target="_blank"><span style="color:#631F8B;">CS</span></a><span style="color:#8F9095;">@</span><a href="http://ucu.edu.ua" target="_blank"><span style="color:#84C543;">UCU</span></a> Дискретний <i class="fa fa-calculator" aria-hidden="true"></i> Калькулятор </h1>
     <p class="font-custom">Тут Ви можете :
         <ol>
             <div class="btn-group-vertical">
                 <li><a href="{{ url_for('truth') }}" class="btn btn-default">Згенерувати таблицю істинності <i class="fa fa-table" aria-hidden="true"></i></a></li>
-                <li><a href="{{ url_for('warshall') }}" class="btn btn-default">Дослідити алгоритм Уоршала<i class="fa fa-wikipedia-w" aria-hidden="true"></i></a></li>
-                <li><a href="{{ url_for('check_relation') }}" class="btn btn-default">Перевірити відношення матриці<i class="fa fa-arrows-h" aria-hidden="true"></i></a></li>
+                <li><a href="{{ url_for('warshall') }}" class="btn btn-default">Дослідити алгоритм Уоршала <i class="fa fa-wikipedia-w" aria-hidden="true"></i></a></li>
+                <li><a href="{{ url_for('check_relation') }}" class="btn btn-default">Перевірити відношення матриці <i class="fa fa-arrows-h" aria-hidden="true"></i></a></li>
             </div>
         </ol>
     </p>
