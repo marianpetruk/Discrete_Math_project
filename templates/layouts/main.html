@@ -305,7 +305,19 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li {% if request.endpoint=='home' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('home') }}"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+                        {% if lg == "uk" %}
+    <li {% if request.endpoint=='home' %} class="active" {% endif %}><a class="noselect" href="/?lg=uk"><i class="fa fa-home" aria-hidden="true"></i> Головна</a></li>
+                        <li {% if request.endpoint=='about' %} class="active" {% endif %}><a class="noselect" href="/about?lg=uk"><i class="fa fa-info" aria-hidden="true"></i> Про проект </a></li>
+                        <li {% if request.endpoint=='truth' or request.endpoint=='warshall' or request.endpoint=='relations' %} class="active dropdown" {% endif %} class="dropdown">
+                            <a class="dropdown-toggle noselect" data-toggle="dropdown"><i class="fa fa-cubes" aria-hidden="true"></i> Іструменти <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li {% if request.endpoint=='truth' %} class="active" {% endif %}><a class="noselect" href="/truth_table?lg=uk"><i class="fa fa-table" aria-hidden="true"></i> Таблиця істинності</a></li>
+                                <li {% if request.endpoint=='warshall' %} class="active" {% endif %}><a class="noselect" href="/warshall?lg=uk"><i class="fa fa-wikipedia-w" aria-hidden="true"></i> Алгоритм Уоршала</a></li>
+                                <li {% if request.endpoint=='relations' %} class="active" {% endif %}><a class="noselect" href="/relations?lg=uk"><i class="fa fa-arrows-h" aria-hidden="true"></i> Перевірка відношень</a></li>
+                            </ul>
+                        </li>
+                        {%else%}
+                          <li {% if request.endpoint=='home' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('home') }}"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
                         <li {% if request.endpoint=='about' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('about') }}"><i class="fa fa-info" aria-hidden="true"></i> About</a></li>
                         <li {% if request.endpoint=='truth' or request.endpoint=='warshall' or request.endpoint=='relations' %} class="active dropdown" {% endif %} class="dropdown">
                             <a class="dropdown-toggle noselect" data-toggle="dropdown"><i class="fa fa-cubes" aria-hidden="true"></i> Tools <b class="caret"></b></a>
@@ -315,8 +327,9 @@
                                 <li {% if request.endpoint=='relations' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('check_relation') }}"><i class="fa fa-arrows-h" aria-hidden="true"></i> Relation checker</a></li>
                             </ul>
                         </li>
-
+                        {%endif%}
                     </ul>
+
                     <ul class="nav navbar-nav navbar-right">
                     <li><a href="https://github.com/marianpetruk/Discrete_Math_project" target="_blank"><i class="fa fa-github faa-parent animated-hover faa-tada fa-custom" aria-hidden="true"></i></a></li>
                         <li class="dropdown">
@@ -333,7 +346,7 @@
 
         <!-- Begin page content -->
         <main id="content" role="main" class="container animated fadeIn">
-
+{{lg}}
             {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
             <div class="alert alert-block alert-error fade in">
                 <a class="close" data-dismiss="alert">&times;</a> {{ message }}
