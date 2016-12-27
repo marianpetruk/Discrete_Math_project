@@ -39,12 +39,12 @@ def truth():
     where = 'truth_table'
     path = 'pages/placeholder.' + where + add + '.html'
     if data == "" or data == None:
-        return render_template(path, result=None, errors=["Expression can`t be empty", "Вираз не може бути пустим"][lg_val], query="", lg=lg if lg else "en")
+        return render_template(path, result=None, errors=["  Expression can`t be empty", "  Вираз не може бути пустим"][lg_val], query="", lg=lg if lg else "en")
     else:
         try:
             res, e = truth_table.start(data, lg_val)
         except:
-            res, e = None, ["Incorrect input", 'Некоректний ввід'][lg_val]
+            res, e = None, ["  Incorrect input", '  Некоректний ввід'][lg_val]
         return render_template(path, result=res, errors=e, query=data, lg=lg if lg else "en")
 
 
@@ -63,13 +63,13 @@ def warshall():
     where = 'warshall'
     path = 'pages/placeholder.' + where + add + '.html'
     if data == "" or data == None:
-        return render_template(path, result=None, query="", errors=["Expression can`t be empty",
-                                                                    "Вираз не може бути пустим"][lg_val], lg=lg if lg else "en")
+        return render_template(path, result=None, query="", errors=["  Expression can`t be empty",
+                                                                    "  Вираз не може бути пустим"][lg_val], lg=lg if lg else "en")
     else:
         try:
             res, e = Warshalla.start(data, lg_val)
         except:
-            res, e = None, ["Incorrect input", 'Некоректний ввід'][lg_val]
+            res, e = None, ["  Incorrect input", '  Некоректний ввід'][lg_val]
         return render_template(path, result=res, query=data, errors=e, lg=lg if lg else "en")
 
 
@@ -88,8 +88,8 @@ def check_relation():
     where = 'relations'
     path = 'pages/placeholder.' + where + add + '.html'
     if data == "" or data == None:
-        return render_template(path, result=None, query="", errors=["Expression can`t be empty",
-                                                                    "Вираз не може бути пустим"][lg_val], lg=lg if lg else "en")
+        return render_template(path, result=None, query="", errors=["  Expression can`t be empty",
+                                                                    "  Вираз не може бути пустим"][lg_val], lg=lg if lg else "en")
     else:
         res, e = relations.main(data, lg_val)
         return render_template(path, result=res, query=data, errors=e, lg=lg if lg else "en")
