@@ -40,7 +40,7 @@ def read_file(smatrix, lg):
             else:
                 return ["  Your input is incorrect. You may miss ',' between numbers. Please try again.",
                         "  Ваш вивід некоректний. Можливо ви пропустили ',' між цифрами. Спробуйте ще раз."][lg]
-        elif bCheckIsSecondEl and el != ')' :
+        elif bCheckIsSecondEl and el != ')':
             if inuml > 0:
                 stringS += el
         elif el == ')' and not endmatrix:
@@ -134,7 +134,7 @@ def warshella_for_1_turn(lmatrix, k, n, i):
     :return: modificated matrix
     '''
     for j in range(n):
-        lmatrix[i][j] = 1 if lmatrix[i][j] or (lmatrix[i][k] and lmatrix[k][j])  else 0
+        lmatrix[i][j] = 1 if lmatrix[i][j] or (lmatrix[i][k] and lmatrix[k][j]) else 0
     # print(lmatrix, 'n =', n, ' i = ', i)
     return lmatrix
 
@@ -194,4 +194,3 @@ def start(inp, lg):
 
 # print(start('6(2,3)(3,2)(3,4)( 4, 2)(3,4)'))
 # print(start('(n(4,5)(5,6))', 0))
-

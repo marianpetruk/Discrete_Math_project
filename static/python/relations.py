@@ -23,7 +23,7 @@ def reflexive_relation(lines):
     """
     list(list(int {1 or 0})) -> bool
     """
-    
+
     if not lines[0]:
         return False
     lst = []

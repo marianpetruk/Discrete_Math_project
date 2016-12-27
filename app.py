@@ -1,10 +1,13 @@
 from flask import Flask, render_template, request
-import os, sys
+import os
+import sys
+import truth_table
+import relations
+import Warshalla
 sys.path.append(os.path.join(os.path.dirname(__file__), 'static', 'python'))
-import truth_table, relations, Warshalla
-
 
 app = Flask(__name__)
+
 
 @app.route('/')
 def home():
@@ -38,7 +41,7 @@ def truth():
     lg_val = 1 if lg == "uk" else 0
     where = 'truth_table'
     path = 'pages/placeholder.' + where + add + '.html'
-    if data == "" or data == None:
+    if data == "" or data is None:
         return render_template(path, result=None, errors=["  Expression can`t be empty", "  Вираз не може бути пустим"][lg_val], query="", lg=lg if lg else "en")
     else:
         try:
@@ -62,7 +65,7 @@ def warshall():
     lg_val = 1 if lg == "uk" else 0
     where = 'warshall'
     path = 'pages/placeholder.' + where + add + '.html'
-    if data == "" or data == None:
+    if data == "" or data is None:
         return render_template(path, result=None, query="", errors=["  Expression can`t be empty",
                                                                     "  Вираз не може бути пустим"][lg_val], lg=lg if lg else "en")
     else:
@@ -87,7 +90,7 @@ def check_relation():
     lg_val = 1 if lg == "uk" else 0
     where = 'relations'
     path = 'pages/placeholder.' + where + add + '.html'
-    if data == "" or data == None:
+    if data == "" or data is None:
         return render_template(path, result=None, query="", errors=["  Expression can`t be empty",
                                                                     "  Вираз не може бути пустим"][lg_val], lg=lg if lg else "en")
     else:

@@ -24,8 +24,8 @@
 
         <div class="animated zoomOut alert alert-dismissible alert-info" id="info_table" style="display:none;">
             <p class="text-center font-custom">
-            <strong><span class="lead"><i class="fa fa-hand-paper-o" aria-hidden="true"></i>Важливо!</span></strong>
-            <br> Ваш вираз мусить бути в записаний в одному із варіантів: <pre>(1,1),(2,3),(1,2)</pre> <pre>(1,5)(3,4)(5,3)</pre>
+                <strong><span class="lead"><i class="fa fa-hand-paper-o" aria-hidden="true"></i>Важливо!</span></strong>
+                <br> Ваш вираз мусить бути в записаний в одному із варіантів: <pre>(1,1),(2,3),(1,2)</pre> <pre>(1,5)(3,4)(5,3)</pre>
             </p>
         </div>
         {%if errors%}
@@ -35,20 +35,19 @@
             </div>
             <p>{{ errors }}</p>
 
-            {%endif%}
-        {%if result%}
-        <div class="panel panel-success animated fadeIn">
-            <div class="panel-heading">
-                <h3 class="panel-title">Результат:</h3>
+            {%endif%} {%if result%}
+            <div class="panel panel-success animated fadeIn">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Результат:</h3>
+                </div>
+                <ul class="font-custom">
+                    {% for res in result %}
+                    <li>{{ res }}</li>
+                    {% endfor %}
+                </ul>
+                {%endif%}
+
             </div>
-            <ul class="font-custom">
-                {% for res in result %}
-                <li>{{ res }}</li>
-                {% endfor %}
-            </ul>
-            {%endif%}
-
         </div>
-    </div>
 
-    {% endblock %}
+        {% endblock %}
