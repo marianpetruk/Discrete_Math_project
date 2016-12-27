@@ -22,10 +22,19 @@ window.onload=function(){
 		}*/
 		//console.log(info.className == 'animated zoomOut alert alert-dismissible alert-info');
 		if(info.className == 'animated zoomOut alert alert-dismissible alert-info'){
+			//info.style.display = 'block';
 			info.className = "animated zoomIn alert alert-dismissible alert-info";
+			
 		}
 		else if(info.className == 'animated zoomIn alert alert-dismissible alert-info'){
 			info.className = "animated zoomOut alert alert-dismissible alert-info";
+			setTimeout("info.style.display = 'none'", 500);
+			/*function sleep(ms) {
+				ms += new Date().getTime();
+				while (new Date() < ms){}
+			} 
+			sleep(1000);
+			info.style.display = "none";*/
 		}
 	}
 }
