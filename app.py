@@ -19,12 +19,16 @@ def about():
 @app.route('/truth_table', methods=['GET', 'POST'])
 def truth():
     if request.method == 'GET':
-        return render_template('pages/placeholder.truth_table.html', result=None)
+        return render_template('pages/placeholder.truth_table.html', result=None, errors=None)
     data = request.form.get('formula')
     if data == "" or data == None:
-        return render_template('pages/placeholder.truth_table.html', result=None)
+        return render_template('pages/placeholder.truth_table.html', result=None, errors="Expression can`t be empty")
     else:
-        return render_template('pages/placeholder.truth_table.html', result=truth_table.start(data))
+        try:
+            res, e = truth_table.start(data)
+        except:
+            res, e = None, "Incorrect input"
+        return render_template('pages/placeholder.truth_table.html', result=res, errors=e)
 
 
 @app.route('/warshall', methods=['GET', 'POST'])

@@ -22,10 +22,7 @@ def gen_vals(s, order):
 
 
 def render_table(exps, order, vals):
-    table = []
-    exps_len = 0
-    for el in exps.keys():
-        exps_len = len(el)
+    table = list()
     table.append([])
     for elem in order:
         table[0].append(elem)
@@ -44,7 +41,9 @@ def render_table(exps, order, vals):
                     table[i + 1].append(exps[elem][i])
                 else:
                     table[i + 1].append(exps[elem][i])
-    return table
+    if len(table[1][len(table[1])-1]) != 1:
+        return None, "Must be one-character variable"
+    return table, None
 
 
 def get_min_exp(s):
@@ -162,24 +161,8 @@ def find_op(s):
     return s
 
 
-def do_command(s):
-    if s == "exit":
-        sys.exit(0)
-    if s == "help":
-        print("Logical expressions solver.")
-        print("You can use: ^(and), V(or), %(xor), ~(equal),")
-        print("!(-)(not), ->(>)(implication), ()(brackets), T(True), F(False).")
-        print("Use small letters, like: !p, o^r, (a^b)Vc, !!x, etc..")
-        print("Commands: exit, help, about, print.")
-        print("Enjoy program :)")
-    if s == "about":
-        print("Created by Roman Vey - 2016.")
-    if s == "print":
-        render_table()
-
 
 def start(exp):
-    vals = {}
     exps = {}
     order = []
     exp = exp.replace(" ", "")
