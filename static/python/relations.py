@@ -131,7 +131,7 @@ def main(matrix_):
                 elif i == ')':
                     close_num += 1
             if not close_num or not open_num or open_num != close_num:
-                return ['something wrong with brackets, please try again']
+                return ['Something wrong with brackets, please try again']
             for i in range(len(matrix_)):
                 if matrix_[i] == '(':
                     a = i
@@ -139,7 +139,7 @@ def main(matrix_):
                     b = i
                 if b:
                     if ',' not in matrix_[a + 1:b]:
-                        return ['there is no comma between some numbers, please try again']
+                        return ['There is no comma between some numbers, please try again']
                     else:
                         a = 0
                         b = 0
@@ -152,15 +152,15 @@ def main(matrix_):
         else:
             matrix_ = eval(matrix_)
         
-        text = 'reflexive relation: {0}\n' \
-               'symmetric relation: {1}\n' \
-               'asymmetric relation: {2}\n' \
-               'anti symmetric relation: {3}\n' \
-               'transitive relation: {4}'.format(return_text(reflexive_relation(matrix_)),
+        text = 'Reflexive relation: {0}\n' \
+               'Symmetric relation: {1}\n' \
+               'Asymmetric relation: {2}\n' \
+               'Anti symmetric relation: {3}\n' \
+               'Transitive relation: {4}'.format(return_text(reflexive_relation(matrix_)),
                                                  return_text(symmetric_relation(matrix_)),
                                                  return_text(asymmetric_relation(matrix_)),
                                                  return_text(anti_symmetric_relation(matrix_)),
                                                  return_text(transitive_relation(matrix_)))
     except: 
-        return ['something wrong, please try again']
+        return ['Something wrong, please try again']
     return text.split('\n')
