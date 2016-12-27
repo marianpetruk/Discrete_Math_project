@@ -301,7 +301,11 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
+                    {% if lg == "uk" %}
                     <a class="navbar-brand" href="/"><i class="fa fa-calculator noselect" aria-hidden="true"></i> Discrete Calculator</a>
+                    {%else%}
+                    <a class="navbar-brand" href="/?lg=uk"><i class="fa fa-calculator noselect" aria-hidden="true"></i> Discrete Calculator</a>
+                    {%endif%}
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
