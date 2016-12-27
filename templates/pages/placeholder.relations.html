@@ -11,7 +11,7 @@
                 <label class="control-label lead">Enter a <b>relation</b> to check its properties:</label>
                 <div class="input-group">
                     <span class="input-group-addon">R <i class="fa fa-caret-right" aria-hidden="true"></i></span>
-                    <input class="form-control" type='text' name='relation' id='relation' placeholder="Enter the relation here">
+                    <input class="form-control" type='text' name='relation' id='relation' {%if query%}value={{ query }}{% endif %} placeholder="Enter the relation here">
                     <span class="input-group-btn">
       <button class="btn btn-primary" type="submit" name='submit'><i class="fa fa-hand-o-right" aria-hidden="true"></i> Enter</button>
       <a href="#" class="btn btn-info" id="info_button"><i class="fa fa-question-circle" aria-hidden="true"></i> Info</a>

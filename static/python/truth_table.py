@@ -2,30 +2,27 @@ import sys
 
 
 def gen_vals(s, order):
-    vals = []
+    vals = list()
     symbs = ["(", ")", "^", "!", "V", ">", "~", "%", "T", "F"]
     for wrd in s:
         if wrd not in symbs:
             if wrd not in order:
                 order.append(wrd)
                 vals.append(wrd)
-    dict = {}
+    dictionary = dict()
     for i in range(len(vals)):
-        dict[vals[i]] = []
-        for col_fors in range(int((2 ** len(vals)) / (2 ** (len(vals) - i - 1)))):
+        dictionary[vals[i]] = []
+        for col_for in range(int((2 ** len(vals)) / (2 ** (len(vals) - i - 1)))):
             for j in range(int(2 ** (len(vals) - i - 1))):
-                if col_fors % 2 == 0:
-                    dict[vals[i]].append("T")
+                if col_for % 2 == 0:
+                    dictionary[vals[i]].append("T")
                 else:
-                    dict[vals[i]].append("F")
-    return dict
+                    dictionary[vals[i]].append("F")
+    return dictionary
 
 
 def render_table(exps, order, vals):
-    table = []
-    exps_len = 0
-    for el in exps.keys():
-        exps_len = len(el)
+    table = list()
     table.append([])
     for elem in order:
         table[0].append(elem)
@@ -44,7 +41,9 @@ def render_table(exps, order, vals):
                     table[i + 1].append(exps[elem][i])
                 else:
                     table[i + 1].append(exps[elem][i])
-    return table
+    if len(table[1][len(table[1])-1]) != 1:
+        return None, "Must be one-character variable"
+    return table, None
 
 
 def get_min_exp(s):
@@ -162,24 +161,8 @@ def find_op(s):
     return s
 
 
-def do_command(s):
-    if s == "exit":
-        sys.exit(0)
-    if s == "help":
-        print("Logical expressions solver.")
-        print("You can use: ^(and), V(or), %(xor), ~(equal),")
-        print("!(-)(not), ->(>)(implication), ()(brackets), T(True), F(False).")
-        print("Use small letters, like: !p, o^r, (a^b)Vc, !!x, etc..")
-        print("Commands: exit, help, about, print.")
-        print("Enjoy program :)")
-    if s == "about":
-        print("Created by Roman Vey - 2016.")
-    if s == "print":
-        render_table()
-
 
 def start(exp):
-    vals = {}
     exps = {}
     order = []
     exp = exp.replace(" ", "")
