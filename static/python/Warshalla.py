@@ -15,6 +15,7 @@ def read_file(smatrix):
     inuml = 0
     inumr = 0
     bstartmatrix = False
+    endmatrix = False
     for el in smatrix:
         if el == ' ':
             pass
@@ -26,6 +27,7 @@ def read_file(smatrix):
             bCheckIsSecondEl = False
             inuml += 1
             bstartmatrix = True
+            endmatrix = False
         elif not bstartmatrix:
             pass
         elif bCheckIsFirstEl and el != ',' and el != ')':
@@ -39,9 +41,9 @@ def read_file(smatrix):
         elif bCheckIsSecondEl and el != ')' :
             if inuml > 0:
                 stringS += el
-        elif el == ')':
+        elif el == ')' and not endmatrix:
             inumr += 1
-
+            endmatrix = True
             if inuml >= inumr:
                 if stringF != '' and stringS != '':
                     if int(stringF) in dmatrix:
@@ -57,6 +59,8 @@ def read_file(smatrix):
                     return "Your input is incorrect. You may miss number or some of them. Please try again."
             else:
                 return "Your input is incorrect. Please check '(' and ')'."
+        elif endmatrix:
+            pass
         else:
             return "Your input is incorrect. Please try again."
     return dmatrix
@@ -174,9 +178,9 @@ def start(inp):
         # print_matrix_col(lsmatrix)
         l = copy.deepcopy(lsmatrix)
         l = [l] + warshella(lsmatrix)
-        return l
+        return l, None
     elif lsmatrix[:10] != 'Your input':
-        return lsmatrix
+        return None, lsmatrix
 
 
 # print(print_matrix(read_file('{(5, 7), (4, 7), (0, 5), (0 , 7)}')))
@@ -185,3 +189,4 @@ def start(inp):
 
 # print(start('6(2,3)(3,2)(3,4)( 4, 2)(3,4)'))
 # print(start('((4,5)(5,6))'))
+print(start('((5,6)(6,5))'))
