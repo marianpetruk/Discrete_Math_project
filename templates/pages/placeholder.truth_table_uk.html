@@ -1,4 +1,4 @@
-{% extends 'layouts/main.html' %} {% block title %}Таблиця істинності{% endblock %} {% block content %}
+{% extends 'layouts/main_uk.html' %} {% block title %}Таблиця істинності{% endblock %} {% block content %}
 
 <div class="page-header">
     <h1><i class="fa fa-table" aria-hidden="true"></i> Генератор таблиці істинності</h1>
@@ -11,6 +11,7 @@
                 <label class="control-label lead">Введіть <b>формулу</b> для генерації таблиці істинності:</label>
                 <div class="input-group">
                     <span class="input-group-addon">&#402; <i class="fa fa-caret-right" aria-hidden="true"></i></span>
+                    <input type="hidden" name="lg" value="uk">
                     <input class="form-control" type='text' name='formula' id='formula' {%if query%}value={{ query }}{% endif %} placeholder="Введіть формулу">
                     <span class="input-group-btn">
       <button class="btn btn-primary" type="submit" name='submit'><i class="fa fa-hand-o-right" aria-hidden="true"></i> Ввід</button>
@@ -31,7 +32,7 @@
         {%if errors%}
         <div class="panel panel-success animated fadeIn">
             <div class="panel-heading">
-                <h3 class="panel-title">Error:</h3>
+                <h3 class="panel-title">Помилка:</h3>
             </div>
             <p>{{ errors }}</p>
 

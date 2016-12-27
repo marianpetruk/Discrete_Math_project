@@ -21,7 +21,7 @@ def gen_vals(s, order):
     return dictionary
 
 
-def render_table(exps, order, vals):
+def render_table(exps, order, vals, lg):
     table = list()
     table.append([])
     for elem in order:
@@ -42,7 +42,7 @@ def render_table(exps, order, vals):
                 else:
                     table[i + 1].append(exps[elem][i])
     if len(table[1][len(table[1])-1]) != 1:
-        return None, "Must be one-character variable"
+        return None, ["Must be one-character variable", "Використовуються односимвольні змінні"][lg]
     return table, None
 
 
@@ -162,7 +162,7 @@ def find_op(s):
 
 
 
-def start(exp):
+def start(exp, lg):
     exps = {}
     order = []
     exp = exp.replace(" ", "")
@@ -191,4 +191,4 @@ def start(exp):
             tmp = prepare(tmp, curr, vals)
             tmp = find_op(tmp)
             exp = exp.replace("(" + min_exp + ")", tmp)
-    return render_table(exps, order, vals)
+    return render_table(exps, order, vals, lg)

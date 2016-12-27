@@ -8,27 +8,44 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('pages/placeholder.home.html')
+    lg = request.args.get('lg')
+    add = "_uk" if lg == "uk" else ""
+    where = 'home'
+    path = 'pages/placeholder.' + where + add + '.html'
+    return render_template(path)
 
 
 @app.route('/about')
 def about():
-    return render_template('pages/placeholder.about.html')
+    lg = request.args.get('lg')
+    add = "_uk" if lg == "uk" else ""
+    where = 'about'
+    path = 'pages/placeholder.' + where + add + '.html'
+    return render_template(path)
 
 
 @app.route('/truth_table', methods=['GET', 'POST'])
 def truth():
     if request.method == 'GET':
-        return render_template('pages/placeholder.truth_table.html', result=None, errors=None, query="")
+        lg = request.args.get('lg')
+        add = "_uk" if lg == "uk" else ""
+        where = 'truth_table'
+        path = 'pages/placeholder.' + where + add + '.html'
+        return render_template(path, result=None, errors=None, query="")
     data = request.form.get('formula')
+    lg = request.form.get('lg')
+    add = "_uk" if lg == "uk" else ""
+    lg_val = 1 if lg == "uk" else 0
+    where = 'truth_table'
+    path = 'pages/placeholder.' + where + add + '.html'
     if data == "" or data == None:
-        return render_template('pages/placeholder.truth_table.html', result=None, errors="Expression can`t be empty", query="")
+        return render_template(path, result=None, errors=["Expression can`t be empty", "Вираз не може бути пустим"][lg_val], query="")
     else:
         try:
-            res, e = truth_table.start(data)
+            res, e = truth_table.start(data, lg_val)
         except:
-            res, e = None, "Incorrect input"
-        return render_template('pages/placeholder.truth_table.html', result=res, errors=e, query=data)
+            res, e = None, ["Incorrect input", 'Некоректний ввід'][lg_val]
+        return render_template(path, result=res, errors=e, query=data)
 
 
 @app.route('/warshall', methods=['GET', 'POST'])
