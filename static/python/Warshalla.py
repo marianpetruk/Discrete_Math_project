@@ -178,9 +178,9 @@ def start(inp):
         # print_matrix_col(lsmatrix)
         l = copy.deepcopy(lsmatrix)
         l = [l] + warshella(lsmatrix)
-        return l
+        return l, None
     elif lsmatrix[:10] != 'Your input':
-        return lsmatrix
+        return None, lsmatrix
 
 
 # print(print_matrix(read_file('{(5, 7), (4, 7), (0, 5), (0 , 7)}')))
