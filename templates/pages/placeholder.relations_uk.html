@@ -1,0 +1,46 @@
+{% extends 'layouts/main.html' %} {% block title %}Відношення{% endblock %} {% block content %}
+
+<div class="page-header">
+    <h1><i class="fa fa-arrows-h" aria-hidden="true"></i>  Перевірка відношень</h1>
+</div>
+<div class="row">
+    <div class="col-md-8">
+        <form action='relations' method='POST'>
+
+            <div class="form-group">
+                <label class="control-label lead">Введіть <b>матрицю</b> щоб перевірити її властивості</label>
+                <div class="input-group">
+                    <span class="input-group-addon">R <i class="fa fa-caret-right" aria-hidden="true"></i></span>
+                    <input class="form-control" type='text' name='relation' id='relation' {%if query%}value={{ query }}{% endif %} placeholder="Введіть матрицю тут">
+                    <span class="input-group-btn">
+      <button class="btn btn-primary" type="submit" name='submit'><i class="fa fa-hand-o-right" aria-hidden="true"></i> Ввід</button>
+      <a href="#" class="btn btn-info" id="info_button"><i class="fa fa-question-circle" aria-hidden="true"></i> Інфо</a>
+    </span>
+                </div>
+            </div>
+        </form>
+        <br>
+
+        <div class="animated zoomOut alert alert-dismissible alert-info" id="info_table" style="display:none;">
+            <p class="text-center font-custom">
+            <strong><span class="lead"><i class="fa fa-hand-paper-o" aria-hidden="true"></i>Важливо!</span></strong>
+            <br> Ваш вирам мусить бути в такому вигляді: <pre>(1,1),(2,3),(1,2)</pre> <pre>(1,5)(3,4)(5,3)</pre>
+            </p>
+        </div>
+
+        {%if result%}
+        <div class="panel panel-success animated fadeIn">
+            <div class="panel-heading">
+                <h3 class="panel-title">Результат:</h3>
+            </div>
+            <ul>
+                {% for res in result %}
+                <li>{{ res }}</li>
+                {% endfor %}
+            </ul>
+            {%endif%}
+
+        </div>
+    </div>
+
+    {% endblock %}

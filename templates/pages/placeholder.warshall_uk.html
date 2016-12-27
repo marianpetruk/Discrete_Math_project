@@ -1,0 +1,55 @@
+{% extends 'layouts/main.html' %} {% block title %}Алгоритм Уоршала{% endblock %} {% block content %}
+
+<div class="page-header">
+    <h1><i class="fa fa-wikipedia-w" aria-hidden="true"></i> Дослідити алгоритм Уоршала</h1>
+</div>
+<div class="row">
+    <div class="col-md-8">
+        <form action='warshall' method='POST'>
+
+            <div class="form-group">
+                <label class="control-label lead">Введіть <b>вираз</b> для використання алгоритму Уоршала:</label>
+                <div class="input-group">
+                    <span class="input-group-addon">R <i class="fa fa-caret-right" aria-hidden="true"></i></span>
+                    <input class="form-control" type='text' name='warshalla' id='warshalla' {%if query%}value={{ query }}{% endif %} placeholder="Введіть вираз тут">
+                    <span class="input-group-btn">
+      <button class="btn btn-primary" type="submit" name='submit'><i class="fa fa-hand-o-right" aria-hidden="true"></i> Ввід</button>
+      <a href="#" class="btn btn-info" id="info_button"><i class="fa fa-question-circle" aria-hidden="true"></i> Інфо</a>
+    </span>
+                </div>
+            </div>
+        </form>
+        <br>
+
+        <div class="animated zoomOut alert alert-dismissible alert-info" id="info_table" style="display:none;">
+        <p class="text-center font-custom">
+            <strong><span class="lead"><i class="fa fa-hand-paper-o" aria-hidden="true"></i>Важливо!</span></strong>
+            <br> Ваш вираз повинен були у вигляді: <pre>(3,4)(4,5)</pre> <pre>[(3,4),(4,5)]</pre> <pre>{(3,4),(5,6)}</pre> <pre>((4,5)(5,6))</pre>
+            </p>
+        </div>
+
+        {%if result%}
+        <div class="panel panel-success animated fadeIn">
+            <div class="panel-heading">
+                <h3 class="panel-title">Результат:</h3>
+            </div>
+            {%for i in range(result|length)%}
+            <p class="text-center" style="margin-top: 20px; margin-bottom: 20px;"><b>W<sup>({{i}})</sup></b></p>
+            <table class="table table-boardered table-condensed table-hover table-striped">
+                <tbody>
+
+                    {% for col in result[i]%}
+                    <tr>
+                        {% for elem in col%}
+                        <td class="text-center">{{elem}}</td>
+                        {% endfor %}
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+            {%endfor%} {%endif%}
+
+        </div>
+    </div>
+
+    {% endblock %}
