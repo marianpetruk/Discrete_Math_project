@@ -8,9 +8,10 @@
         <form action='relations' method='POST'>
 
             <div class="form-group">
-                <label class="control-label lead">Введіть <b>матрицю</b> щоб перевірити її властивості</label>
+                <label class="control-label lead">Введіть <b>матрицю</b> щоб перевірити її властивості:</label>
                 <div class="input-group">
                     <span class="input-group-addon">R <i class="fa fa-caret-right" aria-hidden="true"></i></span>
+                    <input type="hidden" name="lg" value="uk">
                     <input class="form-control" type='text' name='relation' id='relation' {%if query%}value={{ query }}{% endif %} placeholder="Введіть матрицю тут">
                     <span class="input-group-btn">
       <button class="btn btn-primary" type="submit" name='submit'><i class="fa fa-hand-o-right" aria-hidden="true"></i> Ввід</button>
@@ -27,7 +28,14 @@
             <br> Ваш вирам мусить бути в такому вигляді: <pre>(1,1),(2,3),(1,2)</pre> <pre>(1,5)(3,4)(5,3)</pre>
             </p>
         </div>
+        {%if errors%}
+        <div class="panel panel-success animated fadeIn">
+            <div class="panel-heading">
+                <h3 class="panel-title">Помилка:</h3>
+            </div>
+            <p>{{ errors }}</p>
 
+            {%endif%}
         {%if result%}
         <div class="panel panel-success animated fadeIn">
             <div class="panel-heading">

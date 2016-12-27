@@ -51,23 +51,52 @@ def truth():
 @app.route('/warshall', methods=['GET', 'POST'])
 def warshall():
     if request.method == 'GET':
-        return render_template('pages/placeholder.warshall.html', result=None, query="")
+        lg = request.args.get('lg')
+        add = "_uk" if lg == "uk" else ""
+        where = 'warshall'
+        path = 'pages/placeholder.' + where + add + '.html'
+        return render_template(path, result=None, errors=None, query="")
     data = request.form.get('warshalla')
+    lg = request.form.get('lg')
+    add = "_uk" if lg == "uk" else ""
+    lg_val = 1 if lg == "uk" else 0
+    where = 'warshall'
+    path = 'pages/placeholder.' + where + add + '.html'
     if data == "" or data == None:
-        return render_template('pages/placeholder.warshall.html', result=None, query="")
+        lg = request.args.get('lg')
+        add = "_uk" if lg == "uk" else ""
+        where = 'warshall'
+        path = 'pages/placeholder.' + where + add + '.html'
+        return render_template(path, result=None, query="", errors=["Expression can`t be empty",
+                                                                    "Вираз не може бути пустим"][lg_val])
     else:
-        return render_template('pages/placeholder.warshall.html', result=Warshalla.start(data), query=data)
+        try:
+            res, e = Warshalla.start(data, lg_val)
+        except:
+            res, e = None, ["Incorrect input", 'Некоректний ввід'][lg_val]
+        return render_template(path, result=res, query=data, errors=e)
 
 
 @app.route('/relations', methods=['GET', 'POST'])
 def check_relation():
     if request.method == 'GET':
-        return render_template('pages/placeholder.relations.html', result=None, query="")
+        lg = request.args.get('lg')
+        add = "_uk" if lg == "uk" else ""
+        where = 'relations'
+        path = 'pages/placeholder.' + where + add + '.html'
+        return render_template(path, result=None, query="", errors=None)
     data = request.form.get('relation')
+    lg = request.form.get('lg')
+    add = "_uk" if lg == "uk" else ""
+    lg_val = 1 if lg == "uk" else 0
+    where = 'relations'
+    path = 'pages/placeholder.' + where + add + '.html'
     if data == "" or data == None:
-        return render_template('pages/placeholder.relations.html', result=None, query="")
+        return render_template(path, result=None, query="", errors=["Expression can`t be empty",
+                                                                    "Вираз не може бути пустим"][lg_val])
     else:
-        return render_template('pages/placeholder.relations.html', result=relations.main(data), query=data)
+        res, e = relations.main(data, lg_val)
+        return render_template(path, result=res, query=data, errors=e)
 
 
 @app.errorhandler(500)

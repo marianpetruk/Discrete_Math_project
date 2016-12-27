@@ -2,7 +2,7 @@ import copy
 from string import ascii_letters
 
 
-def read_file(smatrix):
+def read_file(smatrix, lg):
     '''
     (str) -> dict
     '''
@@ -20,7 +20,8 @@ def read_file(smatrix):
         if el == ' ':
             pass
         elif el in ascii_letters:
-            return "Your input is incorrect. Please don\'t use letters and try again."
+            return ["Your input is incorrect. Please don\'t use letters and try again.",
+                    "Ваш вивід некоректний. Не використвуйте букви та спробуйте ще раз."][lg]
         elif el == '(':
             bCheckIsFirstEl = True
             # if write {(2,4),(5,6)}
@@ -37,7 +38,8 @@ def read_file(smatrix):
                 bCheckIsFirstEl = False
                 bCheckIsSecondEl = True
             else:
-                return "Your input is incorrect. You may miss ',' between numbers. Please try again."
+                return ["Your input is incorrect. You may miss ',' between numbers. Please try again.",
+                        "Ваш вивід некоректний. Можливо ви пропустили ',' між цифрами. Спробуйте ще раз."][lg]
         elif bCheckIsSecondEl and el != ')' :
             if inuml > 0:
                 stringS += el
@@ -56,13 +58,16 @@ def read_file(smatrix):
                     stringF = ''
                     stringS = ''
                 else:
-                    return "Your input is incorrect. You may miss number or some of them. Please try again."
+                    return ["Your input is incorrect. You may miss number or some of them. Please try again.",
+                            "Ваш вивід некоректний. Можливо ви пропустили яке-небудь число. Спробуйте ще раз."][lg]
             else:
-                return "Your input is incorrect. Please check '(' and ')'."
+                return ["Your input is incorrect. Please check '(' and ')'.",
+                        "Ваш вивід некоректний. Перевірте '(' і ')'."][lg]
         elif endmatrix:
             pass
         else:
-            return "Your input is incorrect. Please try again."
+            return ["Your input is incorrect. Please try again.",
+                    "Ваш вивід некоректний. Спробуйте ще раз."][lg]
     return dmatrix
 
 
@@ -152,7 +157,7 @@ def warshella(lmatrix):
     return lmats
 
 
-def start(inp):
+def start(inp, lg):
     '''
     input should look like:
     [(3,4)(4,5)]
@@ -171,7 +176,7 @@ def start(inp):
     ([[0, 0, 0, 0], [1, 0, 1, 0], [1, 1, 0, 1], [0, 1, 0, 0]], [[[0, 0, 0, 0], [1, 0, 1, 0], [1, 1, 0, 1], [0, 1, 0, 0]], [[0, 0, 0, 0], [1, 0, 1, 0], [1, 1, 1, 1], [1, 1, 1, 0]], [[0, 0, 0, 0], [1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]], [[0, 0, 0, 0], [1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]]])
 
     '''
-    lsmatrix = read_file(inp)
+    lsmatrix = read_file(inp, lg)
     if type(lsmatrix) != str:
         lsmatrix = print_matrix(lsmatrix)
         # print(lsmatrix)
@@ -179,7 +184,7 @@ def start(inp):
         l = copy.deepcopy(lsmatrix)
         l = [l] + warshella(lsmatrix)
         return l, None
-    elif lsmatrix[:10] != 'Your input':
+    elif lsmatrix[:10] != 'Your input' and lsmatrix[:10] != "Ваш вивід ":
         return None, lsmatrix
 
 

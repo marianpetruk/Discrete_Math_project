@@ -94,17 +94,17 @@ def transitive_relation(lines):
     return save == lines
 
 
-def return_text(question):
+def return_text(question, lg):
     """
     function(matrix_) -> str {'yes' or 'no'}
     no need to import this module, it's only helpful part for main() module
     """
     if question:
-        return 'yes'
-    return 'no'
+        return ['Yes', "Так"][lg]
+    return ['No', "Ні"][lg]
 
 
-def main(matrix_):
+def main(matrix_, lg):
     """
     string - > list(string)
     if you have to work with matrix like (1,1),(2,3),(1,2), necessarily use module change_matrix() before using this
@@ -131,7 +131,8 @@ def main(matrix_):
                 elif i == ')':
                     close_num += 1
             if not close_num or not open_num or open_num != close_num:
-                return ['Something wrong with brackets, please try again']
+                return None, ['Something wrong with brackets, please try again',
+                              "Щось пішло не так з дужками, спробуйте ще раз"][lg]
             for i in range(len(matrix_)):
                 if matrix_[i] == '(':
                     a = i
@@ -139,7 +140,8 @@ def main(matrix_):
                     b = i
                 if b:
                     if ',' not in matrix_[a + 1:b]:
-                        return ['There is no comma between some numbers, please try again']
+                        return None, ['There is no comma between some numbers, please try again',
+                                      'Немає коми між числами, спробуйте ще раз'][lg]
                     else:
                         a = 0
                         b = 0
@@ -151,16 +153,27 @@ def main(matrix_):
             matrix_ = change_matrix(matrix_)
         else:
             matrix_ = eval(matrix_)
-        
-        text = 'Reflexive relation: {0}\n' \
-               'Symmetric relation: {1}\n' \
-               'Asymmetric relation: {2}\n' \
-               'Anti symmetric relation: {3}\n' \
-               'Transitive relation: {4}'.format(return_text(reflexive_relation(matrix_)),
-                                                 return_text(symmetric_relation(matrix_)),
-                                                 return_text(asymmetric_relation(matrix_)),
-                                                 return_text(anti_symmetric_relation(matrix_)),
-                                                 return_text(transitive_relation(matrix_)))
-    except: 
-        return ['Something wrong, please try again']
-    return text.split('\n')
+        if lg == 0:
+            text = 'Reflexive relation: {0}\n' \
+                   'Symmetric relation: {1}\n' \
+                   'Asymmetric relation: {2}\n' \
+                   'Anti symmetric relation: {3}\n' \
+                   'Transitive relation: {4}'.format(return_text(reflexive_relation(matrix_), lg),
+                                                     return_text(symmetric_relation(matrix_), lg),
+                                                     return_text(asymmetric_relation(matrix_), lg),
+                                                     return_text(anti_symmetric_relation(matrix_), lg),
+                                                     return_text(transitive_relation(matrix_), lg))
+        else:
+            text = 'Рефлексивне відношення: {0}\n' \
+                   'Симетричне відношення: {1}\n' \
+                   'Асиметричне відношення: {2}\n' \
+                   'Анти симетричне відношення: {3}\n' \
+                   'Транзитивне відношення: {4}'.format(return_text(reflexive_relation(matrix_), lg),
+                                                     return_text(symmetric_relation(matrix_), lg),
+                                                     return_text(asymmetric_relation(matrix_), lg),
+                                                     return_text(anti_symmetric_relation(matrix_), lg),
+                                                     return_text(transitive_relation(matrix_), lg))
+
+    except:
+        return None, ["Something wrong, please try again", 'Щось не так, спробуйте ще раз'][lg]
+    return text.split('\n'), None

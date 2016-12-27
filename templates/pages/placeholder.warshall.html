@@ -27,7 +27,14 @@
             <br> Your expression must be like <pre>(3,4)(4,5)</pre> <pre>[(3,4),(4,5)]</pre> <pre>{(3,4),(5,6)}</pre> <pre>((4,5)(5,6))</pre>
             </p>
         </div>
+        {%if errors%}
+        <div class="panel panel-success animated fadeIn">
+            <div class="panel-heading">
+                <h3 class="panel-title">Error:</h3>
+            </div>
+            <p>{{ errors }}</p>
 
+            {%endif%}
         {%if result%}
         <div class="panel panel-success animated fadeIn">
             <div class="panel-heading">

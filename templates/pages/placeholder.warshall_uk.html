@@ -11,6 +11,7 @@
                 <label class="control-label lead">Введіть <b>вираз</b> для використання алгоритму Уоршала:</label>
                 <div class="input-group">
                     <span class="input-group-addon">R <i class="fa fa-caret-right" aria-hidden="true"></i></span>
+                    <input type="hidden" name="lg" value="uk">
                     <input class="form-control" type='text' name='warshalla' id='warshalla' {%if query%}value={{ query }}{% endif %} placeholder="Введіть вираз тут">
                     <span class="input-group-btn">
       <button class="btn btn-primary" type="submit" name='submit'><i class="fa fa-hand-o-right" aria-hidden="true"></i> Ввід</button>
@@ -27,7 +28,14 @@
             <br> Ваш вираз повинен були у вигляді: <pre>(3,4)(4,5)</pre> <pre>[(3,4),(4,5)]</pre> <pre>{(3,4),(5,6)}</pre> <pre>((4,5)(5,6))</pre>
             </p>
         </div>
+        {%if errors%}
+        <div class="panel panel-success animated fadeIn">
+            <div class="panel-heading">
+                <h3 class="panel-title">Помилка:</h3>
+            </div>
+            <p>{{ errors }}</p>
 
+            {%endif%}
         {%if result%}
         <div class="panel panel-success animated fadeIn">
             <div class="panel-heading">
