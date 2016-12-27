@@ -157,7 +157,7 @@ def main(matrix_, lg):
             text = 'Reflexive relation: {0}\n' \
                    'Symmetric relation: {1}\n' \
                    'Asymmetric relation: {2}\n' \
-                   'Anti symmetric relation: {3}\n' \
+                   'Antisymmetric relation: {3}\n' \
                    'Transitive relation: {4}'.format(return_text(reflexive_relation(matrix_), lg),
                                                      return_text(symmetric_relation(matrix_), lg),
                                                      return_text(asymmetric_relation(matrix_), lg),
@@ -167,7 +167,7 @@ def main(matrix_, lg):
             text = 'Рефлексивне відношення: {0}\n' \
                    'Симетричне відношення: {1}\n' \
                    'Асиметричне відношення: {2}\n' \
-                   'Анти симетричне відношення: {3}\n' \
+                   'Антисиметричне відношення: {3}\n' \
                    'Транзитивне відношення: {4}'.format(return_text(reflexive_relation(matrix_), lg),
                                                      return_text(symmetric_relation(matrix_), lg),
                                                      return_text(asymmetric_relation(matrix_), lg),
