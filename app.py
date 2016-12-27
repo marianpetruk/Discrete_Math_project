@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request
 import os
 import sys
+sys.path.append(os.path.join(os.path.dirname(__file__), 'static', 'python'))
 import truth_table
 import relations
 import Warshalla
-sys.path.append(os.path.join(os.path.dirname(__file__), 'static', 'python'))
 
 app = Flask(__name__)
 
