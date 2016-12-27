@@ -32,14 +32,14 @@
             <div class="panel-heading">
                 <h3 class="panel-title">Error:</h3>
             </div>
-            <p>{{ errors }}</p>
+            <p class="font-custom" style="margin: 5px;">{{ errors }}</p>
 
             {%endif%} {%if result%}
             <div class="panel panel-success animated fadeIn">
                 <div class="panel-heading">
                     <h3 class="panel-title">Result:</h3>
                 </div>
-                <ul>
+                <ul class="font-custom" style="margin: 5px;">
                     {% for res in result %}
                     <li>{{ res }}</li>
                     {% endfor %}

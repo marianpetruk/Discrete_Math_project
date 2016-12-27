@@ -33,14 +33,14 @@
             <div class="panel-heading">
                 <h3 class="panel-title">Помилка:</h3>
             </div>
-            <p>{{ errors }}</p>
+            <p class="font-custom" style="margin: 5px;">{{ errors }}</p>
 
             {%endif%} {%if result%}
             <div class="panel panel-success animated fadeIn">
                 <div class="panel-heading">
                     <h3 class="panel-title">Результат:</h3>
                 </div>
-                <ul class="font-custom">
+                <ul class="font-custom" style="margin: 5px;">
                     {% for res in result %}
                     <li>{{ res }}</li>
                     {% endfor %}
