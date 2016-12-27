@@ -189,4 +189,3 @@ def start(inp):
 
 # print(start('6(2,3)(3,2)(3,4)( 4, 2)(3,4)'))
 # print(start('((4,5)(5,6))'))
-print(start('((5,6)(6,5))'))
