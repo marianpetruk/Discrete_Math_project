@@ -324,7 +324,7 @@
                             <ul class="dropdown-menu">
                                 <li {% if request.endpoint=='truth' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('truth') }}"><i class="fa fa-table" aria-hidden="true"></i> Table of truth</a></li>
                                 <li {% if request.endpoint=='warshall' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('warshall') }}"><i class="fa fa-wikipedia-w" aria-hidden="true"></i> Warshall algorithm</a></li>
-                                <li {% if request.endpoint=='relations' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('check_relation') }}"><i class="fa fa-arrows-h" aria-hidden="true"></i> Relation checker</a></li>
+                                <li {% if request.endpoint=='check_relation' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('check_relation') }}"><i class="fa fa-arrows-h" aria-hidden="true"></i> Relation checker</a></li>
                             </ul>
                         </li>
                         {%endif%}
