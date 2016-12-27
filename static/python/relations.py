@@ -131,8 +131,8 @@ def main(matrix_, lg):
                 elif i == ')':
                     close_num += 1
             if not close_num or not open_num or open_num != close_num:
-                return None, ['Something wrong with brackets, please try again',
-                              "Щось пішло не так з дужками, спробуйте ще раз"][lg]
+                return None, ['  Something wrong with brackets, please try again',
+                              "  Щось пішло не так з дужками, спробуйте ще раз"][lg]
             for i in range(len(matrix_)):
                 if matrix_[i] == '(':
                     a = i
@@ -140,8 +140,8 @@ def main(matrix_, lg):
                     b = i
                 if b:
                     if ',' not in matrix_[a + 1:b]:
-                        return None, ['There is no comma between some numbers, please try again',
-                                      'Немає коми між числами, спробуйте ще раз'][lg]
+                        return None, ['  There is no comma between some numbers, please try again',
+                                      '  Немає коми між числами, спробуйте ще раз'][lg]
                     else:
                         a = 0
                         b = 0
@@ -175,5 +175,5 @@ def main(matrix_, lg):
                                                      return_text(transitive_relation(matrix_), lg))
 
     except:
-        return None, ["Something wrong, please try again", 'Щось не так, спробуйте ще раз'][lg]
+        return None, ["  Something wrong, please try again", '  Щось не так, спробуйте ще раз'][lg]
     return text.split('\n'), None
