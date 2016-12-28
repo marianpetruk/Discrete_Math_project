@@ -154,6 +154,9 @@ def main(matrix_, lg):
                 if len(i) != 2:
                     return None, ['  Input must have exactly two numbers but somewhere {0} numbers was set'.format(len(i)),
                                   '  Ввiд повинен містити по два числа, але десь Ви ввели {0}'.format(len(i))][lg]
+                if i[0] > 50 or i[1] > 50:
+                    return None, ['  Your matrix is too big, numbers less than 51 only required',
+                                  '  Числа у вашій матриці занадто великі, максимально дозволене число: 50'][lg]
             matrix_ = change_matrix(matrix_)
         else:
             matrix_ = eval(matrix_)
@@ -173,10 +176,10 @@ def main(matrix_, lg):
                    'Асиметричне відношення: {2}\n' \
                    'Антисиметричне відношення: {3}\n' \
                    'Транзитивне відношення: {4}'.format(return_text(reflexive_relation(matrix_), lg),
-                                                     return_text(symmetric_relation(matrix_), lg),
-                                                     return_text(asymmetric_relation(matrix_), lg),
-                                                     return_text(anti_symmetric_relation(matrix_), lg),
-                                                     return_text(transitive_relation(matrix_), lg))
+                                                        return_text(symmetric_relation(matrix_), lg),
+                                                        return_text(asymmetric_relation(matrix_), lg),
+                                                        return_text(anti_symmetric_relation(matrix_), lg),
+                                                        return_text(transitive_relation(matrix_), lg))
 
     except:
         return None, ["  Something wrong, please try again", '  Щось не так, спробуйте ще раз'][lg]
