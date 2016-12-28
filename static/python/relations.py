@@ -182,5 +182,6 @@ def main(matrix_, lg):
                                                         return_text(transitive_relation(matrix_), lg))
 
     except:
-        return None, ["  Something wrong, please try again", '  Щось не так, спробуйте ще раз'][lg]
+        return None, ['  Something wrong, please try again', 
+                      '  Щось не так, спробуйте ще раз'][lg]
     return text.split('\n'), None

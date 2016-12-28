@@ -184,7 +184,7 @@ def start(inp, lg):
         l = copy.deepcopy(lsmatrix)
         l = [l] + warshella(lsmatrix)
         return l, None
-    elif lsmatrix[:12] != '  Your input' or lsmatrix[:12] != "  Ваш вивід ":
+    elif lsmatrix[:12] == '  Your input' or lsmatrix[:12] == "  Ваш вивід ":
         return None, lsmatrix
 
 
