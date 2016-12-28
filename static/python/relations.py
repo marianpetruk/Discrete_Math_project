@@ -132,7 +132,7 @@ def main(matrix_, lg):
                     close_num += 1
             if not close_num or not open_num or open_num != close_num:
                 return None, ['  Something wrong with brackets, please try again',
-                              "  Щось пішло не так з дужками, спробуйте ще раз"][lg]
+                              '  Щось пішло не так з дужками, спробуйте ще раз'][lg]
             for i in range(len(matrix_)):
                 if matrix_[i] == '(':
                     a = i
@@ -150,6 +150,10 @@ def main(matrix_, lg):
             matrix_ = matrix_.replace(' ', '')
             matrix_ = '[' + matrix_ + ']'
             matrix_ = eval(matrix_)
+            for i in matrix_:
+                if len(i) != 2:
+                    return None, ['  Input must have exactly two numbers but somewhere {0} numbers was set'.format(len(i)),
+                                  '  Ввiд повинен містити по два числа, але десь Ви ввели {0}'.format(len(i))][lg]
             matrix_ = change_matrix(matrix_)
         else:
             matrix_ = eval(matrix_)
