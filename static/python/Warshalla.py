@@ -48,6 +48,9 @@ def read_file(smatrix, lg):
             endmatrix = True
             if inuml >= inumr:
                 if stringF != '' and stringS != '':
+                    if int(stringF) > 16 or int(stringS) > 16:
+                        return ["  Your input is incorrect. Your input integer is bigger than 15. ",
+                            "  Ваш вивід некоректний. Найбільше число вашого вводу перевищує 15. "][lg]
                     if int(stringF) in dmatrix:
                         if int(stringS) not in dmatrix[int(stringF)]:
                             dmatrix[int(stringF)].append(int(stringS))
@@ -193,4 +196,4 @@ def start(inp, lg):
 # print(warshalla(print_matrix(read_file('{(5, 7), (4, 7), (0, 5), (5,4)}'))))
 
 # print(start('6(2,3)(3,2)(3,4)( 4, 2)(3,4)'))
-# print(start('(n(4,5)(5,6))', 0))
+# print(start('((4,20)(5,6))', 0))
