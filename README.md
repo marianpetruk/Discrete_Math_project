@@ -7,4 +7,4 @@ CS@UCU first-year project for Discrete Mathematics
 3. Relations checker
 
 ## Mockup:
-![](https://lh5.googleusercontent.com/IotBc7klX28SYNZ9e8MfqVuThOF0K6QoGLQVRxwUIWmJv0YeGRpDZudEyasRsgrc1bzJI-bVOcojBOs=w1366-h638-rw)
+[![1.png](https://s28.postimg.org/pz6xo4jil/image.png)](https://postimg.org/image/5f23pn3rd/)
