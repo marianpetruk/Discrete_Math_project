@@ -1,187 +1,303 @@
-def change_matrix(matrix_):
+def reflexive_relation(mat):
     """
-    list(tuple(int, int)) -> list(list(int {1 or 0}))
-    change type of matrix
+    :param mat: list(tuple(int,int))
+    :return: bool
 
-    >>> change_matrix([(1,1),(2,3),(1,2)])
-    [[1, 1, 0], [0, 0, 1], [0, 0, 0]]
+    >>> reflexive_relation([(1,1)])
+    True
 
-    ! ! ! ATTENTION ! ! !  all modules work only with matriсes like
-    [[1, 1, 0], [0, 0, 1], [0, 0, 0]]
+    >>> reflexive_relation([(2,3),(3,3),(2,2)])
+    True
+
+    >>> reflexive_relation([(2,3),(3,2),(2,2)])
+    False
     """
-    width = 0
-    for i in matrix_:
-        if max(i) > width:
-            width = max(i)
-    lines = [[0 for i in range(width)] for i in range(width)]
-    for i in matrix_:
-        lines[i[0] - 1][i[1] - 1] = 1
-    return lines
-
-
-def reflexive_relation(lines):
-    """
-    list(list(int {1 or 0})) -> bool
-    """
-
-    if not lines[0]:
-        return False
-    lst = []
-    for i in range(len(lines)):
-        for j in range(len(lines[i])):
-            if lines[i][j]:
-                lst.append(j)
-                lst.append(i)
-    for i in lst:
-        if not lines[i][i]:
+    pool = []
+    for i in mat:
+        for j in i:
+            if j not in pool:
+                pool.append(j)
+    for i in pool:
+        if (i, i) not in mat:
             return False
     return True
 
 
-def symmetric_relation(lines):
+def anti_reflexive_relation(mat):
     """
-    list(list(int {1 or 0})) -> bool
+    :param mat: list(tuple(int,int))
+    :return: bool
+
+    >>> anti_reflexive_relation([(1,1)])
+    False
+
+    >>> anti_reflexive_relation([(2,3), (3,3), (2,2)])
+    False
+
+    >>> anti_reflexive_relation([(2,3), (3,2), (1,2)])
+    True
     """
-    if not lines[0]:
-        return True
-    for i in range(len(lines)):
-        for j in range(len(lines[i])):
-            if not j == i:
-                if lines[j][i] != lines[i][j]:
-                    return False
+
+    for i in mat:
+        if i[0] == i[1]:
+            return False
     return True
 
 
-def asymmetric_relation(lines):
+def symmetric_relation(mat):
     """
-    list(list(int {1 or 0})) -> bool
+    :param mat: list(tuple(int,int))
+    :return: bool
+
+    >>> symmetric_relation([(1,1)])
+    True
+
+    >>> symmetric_relation([(2,3), (4,3), (3,2), (3,4)])
+    True
+
+    >>> symmetric_relation([(2,3), (4,2), (2,4), (3,4)])
+    False
+
     """
-    if not lines[0]:
-        return True
-    for i in range(len(lines)):
-        for j in range(len(lines)):
-            if lines[i][j] and lines[j][i]:
-                return False
+    pool = []
+    for i in mat:
+        pool.append((i[1], i[0]))
+    for i in pool:
+        if i not in mat:
+            return False
     return True
 
 
-def anti_symmetric_relation(lines):
+def asymmetric_relation(mat):
     """
-    list(list(int {1 or 0})) -> bool
+    :param mat: list(tuple(int,int))
+    :return: bool
+
+    >>> asymmetric_relation([(1,3)])
+    True
+
+    >>> asymmetric_relation([(2,3), (4,5), (5,5)])
+    False
+
+    >>> asymmetric_relation([(2,3), (3,4), (4,3)])
+    False
     """
-    if not lines[0]:
-        return True
-    for i in range(len(lines)):
-        for j in range(len(lines)):
-            if i != j and (lines[i][j] and lines[j][i]):
-                return False
+    pool = []
+    for i in mat:
+        pool.append((i[1], i[0]))
+    for i in pool:
+        if i in mat:
+            return False
     return True
 
 
-def transitive_relation(lines):
+def anti_symmetric_relation(mat):
     """
-    list(list(int {1 or 0})) -> bool
-    contains warshall algorithm
+    :param mat: list(tuple(int,int))
+    :return: bool
+
+
+    >>> anti_symmetric_relation([(1,1)])
+    True
+
+    >>> anti_symmetric_relation([(2,3), (4,5), (5,5)])
+    True
+
+    >>> anti_symmetric_relation([(2,3), (3,4), (4,3)])
+    False
     """
-    from copy import deepcopy
-    if not lines[0]:
-        return True
-    save = deepcopy(lines)
-    for i in range(len(lines)):
-        for j in range(len(lines)):
-            for k in range(len(lines)):
-                lines[j][k] = lines[j][k] or (lines[j][i] and lines[i][k])
-    return save == lines
+    pool = []
+    for i in mat:
+        if i[0] != i[1]:
+            pool.append((i[1], i[0]))
+    for i in pool:
+        if i in mat:
+            return False
+    return True
 
 
-def return_text(question, lg):
+def transitive_relation(mat):
     """
-    function(matrix_) -> str {'yes' or 'no'}
-    no need to import this module, it's only helpful part for main() module
+    :param mat: list(tuple(int,int))
+    :return: bool
+
+    >>> transitive_relation([(2,3), (3,4), (2,4)])
+    True
+
+    >>> transitive_relation([(3,3)])
+    True
+
+    >>> transitive_relation([(3,4), (4,3), (3,3)])
+    False
     """
-    if question:
-        return ['Yes', "Так"][lg]
-    return ['No', "Ні"][lg]
+    pool = []
+    for i in mat:
+        for j in mat:
+            if i[1] == j[0]:
+                pool.append((i[0], j[1]))
+    for i in pool:
+        if i not in mat:
+            return False
+    return True
 
 
-def main(matrix_, lg):
+def anti_transitive_relation(mat):
     """
-    string - > list(string)
-    if you have to work with matrix like (1,1),(2,3),(1,2), necessarily use module change_matrix() before using this
+    :param mat: list(tuple(int,int))
+    :return: bool
 
-    >>> main('[[1, 1, 0], [0, 0, 1], [0, 0, 0]]')
-    ['relations of your matrix:', 'reflexive relation: no', 'symmetric relation: no', 'asymmetric relation: no',
-    ... 'anti symmetric relation: yes', 'transitive relation: no', '']
+    >>> anti_transitive_relation([(1,3)])
+    True
 
-    >>> main('(1,1),(2,3),(1,2)')
-    ['relations of your matrix:', 'reflexive relation: no', 'symmetric relation: no', 'asymmetric relation: no',
-    ... 'anti symmetric relation: yes', 'transitive relation: no', '']
+    >>> anti_transitive_relation([(1,3), (3,1), (1,1)])
+    False
 
+    >>> anti_transitive_relation([(2,2)])
+    False
+    """
+    pool = []
+    for i in mat:
+        for j in mat:
+            if i[1] == j[0]:
+                pool.append((i[0], j[1]))
+    for i in pool:
+        if i in mat:
+            return False
+    return True
+
+
+def fails(mat):
+    """
+    :param mat: str
+    :return: int or False
+    False if matrix is correct
+    str with error code, if matrix is wrong
+    error codes:
+    1 - something wrong with brackets
+    2 - there is no comma between some numbers
+    3 - missed number
+    4 - unknown error
+    """
+    mat = str(mat)
+    mat = mat.strip()
+    if mat[:2] == '((' and mat[-2:] == '))':
+        mat = mat[1:-1]
+    counter = 0
+    b_opened = 0
+    b_closed = 0
+    for i in mat:
+        if i == '(':
+            counter += 1
+        elif i == ')':
+            counter -= 1
+        if counter < 0 or counter > 1:
+            return 1
+    if counter != 0:
+        return 1
+    for i in range(len(mat)):
+        if mat[i] == '(':
+            b_opened = i
+        if mat[i] == ')':
+            b_closed = i
+        if b_closed:
+            if ',' not in mat[b_opened + 1:b_closed]:
+                return 2
+            else:
+                c = mat[b_opened:b_closed + 1].index(',') + b_opened
+                if b_opened + 1 == c or b_closed - 1 == c:
+                    return 3
+                else:
+                    b_opened = 0
+                    b_closed = 0
+
+    try:
+        eval(mat)
+    except SyntaxError:
+        return 4
+    return False
+
+
+def main(mat, lg):
+    """
+    :param mat: string
+    :param lg: 0 (english) or 1 (ukrainian)
+    :return: None, list(string) or string, None
     """
     try:
-        matrix_ = matrix_.strip()
-        if matrix_[0] == '(':
-            b = 0
-            a = 0
-            open_num = 0
-            close_num = 0
-            for i in matrix_:
-                if i == '(':
-                    open_num += 1
-                elif i == ')':
-                    close_num += 1
-            if not close_num or not open_num or open_num != close_num:
-                return None, ['  Something wrong with brackets, please try again',
-                              '  Щось пішло не так з дужками, спробуйте ще раз'][lg]
-            for i in range(len(matrix_)):
-                if matrix_[i] == '(':
-                    a = i
-                if matrix_[i] == ')':
-                    b = i
-                if b:
-                    if ',' not in matrix_[a + 1:b]:
-                        return None, ['  There is no comma between some numbers, please try again',
-                                      '  Немає коми між числами, спробуйте ще раз'][lg]
-                    else:
-                        a = 0
-                        b = 0
+        errorslist = [["Your number(s) is(are) too big, numbers less than 51"
+                       " are only required",
+                       "Something wrong with brackets, please try again",
+                       "Somewhere comma between numbers is missed,"
+                       " please try again",
+                       "Number is missed somewhere, please try again",
+                       "Something wrong, please try again ",
+                       "Each tuple can not contain more than 2 numbers",
+                       "Matrix can not contain zero"],
+                      ["Числа у Вашій матриці завеликі, максимально"
+                       " дозволене число: 50",
+                       "Щось пішло не так з дужками, спробуйте ще раз",
+                       "Пропущена кома між числами, спробуйте ще раз",
+                       "Десь пропущене число, спробуйте ще раз",
+                       "Щось пішло не так, спробуйте ще раз",
+                       "Кортежі не можуть містити більше двох чисел,"
+                       " спробуйте ще раз",
+                       "Матриця не може містити нуль спробуйте ще раз"]
+                      ]
 
-            matrix_ = matrix_.replace(')(', '),(')
-            matrix_ = matrix_.replace(' ', '')
-            matrix_ = '[' + matrix_ + ']'
-            matrix_ = eval(matrix_)
-            for i in matrix_:
-                if len(i) != 2:
-                    return None, ['  Input must have exactly two numbers but somewhere {0} numbers was set'.format(len(i)),
-                                  '  Ввiд повинен містити по два числа, але десь Ви ввели {0}'.format(len(i))][lg]
-                if i[0] > 50 or i[1] > 50:
-                    return None, ['  Your matrix is too big, numbers less than 51 only required',
-                                  '  Числа у вашій матриці занадто великі, максимально дозволене число: 50'][lg]
-            matrix_ = change_matrix(matrix_)
-        else:
-            matrix_ = eval(matrix_)
-        if lg == 0:
-            text = 'Reflexive relation: {0}\n' \
-                   'Symmetric relation: {1}\n' \
-                   'Asymmetric relation: {2}\n' \
-                   'Antisymmetric relation: {3}\n' \
-                   'Transitive relation: {4}'.format(return_text(reflexive_relation(matrix_), lg),
-                                                     return_text(symmetric_relation(matrix_), lg),
-                                                     return_text(asymmetric_relation(matrix_), lg),
-                                                     return_text(anti_symmetric_relation(matrix_), lg),
-                                                     return_text(transitive_relation(matrix_), lg))
-        else:
-            text = 'Рефлексивне відношення: {0}\n' \
-                   'Симетричне відношення: {1}\n' \
-                   'Асиметричне відношення: {2}\n' \
-                   'Антисиметричне відношення: {3}\n' \
-                   'Транзитивне відношення: {4}'.format(return_text(reflexive_relation(matrix_), lg),
-                                                        return_text(symmetric_relation(matrix_), lg),
-                                                        return_text(asymmetric_relation(matrix_), lg),
-                                                        return_text(anti_symmetric_relation(matrix_), lg),
-                                                        return_text(transitive_relation(matrix_), lg))
+        mat = mat.strip()
+        mat = mat.replace(')(', '),(')
 
+        error = fails(mat)
+        if error:
+            return None, errorslist[lg][error]
+        mat = '[' + mat + ']'
+        mat = eval(mat)
+        for i in mat:
+            if i[0] > 50 or i[1] > 50:
+                return None, errorslist[lg][0]
+            if len(i) > 2:
+                return None, errorslist[lg][5]
+            if i[0] == 0 or i[1] == 0:
+                return None, errorslist[lg][6]
+
+        answers = [['No', 'Yes'], ['Ні', 'Так']]
+        reflexive = answers[lg][int(reflexive_relation(mat))]
+        anti_reflexive = answers[lg][int(anti_reflexive_relation(mat))]
+        symmetric = answers[lg][int(symmetric_relation(mat))]
+        asymmetric = answers[lg][int(asymmetric_relation(mat))]
+        anti_symmetric = answers[lg][int(anti_symmetric_relation(mat))]
+        transitive = answers[lg][int(transitive_relation(mat))]
+        anti_transitive = answers[lg][int(anti_transitive_relation(mat))]
+
+        text = ['Reflexive relation: {0}\n'
+                'Anti reflexive relation: {1}\n'
+                'Symmetric relation: {2}\n'
+                'Asymmetric relation: {3}\n'
+                'Antisymmetric relation: {4}\n'
+                'Transitive relation: {5}\n'
+                'Anti transitive relation: {6}'.format(reflexive,
+                                                       anti_reflexive,
+                                                       symmetric,
+                                                       asymmetric,
+                                                       anti_symmetric,
+                                                       transitive,
+                                                       anti_transitive),
+                'Рефлексивне відношення: {0}\n'
+                'Антирефлексивне відношення: {1}\n'
+                'Симетричне відношення: {2}\n'
+                'Асиметричне відношення: {3}\n'
+                'Антисиметричне відношення: {4}\n'
+                'Транзитивне відношення: {5}\n'
+                'Антитранзитивне відношення: {6}'.format(reflexive,
+                                                         anti_reflexive,
+                                                         symmetric,
+                                                         asymmetric,
+                                                         anti_symmetric,
+                                                         transitive,
+                                                         anti_transitive)
+                ]
     except:
-        return None, ['  Something wrong, please try again', 
-                      '  Щось не так, спробуйте ще раз'][lg]
-    return text.split('\n'), None
+        return None, ['Something wrong, please try again',
+                      'Щось не так, спробуйте ще раз'][lg]
+
+    return text[lg].split('\n'), None
