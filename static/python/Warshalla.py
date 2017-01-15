@@ -11,7 +11,6 @@ def read_file(smatrix, lg):
     bCheckIsSecondEl = False
     stringF = ''
     stringS = ''
-    # bCheckIsFirstEl = True
     inuml = 0
     inumr = 0
     bstartmatrix = False
@@ -19,7 +18,7 @@ def read_file(smatrix, lg):
     for el in smatrix:
         if el == ' ':
             pass
-        elif el in ascii_letters:
+        elif el in ascii_letters or el.lower() in 'йцукенгшщзхїфівапролджєячсмитью':
             return ["  Your input is incorrect. Please don\'t use letters and try again.",
                     "  Ваш вивід некоректний. Не використвуйте букви та спробуйте ще раз."][lg]
         elif el == '(':
@@ -73,16 +72,6 @@ def read_file(smatrix, lg):
                     "  Ваш вивід некоректний. Спробуйте ще раз."][lg]
     return dmatrix
 
-
-'''
-def print_matrix_col(lpmcmat):
-    #'''
-# (list) -> None
-'''
-    for el in lpmcmat:
-        print(el)
-    print()
-'''
 
 
 def print_matrix(dmat):
@@ -196,4 +185,4 @@ def start(inp, lg):
 # print(warshalla(print_matrix(read_file('{(5, 7), (4, 7), (0, 5), (5,4)}'))))
 
 # print(start('6(2,3)(3,2)(3,4)( 4, 2)(3,4)'))
-# print(start('((4,20)(5,6))', 0))
+print(start('((4,І)(5,6))', 0))
