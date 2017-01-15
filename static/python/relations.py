@@ -246,6 +246,8 @@ def main(mat, lg):
 
         mat = mat.strip()
         mat = mat.replace(')(', '),(')
+        if mat[:2] == '((' and mat[-2:] == '))':
+            mat = mat[1:-1]
 
         error = fails(mat)
         if error:
