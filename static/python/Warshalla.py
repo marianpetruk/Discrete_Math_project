@@ -185,4 +185,4 @@ def start(inp, lg):
 # print(warshalla(print_matrix(read_file('{(5, 7), (4, 7), (0, 5), (5,4)}'))))
 
 # print(start('6(2,3)(3,2)(3,4)( 4, 2)(3,4)'))
-print(start('((4,І)(5,6))', 0))
+# print(start('((4,І)(5,6))', 0))
