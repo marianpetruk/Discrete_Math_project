@@ -1,0 +1,157 @@
+{% extends 'layouts/main.html' %} {% block title %}Комбінаторика{% endblock %} {% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css" integrity="sha384-wE+lCONuEo/QSfLb4AfrSk7HjWJtc4Xc1OiB2/aDBzHzjnlBP4SX7vjErTcwlA8C" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.js" integrity="sha384-tdtuPw3yx/rnUGmnLNWXtfjb9fpmwexsd+lr6HUYnUY4B7JhB5Ty7a1mYd+kto/s" crossorigin="anonymous"></script>
+<div class="page-header">
+   <h1><i class="fa fa-sliders" aria-hidden="true"></i> Комбінаторний калькулятор</h1>
+</div>
+<div class="row">
+<div class="col-md-8">
+<form action='combinatorics' method='POST'>
+   <div class="form-group">
+      <label class="control-label lead">Обчисліть кількість способів обрати <b>M</b> елементів з <b>N</b> елементів:</label>
+      <div class="input-group font-custom">
+         Чи важливий порядок елементів? 
+         <select name="order">
+            <option value="yes">так</option>
+            <option value="no">ні</option>
+         </select>
+         <br>
+         Чи можна обирати елемент кілька разів? 
+         <select name="repeat">
+            <option value="yes">так</option>
+            <option value="no">ні</option>
+         </select>
+      </div>
+      <br>
+      <div class="input-group">
+         <input type="hidden" name="lg" value="uk">
+         <span class="input-group-addon">M <i class="fa fa-caret-right" aria-hidden="true"></i></span>
+         <input class="form-control" type='text' name='M_value' id='M_value' {%if query%}value={{ query }}{% endif %} placeholder="Вкажіть значення M">
+         <span class="input-group-addon">N <i class="fa fa-caret-right" aria-hidden="true"></i></span>
+         <input class="form-control" type='text' name='N_value' id='N_value' {%if query%}value={{ query }}{% endif %} placeholder="Вкажіть значення N">
+         <span class="input-group-btn">
+         <button class="btn btn-primary" type="submit" name='submit'><i class="fa fa-hand-o-right" aria-hidden="true"></i> Ввід</button>
+         <a href="#" class="btn btn-info" id="info_button"><i class="fa fa-question-circle" aria-hidden="true"></i> Інфо</a>
+         </span>
+      </div>
+   </div>
+</form>
+<br>
+<div class="animated zoomOut alert alert-dismissible alert-info" id="info_table" style="display:none;">
+   <p class="text-center font-custom">
+      <strong><span class="lead"><i class="fa fa-hand-paper-o" aria-hidden="true"></i>Важливо!</span></strong>
+   <ul class="font-custom">
+      <li>
+         Якщо порядок <i><b>важливий</b></i>:
+         <ul>
+            <li>
+               Якщо елементи <b>не можуть</b> повторюватися:
+               <math>
+                  <code style="padding:5px;"><span id="A"></span></code>
+                  <script>
+                     katex.render("A^m_n = n(n-1)...(n-r+1) = \\frac{n!}{(n-m)!}", document.getElementById("A"));
+                  </script>
+               </math>
+            </li>
+            <br>
+            <li>
+               Якщо елементи <b>можуть</b> повторюватися:
+               </span>
+               <math>
+                  <code style="padding:5px;"><span id="Ar"></span></code>
+                  <script>
+                     katex.render("\\tilde{A}^m_n = n^m", document.getElementById("Ar"));
+                  </script>
+               </math>
+            </li>
+         </ul>
+      </li>
+      <li>
+         Якщо порядок <i><b>не важливий</b></i>:
+         <ul>
+            <li>
+               Якщо елементи <b>не можуть</b> повторюватися:
+               <math>
+                  <code style="padding:5px;"><span id="C"></span></code>
+                  <script>
+                     katex.render("C^m_n = \\frac{A^m_n}{m!} = \\binom{n}{m} = \\frac{n!}{m!(n-m)!}", document.getElementById("C"));
+                  </script>
+               </math>
+            </li>
+            <br>
+            <li>
+               Якщо елементи <b>можуть</b> повторюватися:
+               <math>
+                  <code style="padding:5px;"><span id="CH"></span></code>
+                  <script>
+                     katex.render("H^m_n = C^m_{n+m-1}", document.getElementById("CH"));
+                  </script>
+               </math>
+            </li>
+         </ul>
+      </li>
+      </li>
+   </ul>
+   </p>
+</div>
+{%if errors%}
+<div class="panel panel-success animated fadeIn">
+   <div class="panel-heading">
+      <h3 class="panel-title">Error:</h3>
+   </div>
+   <p class="font-custom" style="margin-left: 20px;margin-top: 10px;">{{ errors }}</>
+      {%endif%} {%if result%}
+   <div class="panel panel-success animated fadeIn">
+      <div class="panel-heading">
+         <h3 class="panel-title">Result:</h3>
+      </div>
+      <br>
+      <span class="font-custom" style="padding:3%">
+      {{result[0]}}
+      </span>
+      <br>
+      {% if result[3] == "yes" %}
+      {% if result[4] == "yes" %}
+      <br>
+      <math style="padding:2%;">
+         <code style="font-size:100%;"><span id="Ar_res"></span></code>
+         <script>
+            katex.render("\\tilde{A}^{{result[1]}}_{{result[2]}} = {{result[2]}}^{{result[1]}} =  {{result[5]}}", document.getElementById("Ar_res"));
+         </script>
+      </math>
+      {%endif%}
+      {% if result[4] == "no" %}
+      <br>
+      <math style="padding:2%;">
+         <code style="font-size:100%;"><span id="A_res"></span></code>
+         <script>
+            katex.render("A^{ {{result[1]}} }_{ {{result[2]}} } = {{result[2]}}( {{result[2]}} - 1)...( {{result[2]}} - {{result[1]}} + 1) = \\frac{ {{result[2]}} !}{( {{result[2]}} - {{result[1]}} )!} = {{result[5]}}", document.getElementById("A_res"));
+         </script>
+      </math>
+      {%endif%}
+      {%endif%}
+      {% if result[3] == "no" %}
+      {% if result[4] == "yes" %}
+      <br>
+      <math style="padding:2%;">
+         <code style="font-size:100%;"><span id="CH_res"></span></code>
+         <script>
+            katex.render("H^{ {{result[1]}} }_{ {{result[2]}} } = C^{ {{result[1]}} }_{ {{result[2]}} + {{result[1]}} - 1} = {{result[5]}}", document.getElementById("CH_res"));
+         </script>
+      </math>
+      {%endif%}
+      {% if result[4] == "no" %}
+      <br>
+      <math style="padding:2%;">
+         <code style="font-size:100%;"><span id="C_res"></span></code>
+         <script>
+            katex.render("C^{ {{result[1]}} }_{ {{result[2]}} } = \\frac{ A^{ {{result[1]}} }_{ {{result[2]}} } }{ { {{result[1]}} } !} = \\binom{ {{result[2]}} }{ {{result[1]}} } = \\frac{ {{result[2]}} !}{ {{result[1]}} !( {{result[2]}} - {{result[1]}} )!} = {{result[5]}} ", document.getElementById("C_res"));
+         </script>
+      </math>
+      {%endif%}
+      {%endif%}
+      <br><br>
+      {%endif%}
+   </div>
+</div>
+{% endblock %}

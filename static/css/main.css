@@ -79,3 +79,8 @@ td {
     /* Non-prefixed version, currently
                                   not supported by any browser */
 }
+
+.supsub { position: absolute}
+.subscript {color: green; display:block; position:relative; left:2px; top: -5px}
+.superscript {color: red; display:block; position:relative; left:2px; top: -5px}
+.tab{padding-left:2em}

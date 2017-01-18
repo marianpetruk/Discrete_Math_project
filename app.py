@@ -5,6 +5,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), 'static', 'python'))
 import truth_table
 import relations
 import Warshalla
+import Combinatorics
 
 app = Flask(__name__)
 
@@ -96,6 +97,32 @@ def check_relation():
     else:
         res, e = relations.main(data, lg_val)
         return render_template(path, result=res, query=data, errors=e, lg=lg if lg else "en")
+
+@app.route('/combinatorics', methods=['GET', 'POST'])
+def combinatorics():
+    if request.method == 'GET':
+        lg = request.args.get('lg')
+        add = "_uk" if lg == "uk" else ""
+        where = 'combinatorics'
+        path = 'pages/placeholder.' + where + add + '.html'
+        return render_template(path, result=None, query="", errors=None, lg=lg if lg else "en")
+    data_m = request.form.get('M_value')
+    data_n = request.form.get('N_value')
+    data_repeat = request.form.get('repeat')
+    data_order = request.form.get('order')
+    lg = request.form.get('lg')
+    add = "_uk" if lg == "uk" else ""
+    lg_val = 1 if lg == "uk" else 0
+    where = 'combinatorics'
+    path = 'pages/placeholder.' + where + add + '.html'
+    if data_m == "" or data_m is None or data_n == "" or data_n is None:
+        return render_template(path, result=None, query="", errors=["  Expression can`t be empty",
+                                                                    "  Вираз не може бути пустим"][lg_val], lg=lg if lg else "en")
+    else:
+        answer, res, e = Combinatorics.main(data_m, data_n, data_order, data_repeat, lg_val)
+        data = [res, data_m, data_n, data_order, data_repeat, answer]
+        return render_template(path, result=data, errors=e, lg=lg if lg else "en")
+
 
 
 @app.errorhandler(500)
