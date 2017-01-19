@@ -1,52 +1,270 @@
 {% extends 'layouts/main.html' %} {% block title %}Relations{% endblock %} {% block content %}
-
+<script src="../../static/js/relations-script.js"></script>
 <div class="page-header">
-    <h1><i class="fa fa-arrows-h" aria-hidden="true"></i>  Relations checker</h1>
+   <h1><i class="fa fa-arrows-h" aria-hidden="true"></i>  Relations checker</h1>
 </div>
 <div class="row">
-    <div class="col-md-8">
-        <form action='relations' method='POST'>
+<div class="col-md-8">
+<button class="btn" onclick="inputSwitch()">Switch the input mode</button>
+<form action='relations' method='POST' class="normal_input">
+   <div class="form-group">
+      <label class="control-label lead">Enter a <b>relation</b> to check its properties:</label>
+      <div class="input-group">
+         <span class="input-group-addon">R <i class="fa fa-caret-right" aria-hidden="true"></i></span>
+         <input class="form-control" type='text' name='relation' id='relation' {%if query%}value={{ query }}{% endif %} placeholder="Enter the relation here">
+         <span class="input-group-btn">
+         <button class="btn btn-primary" type="submit" name='submit'><i class="fa fa-hand-o-right" aria-hidden="true"></i> Enter</button>
+         <a href="#" class="btn btn-info" id="info_button"><i class="fa fa-question-circle" aria-hidden="true"></i> Info</a>
+         </span>
+      </div>
+   </div>
+</form>
 
-            <div class="form-group">
-                <label class="control-label lead">Enter a <b>relation</b> to check its properties:</label>
-                <div class="input-group">
-                    <span class="input-group-addon">R <i class="fa fa-caret-right" aria-hidden="true"></i></span>
-                    <input class="form-control" type='text' name='relation' id='relation' {%if query%}value={{ query }}{% endif %} placeholder="Enter the relation here">
-                    <span class="input-group-btn">
+<form action="relations" method="POST" class="multi-string-matrix" style="display:none;">
+   <div class="form-group">
+      <label class="control-label lead">Select a <b>size</b> of matrix to check its properties:</label>
+      <span class="input-group-btn">
+      <select style="width:25%;float:left" class="form-control" id="sel1" onchange="changeSize(this.value)" >
+         <option value="2">2x2</option>
+         <option value="3">3x3</option>
+         <option value="4">4x4</option>
+         <option value="5">5x5</option>
+         <option value="6">6x6</option>
+         <option value="7">7x7</option>
+      </select>
       <button class="btn btn-primary" type="submit" name='submit'><i class="fa fa-hand-o-right" aria-hidden="true"></i> Enter</button>
       <a href="#" class="btn btn-info" id="info_button"><i class="fa fa-question-circle" aria-hidden="true"></i> Info</a>
-    </span>
-                </div>
-            </div>
-        </form>
-        <br>
-
-        <div class="animated zoomOut alert alert-dismissible alert-info" id="info_table" style="display:none;">
-            <p class="text-center font-custom">
-                <strong><span class="lead"><i class="fa fa-hand-paper-o" aria-hidden="true"></i>Important!</span></strong>
-                <br> Your expression must be like <pre>(1,1),(2,3),(1,2)</pre> <pre>(1,5)(3,4)(5,3)</pre>
-            </p>
-        </div>
-        {%if errors%}
-        <div class="panel panel-success animated fadeIn">
-            <div class="panel-heading">
-                <h3 class="panel-title">Error:</h3>
-            </div>
-            <p class="font-custom" style="margin-left: 20px;margin-top: 10px;">{{ errors }}</>
-
-            {%endif%} {%if result%}
-            <div class="panel panel-success animated fadeIn">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Result:</h3>
-                </div>
-                <ul class="font-custom" style="margin: 5px;">
-                    {% for res in result %}
-                    <li>{{ res }}</li>
-                    {% endfor %}
-                </ul>
-                {%endif%}
-
-            </div>
-        </div>
-
-        {% endblock %}
+      </span>
+   </div>
+   <label class="btn btn-default 2x2">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">2x2</span>
+   </label>
+   <label class="btn btn-default 2x2">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">2x2</span>
+   </label>
+   <label class="btn btn-default 3x3">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">3x3</span>
+   </label>
+   <label class="btn btn-default 4x4">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">4x4</span>
+   </label>
+   <label class="btn btn-default 5x5">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">5x5</span>
+   </label>
+   <label class="btn btn-default 6x6">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">6x6</span>
+   </label>
+   <label class="btn btn-default 7x7">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">7x7</span>
+   </label>
+   <br>
+   <label class="btn btn-default 2x2">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">2x2</span>
+   </label>
+   <label class="btn btn-default 2x2">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">2x2</span>
+   </label>
+   <label class="btn btn-default 3x3">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">3x3</span>
+   </label>
+   <label class="btn btn-default 4x4">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">4x4</span>
+   </label>
+   <label class="btn btn-default 5x5">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">5x5</span>
+   </label>
+   <label class="btn btn-default 6x6">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">6x6</span>
+   </label>
+   <label class="btn btn-default 7x7">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">7x7</span>
+   </label>
+   <br>
+   <label class="btn btn-default 3x3">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">3x3</span>
+   </label>
+   <label class="btn btn-default 3x3">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">3x3</span>
+   </label>
+   <label class="btn btn-default 3x3">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">3x3</span>
+   </label>
+   <label class="btn btn-default 4x4">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">4x4</span>
+   </label>
+   <label class="btn btn-default 5x5">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">5x5</span>
+   </label>
+   <label class="btn btn-default 6x6">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">6x6</span>
+   </label>
+   <label class="btn btn-default 7x7">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">7x7</span>
+   </label>
+   <br>
+   <label class="btn btn-default 4x4">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">4x4</span>
+   </label>
+   <label class="btn btn-default 4x4">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">4x4</span>
+   </label>
+   <label class="btn btn-default 4x4">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">4x4</span>
+   </label>
+   <label class="btn btn-default 4x4">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">4x4</span>
+   </label>
+   <label class="btn btn-default 5x5">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">5x5</span>
+   </label>
+   <label class="btn btn-default 6x6">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">6x6</span>
+   </label>
+   <label class="btn btn-default 7x7">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">7x7</span>
+   </label>
+   <br>
+   <label class="btn btn-default 5x5">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">5x5</span>
+   </label>
+   <label class="btn btn-default 5x5">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">5x5</span>
+   </label>
+   <label class="btn btn-default 5x5">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">5x5</span>
+   </label>
+   <label class="btn btn-default 5x5">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">5x5</span>
+   </label>
+   <label class="btn btn-default 5x5">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">5x5</span>
+   </label>
+   <label class="btn btn-default 6x6">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">6x6</span>
+   </label>
+   <label class="btn btn-default 7x7">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">7x7</span>
+   </label>
+   <br>
+   <label class="btn btn-default 6x6">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">6x6</span>
+   </label>
+   <label class="btn btn-default 6x6">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">6x6</span>
+   </label>
+   <label class="btn btn-default 6x6">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">6x6</span>
+   </label>
+   <label class="btn btn-default 6x6">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">6x6</span>
+   </label>
+   <label class="btn btn-default 6x6   ">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">6x6</span>
+   </label>
+   <label class="btn btn-default 6x6">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">6x6</span>
+   </label>
+   <label class="btn btn-default 7x7">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">7x7</span>
+   </label>
+   <br>
+   <label class="btn btn-default 7x7">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">7x7</span>
+   </label>
+   <label class="btn btn-default 7x7">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">7x7</span>
+   </label>
+   <label class="btn btn-default 7x7">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">7x7</span>
+   </label>
+   <label class="btn btn-default 7x7">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">7x7</span>
+   </label>
+   <label class="btn btn-default 7x7">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">7x7</span>
+   </label>
+   <label class="btn btn-default 7x7">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">7x7</span>
+   </label>
+   <label class="btn btn-default 7x7">
+   <input type="checkbox" autocomplete="off">
+   <span style="font-size: 17px">7x7</span>
+   </label>
+</form>
+<br>
+<div class="animated zoomOut alert alert-dismissible alert-info" id="info_table" style="display:none;">
+   <p class="text-center font-custom">
+      <strong><span class="lead"><i class="fa fa-hand-paper-o" aria-hidden="true"></i>Important!</span></strong>
+      <br> Your expression must be like 
+   <pre>(1,1),(2,3),(1,2)</pre>
+   <pre>(1,5)(3,4)(5,3)</pre>
+   </p>
+</div>
+{%if errors%}
+<div class="panel panel-success animated fadeIn">
+   <div class="panel-heading">
+      <h3 class="panel-title">Error:</h3>
+   </div>
+   <p class="font-custom" style="margin-left: 20px;margin-top: 10px;">{{ errors }}</>
+      {%endif%} {%if result%}
+   <div class="panel panel-success animated fadeIn">
+      <div class="panel-heading">
+         <h3 class="panel-title">Result:</h3>
+      </div>
+      <ul class="font-custom" style="margin: 5px;">
+         {% for res in result %}
+         <li>{{ res }}</li>
+         {% endfor %}
+      </ul>
+      {%endif%}
+   </div>
+</div>
+{% endblock %}
