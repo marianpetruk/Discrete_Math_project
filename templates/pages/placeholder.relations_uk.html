@@ -5,10 +5,11 @@
 <div class="row">
 <div class="col-md-8">
 <button class="btn btn-primary" onclick="inputSwitch()">Змінити метод вводу</button>
-       <br/>
+       <br/><br/>
 <form action='relations' method='POST' id="normal_input" name="normal_input">
+    <input type="hidden" name="lg" value="uk">
    <div class="form-group">
-      <label class="control-label lead">Введіть <b>матрицю</b> для перевірки її відношень:</label>
+      <label class="control-label lead">Введіть <b>вираз</b> для перевірки її відношень:</label>
       <div class="input-group">
          <span class="input-group-addon">R <i class="fa fa-caret-right" aria-hidden="true"></i></span>
          <input class="form-control" type='text' name='relation' id='relation' {%if query%}value={{ query }}{% endif %} placeholder="Введіть матрицю тут">
@@ -41,8 +42,10 @@
       </div>
          </div>
 
+
    <div id="table_checkboxes">
    </div>
+
 </div>
 <br>
 <div class="animated zoomOut alert alert-dismissible alert-info" id="info_table" style="display:none;">
@@ -72,5 +75,5 @@
       {%endif%}
    </div>
 </div>
-   <script src="../../static/js/relations-script.js"></script>
+<script src="../../static/js/matrix-input-script.js"></script>
 {% endblock %}

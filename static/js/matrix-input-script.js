@@ -38,7 +38,6 @@ window.onload = function() {
                     }
                 }
             }
-            inputSwitch();
             document.getElementById(form_name).value = query;
             document.getElementById('submit').click();
 
