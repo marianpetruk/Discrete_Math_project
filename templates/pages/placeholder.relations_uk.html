@@ -4,22 +4,23 @@
 </div>
 <div class="row">
 <div class="col-md-8">
-<button class="btn-primary" onclick="inputSwitch()">Змінити метод вводу</button>
-<form action='relations' method='POST' class="normal_input">
+<button class="btn btn-primary" onclick="inputSwitch()">Змінити метод вводу</button>
+       <br/>
+<form action='relations' method='POST' id="normal_input" name="normal_input">
    <div class="form-group">
       <label class="control-label lead">Введіть <b>матрицю</b> для перевірки її відношень:</label>
       <div class="input-group">
          <span class="input-group-addon">R <i class="fa fa-caret-right" aria-hidden="true"></i></span>
          <input class="form-control" type='text' name='relation' id='relation' {%if query%}value={{ query }}{% endif %} placeholder="Введіть матрицю тут">
          <span class="input-group-btn">
-         <button class="btn btn-primary" type="submit" name='submit'><i class="fa fa-hand-o-right" aria-hidden="true"></i> Ввід</button>
+         <button class="btn btn-primary" type="submit" name='submit' id="submit"><i class="fa fa-hand-o-right" aria-hidden="true"></i> Ввід</button>
          <a href="#" class="btn btn-info" id="info_button"><i class="fa fa-question-circle" aria-hidden="true"></i> Інфо</a>
          </span>
       </div>
    </div>
 </form>
 
-<form action="relations" method="POST" class="multi-string-matrix" style="display:none;">
+<div id="multi-string-matrix" style="display:none;">
    <div class="form-group">
       <label class="control-label lead">Виберіть <b>розмір</b> матриці для перевірки відношень:</label>
             <div class="input-group">
@@ -35,14 +36,14 @@
          <option value="9">9x9</option>
       </select>
          <span class="input-group-btn">
-         <button class="btn btn-primary" type="submit" name='submit'><i class="fa fa-hand-o-right" aria-hidden="true"></i> Ввід</button>
+         <button class="btn btn-primary" onclick='format_to_str("relation")'><i class="fa fa-hand-o-right" aria-hidden="true"></i> Ввід</button>
          </span>
       </div>
          </div>
 
    <div id="table_checkboxes">
    </div>
-</form>
+</div>
 <br>
 <div class="animated zoomOut alert alert-dismissible alert-info" id="info_table" style="display:none;">
    <p class="text-center font-custom">
