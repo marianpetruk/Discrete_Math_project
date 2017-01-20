@@ -1,5 +1,4 @@
 {% extends 'layouts/main.html' %} {% block title %}Relations{% endblock %} {% block content %}
-<script src="../../static/js/relations-script.js"></script>
 <div class="page-header">
    <h1><i class="fa fa-arrows-h" aria-hidden="true"></i>  Relations checker</h1>
 </div>
@@ -23,221 +22,27 @@
 <form action="relations" method="POST" class="multi-string-matrix" style="display:none;">
    <div class="form-group">
       <label class="control-label lead">Select a <b>size</b> of matrix to check its properties:</label>
-      <span class="input-group-btn">
-      <select style="width:25%;float:left" class="form-control" id="sel1" onchange="changeSize(this.value)" >
+            <div class="input-group">
+         <span class="input-group-addon">R <i class="fa fa-caret-right" aria-hidden="true"></i></span>
+              <select style="width:100%" class="form-control" id="sel1" onchange="changeSize(this.value)">
          <option value="2">2x2</option>
          <option value="3">3x3</option>
-         <option value="4">4x4</option>
+         <option value="4" selected>4x4</option>
          <option value="5">5x5</option>
          <option value="6">6x6</option>
          <option value="7">7x7</option>
+         <option value="8">8x8</option>
+         <option value="9">9x9</option>
       </select>
-      <button class="btn btn-primary" type="submit" name='submit'><i class="fa fa-hand-o-right" aria-hidden="true"></i> Enter</button>
-      <a href="#" class="btn btn-info" id="info_button"><i class="fa fa-question-circle" aria-hidden="true"></i> Info</a>
-      </span>
+         <span class="input-group-btn">
+         <button class="btn btn-primary" type="submit" name='submit'><i class="fa fa-hand-o-right" aria-hidden="true"></i> Enter</button>
+         <a href="#" class="btn btn-info" id="info_button"><i class="fa fa-question-circle" aria-hidden="true"></i> Info</a>
+         </span>
+      </div>
+         </div>
+
+   <div id="table_checkboxes">
    </div>
-   <label class="btn btn-default 2x2">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">2x2</span>
-   </label>
-   <label class="btn btn-default 2x2">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">2x2</span>
-   </label>
-   <label class="btn btn-default 3x3">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">3x3</span>
-   </label>
-   <label class="btn btn-default 4x4">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">4x4</span>
-   </label>
-   <label class="btn btn-default 5x5">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">5x5</span>
-   </label>
-   <label class="btn btn-default 6x6">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">6x6</span>
-   </label>
-   <label class="btn btn-default 7x7">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">7x7</span>
-   </label>
-   <br>
-   <label class="btn btn-default 2x2">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">2x2</span>
-   </label>
-   <label class="btn btn-default 2x2">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">2x2</span>
-   </label>
-   <label class="btn btn-default 3x3">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">3x3</span>
-   </label>
-   <label class="btn btn-default 4x4">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">4x4</span>
-   </label>
-   <label class="btn btn-default 5x5">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">5x5</span>
-   </label>
-   <label class="btn btn-default 6x6">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">6x6</span>
-   </label>
-   <label class="btn btn-default 7x7">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">7x7</span>
-   </label>
-   <br>
-   <label class="btn btn-default 3x3">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">3x3</span>
-   </label>
-   <label class="btn btn-default 3x3">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">3x3</span>
-   </label>
-   <label class="btn btn-default 3x3">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">3x3</span>
-   </label>
-   <label class="btn btn-default 4x4">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">4x4</span>
-   </label>
-   <label class="btn btn-default 5x5">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">5x5</span>
-   </label>
-   <label class="btn btn-default 6x6">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">6x6</span>
-   </label>
-   <label class="btn btn-default 7x7">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">7x7</span>
-   </label>
-   <br>
-   <label class="btn btn-default 4x4">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">4x4</span>
-   </label>
-   <label class="btn btn-default 4x4">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">4x4</span>
-   </label>
-   <label class="btn btn-default 4x4">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">4x4</span>
-   </label>
-   <label class="btn btn-default 4x4">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">4x4</span>
-   </label>
-   <label class="btn btn-default 5x5">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">5x5</span>
-   </label>
-   <label class="btn btn-default 6x6">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">6x6</span>
-   </label>
-   <label class="btn btn-default 7x7">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">7x7</span>
-   </label>
-   <br>
-   <label class="btn btn-default 5x5">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">5x5</span>
-   </label>
-   <label class="btn btn-default 5x5">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">5x5</span>
-   </label>
-   <label class="btn btn-default 5x5">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">5x5</span>
-   </label>
-   <label class="btn btn-default 5x5">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">5x5</span>
-   </label>
-   <label class="btn btn-default 5x5">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">5x5</span>
-   </label>
-   <label class="btn btn-default 6x6">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">6x6</span>
-   </label>
-   <label class="btn btn-default 7x7">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">7x7</span>
-   </label>
-   <br>
-   <label class="btn btn-default 6x6">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">6x6</span>
-   </label>
-   <label class="btn btn-default 6x6">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">6x6</span>
-   </label>
-   <label class="btn btn-default 6x6">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">6x6</span>
-   </label>
-   <label class="btn btn-default 6x6">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">6x6</span>
-   </label>
-   <label class="btn btn-default 6x6   ">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">6x6</span>
-   </label>
-   <label class="btn btn-default 6x6">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">6x6</span>
-   </label>
-   <label class="btn btn-default 7x7">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">7x7</span>
-   </label>
-   <br>
-   <label class="btn btn-default 7x7">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">7x7</span>
-   </label>
-   <label class="btn btn-default 7x7">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">7x7</span>
-   </label>
-   <label class="btn btn-default 7x7">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">7x7</span>
-   </label>
-   <label class="btn btn-default 7x7">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">7x7</span>
-   </label>
-   <label class="btn btn-default 7x7">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">7x7</span>
-   </label>
-   <label class="btn btn-default 7x7">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">7x7</span>
-   </label>
-   <label class="btn btn-default 7x7">
-   <input type="checkbox" autocomplete="off">
-   <span style="font-size: 17px">7x7</span>
-   </label>
 </form>
 <br>
 <div class="animated zoomOut alert alert-dismissible alert-info" id="info_table" style="display:none;">
@@ -267,4 +72,5 @@
       {%endif%}
    </div>
 </div>
+   <script src="../../static/js/relations-script.js"></script>
 {% endblock %}

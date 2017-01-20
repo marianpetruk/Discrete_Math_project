@@ -1,18 +1,25 @@
 function inputSwitch() {
     $('.multi-string-matrix').toggle();
     $('.normal_input').toggle();
+    changeSize(4);
 }
 
-for (var i = 3; i <=7; i++){
-    $('.' + i + 'x' + i).hide()
-}
-function changeSize(value) {
-    for (var i = 1;i <= 7; i++){
-        if (i > value){
-            $('.' + i +'x'+ i).hide();
+window.onload = function() {
+            changeSize(4);
+        };
+        var table = document.getElementById('table_checkboxes');
+
+        function changeNumber(el) {
+            document.getElementById('lb_id' + el.id.slice(5)).innerHTML = el.checked ? '1' : '0';
         }
-        if (i <= value){
-            $('.' + i +'x'+ i).show();
+
+
+        function changeSize(value) {
+            table.innerHTML = '';
+            for (var j = 0; j < value; j++) {
+                for (var i = 0; i < value; i++) {
+                    table.innerHTML += '<label class=\"btn btn-default\" style=\"width:40px; margin-left: 5px; margin-top: 5px;\"><input onchange="changeNumber(this)" style="display: none" type=\"checkbox\" autocomplete=\"off\" id=\"bt_id' + (j + 1) + '-' + (i + 1) + '\"><span style=\"font-size: 17px\" id=\"lb_id' + (j + 1) + '-' + (i + 1) + '\">0</span></label>';
+                }
+                table.innerHTML += '<br/>';
+            }
         }
-    }
-}
