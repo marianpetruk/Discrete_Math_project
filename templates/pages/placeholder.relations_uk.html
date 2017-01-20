@@ -1,53 +1,75 @@
-{% extends 'layouts/main.html' %} {% block title %}Відношення{% endblock %} {% block content %}
-
+{% extends 'layouts/main.html' %} {% block title %}Relations{% endblock %} {% block content %}
 <div class="page-header">
-    <h1><i class="fa fa-arrows-h" aria-hidden="true"></i> Перевірка відношень</h1>
+   <h1><i class="fa fa-arrows-h" aria-hidden="true"></i>  Перевірка відношень</h1>
 </div>
 <div class="row">
-    <div class="col-md-8">
-        <form action='relations' method='POST'>
+<div class="col-md-8">
+<button class="btn" onclick="inputSwitch()">Змінити метод вводу</button>
+<form action='relations' method='POST' class="normal_input">
+   <div class="form-group">
+      <label class="control-label lead">Введіть <b>матрицю</b> для перевірки її відношень:</label>
+      <div class="input-group">
+         <span class="input-group-addon">R <i class="fa fa-caret-right" aria-hidden="true"></i></span>
+         <input class="form-control" type='text' name='relation' id='relation' {%if query%}value={{ query }}{% endif %} placeholder="Введіть матрицю тут">
+         <span class="input-group-btn">
+         <button class="btn btn-primary" type="submit" name='submit'><i class="fa fa-hand-o-right" aria-hidden="true"></i> Ввід</button>
+         <a href="#" class="btn btn-info" id="info_button"><i class="fa fa-question-circle" aria-hidden="true"></i> Інфо</a>
+         </span>
+      </div>
+   </div>
+</form>
 
-            <div class="form-group">
-                <label class="control-label lead">Введіть <b>матрицю</b> щоб перевірити її властивості:</label>
-                <div class="input-group">
-                    <span class="input-group-addon">R <i class="fa fa-caret-right" aria-hidden="true"></i></span>
-                    <input type="hidden" name="lg" value="uk">
-                    <input class="form-control" type='text' name='relation' id='relation' {%if query%}value={{ query }}{% endif %} placeholder="Введіть матрицю тут">
-                    <span class="input-group-btn">
-      <button class="btn btn-primary" type="submit" name='submit'><i class="fa fa-hand-o-right" aria-hidden="true"></i> Ввід</button>
-      <a href="#" class="btn btn-info" id="info_button"><i class="fa fa-question-circle" aria-hidden="true"></i> Інфо</a>
-    </span>
-                </div>
-            </div>
-        </form>
-        <br>
+<form action="relations" method="POST" class="multi-string-matrix" style="display:none;">
+   <div class="form-group">
+      <label class="control-label lead">Виберіть <b>розмір</b> матриці для перевірки відношень:</label>
+            <div class="input-group">
+         <span class="input-group-addon">R <i class="fa fa-caret-right" aria-hidden="true"></i></span>
+              <select style="width:100%" class="form-control" id="sel1" onchange="changeSize(this.value)">
+         <option value="2">2x2</option>
+         <option value="3">3x3</option>
+         <option value="4" selected>4x4</option>
+         <option value="5">5x5</option>
+         <option value="6">6x6</option>
+         <option value="7">7x7</option>
+         <option value="8">8x8</option>
+         <option value="9">9x9</option>
+      </select>
+         <span class="input-group-btn">
+         <button class="btn btn-primary" type="submit" name='submit'><i class="fa fa-hand-o-right" aria-hidden="true"></i> Ввід</button>
+         </span>
+      </div>
+         </div>
 
-        <div class="animated zoomOut alert alert-dismissible alert-info" id="info_table" style="display:none;">
-            <p class="text-center font-custom">
-                <strong><span class="lead"><i class="fa fa-hand-paper-o" aria-hidden="true"></i>Важливо!</span></strong>
-                <br> Ваш вираз мусить бути в записаний в одному із варіантів: <pre>(1,1),(2,3),(1,2)</pre> <pre>(1,5)(3,4)(5,3)</pre>
-            </p>
-        </div>
-        {%if errors%}
-        <div class="panel panel-success animated fadeIn">
-            <div class="panel-heading">
-                <h3 class="panel-title">Помилка:</h3>
-            </div>
-            <p class="font-custom" style="margin-left: 20px;margin-top: 10px;">{{ errors }}</p>
-
-            {%endif%} {%if result%}
-            <div class="panel panel-success animated fadeIn">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Результат:</h3>
-                </div>
-                <ul class="font-custom" style="margin: 5px;">
-                    {% for res in result %}
-                    <li>{{ res }}</li>
-                    {% endfor %}
-                </ul>
-                {%endif%}
-
-            </div>
-        </div>
-
-        {% endblock %}
+   <div id="table_checkboxes">
+   </div>
+</form>
+<br>
+<div class="animated zoomOut alert alert-dismissible alert-info" id="info_table" style="display:none;">
+   <p class="text-center font-custom">
+      <strong><span class="lead"><i class="fa fa-hand-paper-o" aria-hidden="true"></i>Важливо!</span></strong>
+      <br> Ваш вираз повинен виглядати наступним чином:
+   <pre>(1,1),(2,3),(1,2)</pre>
+   <pre>(1,5)(3,4)(5,3)</pre>
+   </p>
+</div>
+{%if errors%}
+<div class="panel panel-success animated fadeIn">
+   <div class="panel-heading">
+      <h3 class="panel-title">Error:</h3>
+   </div>
+   <p class="font-custom" style="margin-left: 20px;margin-top: 10px;">{{ errors }}</>
+      {%endif%} {%if result%}
+   <div class="panel panel-success animated fadeIn">
+      <div class="panel-heading">
+         <h3 class="panel-title">Результат:</h3>
+      </div>
+      <ul class="font-custom" style="margin: 5px;">
+         {% for res in result %}
+         <li>{{ res }}</li>
+         {% endfor %}
+      </ul>
+      {%endif%}
+   </div>
+</div>
+   <script src="../../static/js/relations-script.js"></script>
+{% endblock %}
