@@ -47,9 +47,9 @@ def read_file(smatrix, lg):
             endmatrix = True
             if inuml >= inumr:
                 if stringF != '' and stringS != '':
-                    if int(stringF) > 16 or int(stringS) > 16:
-                        return ["  Your input is incorrect. Your input integer is bigger than 15. ",
-                            "  Ваш вивід некоректний. Найбільше число вашого вводу перевищує 15. "][lg]
+                    if int(stringF) > 9 or int(stringS) > 9:
+                        return ["  Your input is incorrect. Your input integer is bigger than 9. ",
+                            "  Ваш вивід некоректний. Найбільше число вашого вводу перевищує 9. "][lg]
                     if int(stringF) in dmatrix:
                         if int(stringS) not in dmatrix[int(stringF)]:
                             dmatrix[int(stringF)].append(int(stringS))
