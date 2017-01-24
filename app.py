@@ -131,7 +131,7 @@ def combinatorics():
         add = "_uk" if lg == "uk" else ""
         where = 'combinatorics'
         path = 'pages/placeholder.' + where + add + '.html'
-        return render_template(path, result=None, query="", errors=None, lg=lg if lg else "en")
+        return render_template(path, result=None, query1="", query2="", query_repeat="yes", query_order="yes", errors=None, lg=lg if lg else "en")
     data_m = request.form.get('M_value')
     data_n = request.form.get('N_value')
     data_repeat = request.form.get('repeat')
@@ -142,12 +142,12 @@ def combinatorics():
     where = 'combinatorics'
     path = 'pages/placeholder.' + where + add + '.html'
     if data_m == "" or data_m is None or data_n == "" or data_n is None:
-        return render_template(path, result=None, query="", errors=["  Expression can`t be empty",
+        return render_template(path, result=None, query1="", query2="", query_repeat="yes", query_order="yes", errors=["  Expression can`t be empty",
                                                                     "  Вираз не може бути пустим"][lg_val], lg=lg if lg else "en")
     else:
         answer, res, e = Combinatorics.main(data_m, data_n, data_order, data_repeat, lg_val)
         data = [res, data_m, data_n, data_order, data_repeat, answer]
-        return render_template(path, result=data, errors=e, lg=lg if lg else "en")
+        return render_template(path, result=data, errors=e, lg=lg if lg else "en",query1=data_m, query2=data_n, query_repeat=data_repeat, query_order=data_order)
 
 
 
