@@ -121,7 +121,7 @@ def multiplication():
                                                                                 "  Вираз не може бути пустим"][lg_val], lg=lg if lg else "en")
     else:
         res, e = multiplication.main(data1, data2, lg_val)
-        return render_template(path, result=res, query1=data1, query2=data2, errors=e, lg=lg if lg else "en")
+        return render_template(path, result="", query1=data1, query2=data2, errors=res, lg=lg if lg else "en")
 
 
 @app.route('/combinatorics', methods=['GET', 'POST'])
