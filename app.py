@@ -6,7 +6,7 @@ import truth_table
 import relations
 import Warshalla
 import Combinatorics
-import multiplication
+import multimatrix
 
 app = Flask(__name__)
 
@@ -120,7 +120,7 @@ def multiplication():
         return render_template(path, result=None, query1="", query2="", errors=["  Expression can`t be empty",
                                                                                 "  Вираз не може бути пустим"][lg_val], lg=lg if lg else "en")
     else:
-        res, e = (data1 + data2, None)
+        res, e = multimatrix.main(data1, data2, lg_val)
         return render_template(path, result=res, query1=data1, query2=data2, errors=e, lg=lg if lg else "en")
 
 
