@@ -29,10 +29,6 @@ def about():
     return render_template(path, lg=lg)
 
 
-@app.route('/multiplication', methods=['GET', 'POST'])
-def multiplication():
-
-
 @app.route('/truth_table', methods=['GET', 'POST'])
 def truth():
     if request.method == 'GET':
