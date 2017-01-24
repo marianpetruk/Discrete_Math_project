@@ -98,6 +98,37 @@ def check_relation():
         res, e = relations.main(data, lg_val)
         return render_template(path, result=res, query=data, errors=e, lg=lg if lg else "en")
 
+
+
+
+@app.route('/multiplication', methods=['GET', 'POST'])
+def check_relation():
+    if request.method == 'GET':
+        lg = request.args.get('lg')
+        add = "_uk" if lg == "uk" else ""
+        where = 'relations'
+        path = 'pages/placeholder.' + where + add + '.html'
+        return render_template(path, result=None, query="", errors=None, lg=lg if lg else "en")
+    """
+    data = request.form.get('relation')
+    lg = request.form.get('lg')
+    add = "_uk" if lg == "uk" else ""
+    lg_val = 1 if lg == "uk" else 0
+    where = 'relations'
+    path = 'pages/placeholder.' + where + add + '.html'
+    if data == "" or data is None:
+        return render_template(path, result=None, query="", errors=["  Expression can`t be empty",
+                                                                    "  Вираз не може бути пустим"][lg_val], lg=lg if lg else "en")
+    else:
+        res, e = relations.main(data, lg_val)
+        return render_template(path, result=res, query=data, errors=e, lg=lg if lg else "en")
+    """
+
+
+
+
+
+
 @app.route('/combinatorics', methods=['GET', 'POST'])
 def combinatorics():
     if request.method == 'GET':
