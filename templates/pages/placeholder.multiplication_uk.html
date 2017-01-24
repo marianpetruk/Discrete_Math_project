@@ -4,22 +4,27 @@
 </div>
 <div class="row">
     <div class="col-md-8">
-        <form action='multiplication' method='POST'>
-            <input type="hidden" name="lg" value="uk">
-            <div class="form-group">
-                <label class="control-label lead">Введіть <b>кортежі</b> як у тегу "інфо" для визначення добутку</label>
-                    <div class="input-group">
-                        <span class="input-group-addon"><b>X</b></span>
-                        <input class="form-control" type='text' name='matrix1' id='matrix1' {%if query1%}value={{ query1 }}{% endif %} placeholder="Введіть кортеж тут">
-                        <input class="form-control" type='text' name='matrix2' id='matrix2' {%if query2%}value={{ query2 }}{% endif %} placeholder="Введіть кортеж тут">
-                        <span class="input-group-btn">
-                            <button class="btn btn-primary" type="submit" name='submit'><i class="fa fa-hand-o-right" aria-hidden="true"></i> Ввід</button>
-                            <a href="#" class="btn btn-info" id="info_button"><i class="fa fa-question-circle" aria-hidden="true"></i> Інфо</a>
-                        </span>
-                    </div>
+       <form action='multiplication' method='POST'>
+            <div class="input-group">
+                <span class="input-group-addon"></span>
+                <input class="form-control" type='text' name='matrix1' id='matrix1' {%if query%}value={{ query }}{% endif %} placeholder="Введіть матрицю тут">
+                <span class="input-group-addon"> <i class="fa fa-times" aria-hidden="true"></i></span>
+                <input class="form-control" type='text' name='matrix2' id='matrix2' {%if query%}value={{ query }}{% endif %} placeholder="введіть матрицю тут">
+                <span class="input-group-btn">
+                <button class="btn btn-primary" type="submit" name='submit'><i class="fa fa-hand-o-right" aria-hidden="true"></i> Ввід</button>
+                <a href="#" class="btn btn-info" id="info_button"><i class="fa fa-question-circle" aria-hidden="true"></i> Інфо</a>
+                </span>
             </div>
+
         </form>
-        <!-- useless tag -->
+        <div class="animated zoomOut alert alert-dismissible alert-info" id="info_table" style="display:none;">
+           <p class="text-center font-custom">
+              <strong><span class="lead"><i class="fa fa-hand-paper-o" aria-hidden="true"></i>Важливо!</span></strong>
+              <br> Ваш вирам повинен виглядати наступним чином:
+           <pre>(1,1),(2,3),(1,2)</pre>
+           <pre>(1,5)(3,4)(5,3)</pre>
+           </p>
+        </div>
 
         {%if errors%}
         <div class="panel panel-success animated fadeIn">
