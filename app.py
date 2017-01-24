@@ -120,8 +120,8 @@ def multiplication():
         return render_template(path, result=None, query1="", query2="", errors=["  Expression can`t be empty",
                                                                                 "  Вираз не може бути пустим"][lg_val], lg=lg if lg else "en")
     else:
-        res, e = multiplication.main(data1, data2, lg_val)
-        return render_template(path, result="", query1=data1, query2=data2, errors=res, lg=lg if lg else "en")
+        res, e = (data1 + data2, None)
+        return render_template(path, result=res, query1=data1, query2=data2, errors=e, lg=lg if lg else "en")
 
 
 @app.route('/combinatorics', methods=['GET', 'POST'])
