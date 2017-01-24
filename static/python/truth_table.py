@@ -1,4 +1,3 @@
-import sys
 
 
 def gen_vals(s, order):
@@ -10,6 +9,8 @@ def gen_vals(s, order):
                 order.append(wrd)
                 vals.append(wrd)
     dictionary = dict()
+    if len(vals) > 10:
+        return -1
     for i in range(len(vals)):
         dictionary[vals[i]] = []
         for col_for in range(int((2 ** len(vals)) / (2 ** (len(vals) - i - 1)))):
@@ -170,10 +171,15 @@ def start(exp, lg):
     exp = exp.replace("-", "!")
     exp = exp.replace("!>", ">")
     vals = gen_vals(exp, order)
+    if vals == -1:
+        return None, ["You can not use more than 10 arguments", "Не можна використовувати більше 10 аргументів"][lg]
+
     if saved not in order:
         order.append(saved)
 
     saved_prep = exp
+
+
     for curr in range(int(2 ** len(vals))):
         exp = saved_prep
         while True:
