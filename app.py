@@ -6,6 +6,7 @@ import truth_table
 import relations
 import Warshalla
 import Combinatorics
+import multiplication
 
 app = Flask(__name__)
 
@@ -26,6 +27,10 @@ def about():
     where = 'about'
     path = 'pages/placeholder.' + where + add + '.html'
     return render_template(path, lg=lg)
+
+
+@app.route('/multiplication', methods=['GET', 'POST'])
+def multiplication():
 
 
 @app.route('/truth_table', methods=['GET', 'POST'])
@@ -99,34 +104,28 @@ def check_relation():
         return render_template(path, result=res, query=data, errors=e, lg=lg if lg else "en")
 
 
-
-
 @app.route('/multiplication', methods=['GET', 'POST'])
-def check_relation():
+def multiplication():
     if request.method == 'GET':
         lg = request.args.get('lg')
         add = "_uk" if lg == "uk" else ""
-        where = 'relations'
+        where = 'multiplication'
         path = 'pages/placeholder.' + where + add + '.html'
-        return render_template(path, result=None, query="", errors=None, lg=lg if lg else "en")
-    """
-    data = request.form.get('relation')
+        return render_template(path, result=None, query1="", query2="", errors=None, lg=lg if lg else "en")
+
+    data1 = request.form.get('matrix1')
+    data2 = request.form.get('matrix2')
     lg = request.form.get('lg')
     add = "_uk" if lg == "uk" else ""
     lg_val = 1 if lg == "uk" else 0
-    where = 'relations'
+    where = 'multiplication'
     path = 'pages/placeholder.' + where + add + '.html'
-    if data == "" or data is None:
-        return render_template(path, result=None, query="", errors=["  Expression can`t be empty",
-                                                                    "  Вираз не може бути пустим"][lg_val], lg=lg if lg else "en")
+    if (data1 == "" or data1 is None) or (data2 == "" or data2 is None):
+        return render_template(path, result=None, query1="", query2="", errors=["  Expression can`t be empty",
+                                                                                "  Вираз не може бути пустим"][lg_val], lg=lg if lg else "en")
     else:
-        res, e = relations.main(data, lg_val)
-        return render_template(path, result=res, query=data, errors=e, lg=lg if lg else "en")
-    """
-
-
-
-
+        res, e = multiplication.main(data1, data2, lg_val)
+        return render_template(path, result=res, query1=data1, query2=data2, errors=e, lg=lg if lg else "en")
 
 
 @app.route('/combinatorics', methods=['GET', 'POST'])
