@@ -9,11 +9,13 @@
                 <li><a href="/warshall?lg=uk" class="btn btn-default">Запустити алгоритм Уоршала <i class="fa fa-wikipedia-w" aria-hidden="true"></i></a></li>
                 <li><a href="/relations?lg=uk" class="btn btn-default">Перевірити відношення <i class="fa fa-arrows-h" aria-hidden="true"></i></a></li>
                 <li><a href="/combinatorics?lg=uk" class="btn btn-default">Обчислити комбінаторику <i class="fa fa-sliders" aria-hidden="true"></i> </a></li>
+                <li><a href="/multiplication?lg=uk" class="btn btn-default">Знайти добуток матриць <i class="glyphicon glyphicon-remove" aria-hidden="true"></i> </a></li>
                 {%else%}
                 <li><a href="{{ url_for('truth') }}" class="btn btn-default">Generate Truth Table <i class="fa fa-table" aria-hidden="true"></i></a></li>
                 <li><a href="{{ url_for('warshall') }}" class="btn btn-default">Utilize Warshall Algorithm <i class="fa fa-wikipedia-w" aria-hidden="true"></i></a></li>
                 <li><a href="{{ url_for('check_relation') }}" class="btn btn-default">Check Relations <i class="fa fa-arrows-h" aria-hidden="true"></i></a></li>
                 <li><a href="{{ url_for('combinatorics') }}" class="btn btn-default">Compute combinatorics <i class="fa fa-sliders" aria-hidden="true"></i> </a></li>
+                <li><a href="{{ url_for('multiplication') }}" class="btn btn-default">Multiplicate matrixes <i class="glyphicon glyphicon-remove" aria-hidden="true"></i> </a></li>
                 {%endif%}
             </div>
         </ol>
