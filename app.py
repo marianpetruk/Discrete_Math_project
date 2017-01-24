@@ -143,12 +143,11 @@ def combinatorics():
     path = 'pages/placeholder.' + where + add + '.html'
     if data_m == "" or data_m is None or data_n == "" or data_n is None:
         return render_template(path, result=None, query1="", query2="", query_repeat="yes", query_order="yes", errors=["  Expression can`t be empty",
-                                                                    "  Вираз не може бути пустим"][lg_val], lg=lg if lg else "en")
+                                                                                                                       "  Вираз не може бути пустим"][lg_val], lg=lg if lg else "en")
     else:
         answer, res, e = Combinatorics.main(data_m, data_n, data_order, data_repeat, lg_val)
         data = [res, data_m, data_n, data_order, data_repeat, answer]
-        return render_template(path, result=data, errors=e, lg=lg if lg else "en",query1=data_m, query2=data_n, query_repeat=data_repeat, query_order=data_order)
-
+        return render_template(path, result=data, errors=e, lg=lg if lg else "en", query1=data_m, query2=data_n, query_repeat=data_repeat, query_order=data_order)
 
 
 @app.errorhandler(500)
