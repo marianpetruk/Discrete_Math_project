@@ -122,6 +122,7 @@ def multiplication():
     else:
         res, e = multiplication.main(data1, data2, lg_val)
         return render_template(path, result=res, query1=data1, query2=data2, errors=e, lg=lg if lg else "en")
+    #
 
 
 @app.route('/combinatorics', methods=['GET', 'POST'])
