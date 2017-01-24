@@ -143,7 +143,7 @@ def main(mat1, mat2, lg):
     :param mat2: str(tuple(int,int))
     :param lg: 0 = english 1 = ukrainian
     """
-    errorslist = [["Your number(s) is(are) too big, numbers less than 51"
+    errorslist = [["Your number(s) is(are) too big, numbers less than 11"
                    " are only required",
                    "Something wrong with brackets, please try again",
                    "Somewhere comma between numbers is missed,"
@@ -153,7 +153,7 @@ def main(mat1, mat2, lg):
                    "Each tuple can not contain more than 2 numbers",
                    "Matrix can not contain zero"],
                   ["Числа у Вашій матриці завеликі, максимально"
-                   " дозволене число: 50",
+                   " дозволене число: 10",
                    "Щось пішло не так з дужками, спробуйте ще раз",
                    "Пропущена кома між числами, спробуйте ще раз",
                    "Десь пропущене число, спробуйте ще раз",
@@ -179,7 +179,7 @@ def main(mat1, mat2, lg):
     mat2 = eval('[' + mat2 + ']')
     
     for i in mat1:
-        if i[0] > 50 or i[1] > 50:
+        if i[0] > 10 or i[1] > 10:
             return None, errorslist[lg][0]
         if len(i) > 2:
             return None, errorslist[lg][5]
@@ -187,7 +187,7 @@ def main(mat1, mat2, lg):
             return None, errorslist[lg][6]
     
     for i in mat2:
-        if i[0] > 50 or i[1] > 50:
+        if i[0] > 10 or i[1] > 10:
             return None, errorslist[lg][0]
         if len(i) > 2:
             return None, errorslist[lg][5]
