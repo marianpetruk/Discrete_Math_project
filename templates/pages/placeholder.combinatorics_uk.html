@@ -12,23 +12,23 @@
       <div class="input-group font-custom">
          Чи важливий порядок елементів? 
          <select name="order">
-            <option value="yes">так</option>
-            <option value="no">ні</option>
+            <option value="yes" {% if query_order == "yes"%}selected{%endif%}>так</option>
+            <option value="no" {% if query_order == "no"%}selected{%endif%}>ні</option>
          </select>
          <br>
          Чи можна обирати елемент кілька разів? 
          <select name="repeat">
-            <option value="yes">так</option>
-            <option value="no">ні</option>
+            <option value="yes" {% if query_repeat == "yes"%}selected{%endif%}>так</option>
+            <option value="no" {% if query_repeat == "no"%}selected{%endif%}>ні</option>
          </select>
       </div>
       <br>
       <div class="input-group">
          <input type="hidden" name="lg" value="uk">
          <span class="input-group-addon">M <i class="fa fa-caret-right" aria-hidden="true"></i></span>
-         <input class="form-control" type='text' name='M_value' id='M_value' {%if query%}value={{ query }}{% endif %} placeholder="Вкажіть значення M">
+         <input class="form-control" type='text' name='M_value' id='M_value' {%if query1%}value={{ query1 }}{% endif %} placeholder="Вкажіть значення M">
          <span class="input-group-addon">N <i class="fa fa-caret-right" aria-hidden="true"></i></span>
-         <input class="form-control" type='text' name='N_value' id='N_value' {%if query%}value={{ query }}{% endif %} placeholder="Вкажіть значення N">
+         <input class="form-control" type='text' name='N_value' id='N_value' {%if query2%}value={{ query2 }}{% endif %} placeholder="Вкажіть значення N">
          <span class="input-group-btn">
          <button class="btn btn-primary" type="submit" name='submit'><i class="fa fa-hand-o-right" aria-hidden="true"></i> Ввід</button>
          <a href="#" class="btn btn-info" id="info_button"><i class="fa fa-question-circle" aria-hidden="true"></i> Інфо</a>

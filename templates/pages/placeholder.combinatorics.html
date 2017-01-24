@@ -12,22 +12,22 @@
       <div class="input-group font-custom">
          Does the order of the selected items matter? 
          <select name="order">
-            <option value="yes">yes</option>
-            <option value="no">no</option>
+            <option value="yes" {% if query_order == "yes"%}selected{%endif%}>yes</option>
+            <option value="no" {% if query_order == "no"%}selected{%endif%}>no</option>
          </select>
          <br>
          Can an item be selected more than once? 
          <select name="repeat">
-            <option value="yes">yes</option>
-            <option value="no">no</option>
+            <option value="yes" {% if query_repeat == "yes"%}selected{%endif%}>yes</option>
+            <option value="no" {% if query_repeat == "no"%}selected{%endif%}>no</option>
          </select>
       </div>
       <br>
       <div class="input-group">
          <span class="input-group-addon">M <i class="fa fa-caret-right" aria-hidden="true"></i></span>
-         <input class="form-control" type='text' name='M_value' id='M_value' {%if query%}value={{ query }}{% endif %} placeholder="Enter the M value here">
+         <input class="form-control" type='text' name='M_value' id='M_value' {%if query1%}value={{ query1 }}{% endif %} placeholder="Enter the M value here">
          <span class="input-group-addon">N <i class="fa fa-caret-right" aria-hidden="true"></i></span>
-         <input class="form-control" type='text' name='N_value' id='N_value' {%if query%}value={{ query }}{% endif %} placeholder="Enter the N value here">
+         <input class="form-control" type='text' name='N_value' id='N_value' {%if query2%}value={{ query2 }}{% endif %} placeholder="Enter the N value here">
          <span class="input-group-btn">
          <button class="btn btn-primary" type="submit" name='submit'><i class="fa fa-hand-o-right" aria-hidden="true"></i> Enter</button>
          <a href="#" class="btn btn-info" id="info_button"><i class="fa fa-question-circle" aria-hidden="true"></i> Info</a>
