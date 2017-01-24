@@ -202,7 +202,6 @@ def main(mat1, mat2, lg):
     
     new = []
     ch_mat1, ch_mat2 = break_matrix_a(mat1), break_matrix_b(mat2)
-    print(ch_mat1, ch_mat2)
     for i in range(max_num):
         l = []
         for j in range(max_num):
@@ -211,4 +210,4 @@ def main(mat1, mat2, lg):
             else:
                 l.append(0)
         new.append(l)
-    return (new, rechange_matrix(new)), None
+    return new, None
