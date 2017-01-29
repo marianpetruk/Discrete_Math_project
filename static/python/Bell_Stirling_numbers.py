@@ -25,7 +25,8 @@ def S(n, k):
 
 
 def main(s, lg):
-    print(B(3))
+    s = s.replace("b", "B")
+    s = s.replace("s", "S")
     bell = re.compile('B\(\d+\)')
     stirling = re.compile('S\(\d+,\s*\d+\)')
     res_bell = bell.findall(s)
