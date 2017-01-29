@@ -1,0 +1,56 @@
+{% extends 'layouts/main.html' %} {% block title %}Bell\Stirling numbers{% endblock %} {% block content %}
+<div class="page-header">
+   <h1><i class="fa fa-arrows-h" aria-hidden="true"></i>  Bell\Stirling numbers</h1>
+</div>
+<div class="row">
+<div class="col-md-8">
+<form action='bell_stirling_numbers' method='POST'>
+   <div class="form-group">
+      <label class="control-label lead">Enter an <b>expression</b> to find numbers:</label>
+      <div class="input-group">
+         <span class="input-group-addon">B <i class="fa fa-caret-right" aria-hidden="true"></i></span>
+         <input class="form-control" type='text' name='bs_numbers' id='bs_numbers' {%if query%}value={{ query }}{% endif %} placeholder="Enter the expression here">
+         <span class="input-group-btn">
+         <button class="btn btn-primary" type="submit" name='submit' id="submit"><i class="fa fa-hand-o-right" aria-hidden="true"></i> Enter</button>
+         <a href="#" class="btn btn-info" id="info_button"><i class="fa fa-question-circle" aria-hidden="true"></i> Info</a>
+         </span>
+      </div>
+   </div>
+</form>
+<br>
+<div class="animated zoomOut alert alert-dismissible alert-info" id="info_table" style="display:none;">
+   <p class="text-center font-custom">
+      <strong><span class="lead"><i class="fa fa-hand-paper-o" aria-hidden="true"></i>Important!</span></strong>
+      <br> Your expression must be like 
+   <pre>S(3,2) + B(3)</pre>
+   <pre>B(8) - S(5,3) + B(2)</pre>
+   <br>
+   <pre>B(n)</pre>n Bell number
+   <br>
+   <pre>S(n, k)</pre>Stirling number (count the number of permutations of n elements with k disjoint cycles)
+   </pre>
+</div>
+{%if errors%}
+<div class="panel panel-success animated fadeIn">
+   <div class="panel-heading">
+      <h3 class="panel-title">Error:</h3>
+   </div>
+   <p class="font-custom" style="margin-left: 20px;margin-top: 10px;">{{ errors }}</p>
+      {%endif%} {%if result%}
+   <div class="panel panel-success animated fadeIn">
+      <div class="panel-heading">
+         <h3 class="panel-title">Result:</h3>
+      </div>
+      <ul class="font-custom" style="margin: 5px; text-align: center">
+         <b>
+         {{result[0]}}
+            {%if result[1]%}
+         <br>
+            {%endif%}
+         {{result[1]}}
+            </b>
+      </ul>
+      {%endif%}
+   </div>
+</div>
+{% endblock %}
