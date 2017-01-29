@@ -1,4 +1,5 @@
 import re
+
 def B(n):
     if n > 20:
         return "BIG"
