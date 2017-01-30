@@ -20,7 +20,7 @@ def read_file(smatrix, lg):
             pass
         elif el in ascii_letters or el.lower() in 'йцукенгшщзхїфівапролджєячсмитью':
             return ["  Your input is incorrect. Please don\'t use letters and try again.",
-                    "  Ваш вивід некоректний. Не використвуйте букви та спробуйте ще раз."][lg]
+                    "  Ваш ввід некоректний. Не використвуйте букви та спробуйте ще раз."][lg]
         elif el == '(':
             bCheckIsFirstEl = True
             # if write {(2,4),(5,6)}
@@ -38,7 +38,7 @@ def read_file(smatrix, lg):
                 bCheckIsSecondEl = True
             else:
                 return ["  Your input is incorrect. You may miss ',' between numbers. Please try again.",
-                        "  Ваш вивід некоректний. Можливо ви пропустили ',' між цифрами. Спробуйте ще раз."][lg]
+                        "  Ваш ввід некоректний. Можливо ви пропустили ',' між цифрами. Спробуйте ще раз."][lg]
         elif bCheckIsSecondEl and el != ')':
             if inuml > 0:
                 stringS += el
@@ -49,7 +49,10 @@ def read_file(smatrix, lg):
                 if stringF != '' and stringS != '':
                     if int(stringF) > 9 or int(stringS) > 9:
                         return ["  Your input is incorrect. Your input integer is bigger than 9. ",
-                            "  Ваш вивід некоректний. Найбільше число вашого вводу перевищує 9. "][lg]
+                            "  Ваш ввід некоректний. Найбільше число вашого вводу перевищує 9. "][lg]
+                    elif int(stringF) < 1 or int(stringS) < 1:
+                        return ["  Your input is incorrect. Your input integer is negative or 0. ",
+                            "  Ваш ввід некоректний. Найменше число вашого вводу менше 1. "][lg]
                     if int(stringF) in dmatrix:
                         if int(stringS) not in dmatrix[int(stringF)]:
                             dmatrix[int(stringF)].append(int(stringS))
@@ -61,15 +64,15 @@ def read_file(smatrix, lg):
                     stringS = ''
                 else:
                     return ["  Your input is incorrect. You may miss number or some of them. Please try again.",
-                            "  Ваш вивід некоректний. Можливо ви пропустили яке-небудь число. Спробуйте ще раз."][lg]
+                            "  Ваш ввід некоректний. Можливо ви пропустили яке-небудь число. Спробуйте ще раз."][lg]
             else:
                 return ["  Your input is incorrect. Please check '(' and ')'.",
-                        "  Ваш вивід некоректний. Перевірте '(' і ')'."][lg]
+                        "  Ваш ввід некоректний. Перевірте '(' і ')'."][lg]
         elif endmatrix:
             pass
         else:
             return ["  Your input is incorrect. Please try again.",
-                    "  Ваш вивід некоректний. Спробуйте ще раз."][lg]
+                    "  Ваш ввід некоректний. Спробуйте ще раз."][lg]
     return dmatrix
 
 
@@ -176,13 +179,16 @@ def start(inp, lg):
         l = copy.deepcopy(lsmatrix)
         l = [l] + warshella(lsmatrix)
         return l, None
-    elif lsmatrix[:12] == '  Your input' or lsmatrix[:12] == "  Ваш вивід ":
+    elif lsmatrix[:12] == '  Your input' or lsmatrix[:12] == '  Ваш ввід ':
         return None, lsmatrix
+    else:
+        return None, ["  Please change your input. I am not ready for these. ",
+                      "Будь ласка змініть свій ввід. Я не готовий до такого. "]
 
 
 # print(print_matrix(read_file('{(5, 7), (4, 7), (0, 5), (0 , 7)}')))
 # [[0, 0, 1, 1], [0, 0, 0, 1], [0, 0, 0, 1], [0, 0, 0, 0]]
 # print(warshalla(print_matrix(read_file('{(5, 7), (4, 7), (0, 5), (5,4)}'))))
 
-# print(start('6(2,3)(3,2)(3,4)( 4, 2)(3,4)'))
-# print(start('((4,І)(5,6))', 0))
+# print(start('6(2,3)(3,2)(3,4)( 4, 2)(3,4)', 1))
+# print(start('((-6, 7)(5,6))', 0))
