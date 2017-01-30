@@ -9,6 +9,7 @@
                 <li><a href="/warshall?lg=uk" class="btn btn-default">Запустити алгоритм Воршала <i class="fa fa-wikipedia-w" aria-hidden="true"></i></a></li>
                 <li><a href="/relations?lg=uk" class="btn btn-default">Перевірити відношення <i class="fa fa-arrows-h" aria-hidden="true"></i></a></li>
                 <li><a href="/combinatorics?lg=uk" class="btn btn-default">Обчислити комбінаторику <i class="fa fa-sliders" aria-hidden="true"></i> </a></li>
+                <li><a href="/fibonacci?lg=uk" class="btn btn-default">Числа Фібоначчі<i class="fa fa-fonticons" aria-hidden="true"></i> </a></li>
                 <li><a href="/multiplication?lg=uk" class="btn btn-default">Знайти добуток матриць <i class="fa fa-times" aria-hidden="true"></i> </a></li>
                 <li><a href="/bell_stirling_numbers?lg=uk" class="btn btn-default">Числа Белла/Стірлінга <i class="fa fa-bold" aria-hidden="true"></i> </a></li>
                 {%else%}
@@ -16,6 +17,7 @@
                 <li><a href="{{ url_for('warshall') }}" class="btn btn-default">Utilize Warshall Algorithm <i class="fa fa-wikipedia-w" aria-hidden="true"></i></a></li>
                 <li><a href="{{ url_for('check_relation') }}" class="btn btn-default">Check Relations <i class="fa fa-arrows-h" aria-hidden="true"></i></a></li>
                 <li><a href="{{ url_for('combinatorics') }}" class="btn btn-default">Compute combinatorics <i class="fa fa-sliders" aria-hidden="true"></i> </a></li>
+                 <li><a href="{{ url_for('fibo') }}" class="btn btn-default">Fibonacci numbers <i class="fa fa-fonticons" aria-hidden="true"></i> </a></li>
                 <li><a href="{{ url_for('multiplication') }}" class="btn btn-default">Multiplicate matrixes <i class="fa fa-times" aria-hidden="true"></i> </a></li>
                  <li><a href="{{ url_for('bs_numbers') }}" class="btn btn-default">Bell/Stirling numbers <i class="fa fa-bold" aria-hidden="true"></i> </a></li>
                 {%endif%}
