@@ -1,6 +1,5 @@
 window.onload = function() {
 	info = document.getElementById("info_table");
-	
 	info.style.display = "block";
 	info.className = "animated zoomIn alert alert-dismissible alert-info";
 	
@@ -39,6 +38,7 @@ window.onload = function() {
 		info.style.display = "none";
 		info.className = "animated zoomOut alert alert-dismissible alert-info";
 	}}
+
 	if(document.title == "Числа Фібоначчі" || document.title == "Fibonacci numbers"){
 	if(document.getElementById("fibo").value != ""){ 
 		info.style.display = "none";
