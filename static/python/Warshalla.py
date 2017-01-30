@@ -183,7 +183,7 @@ def start(inp, lg):
         return None, lsmatrix
     else:
         return None, ["  Please change your input. I am not ready for these. ",
-                      "Будь ласка змініть свій ввід. Я не готовий до такого. "]
+                      "  Будь ласка змініть свій ввід. Я не готовий до такого. "]
 
 
 # print(print_matrix(read_file('{(5, 7), (4, 7), (0, 5), (0 , 7)}')))
