@@ -39,6 +39,11 @@ window.onload = function() {
 		info.style.display = "none";
 		info.className = "animated zoomOut alert alert-dismissible alert-info";
 	}}
+	if(document.title == "Числа Фібоначчі" || document.title == "Fibonacci numbers"){
+	if(document.getElementById("fibo").value != ""){ 
+		info.style.display = "none";
+		info.className = "animated zoomOut alert alert-dismissible alert-info";
+	}}
 	
     info_button = document.getElementById("info_button");
     info_button.onclick = function() {
