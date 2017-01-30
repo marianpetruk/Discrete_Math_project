@@ -25,6 +25,7 @@ def S(n, k):
 
 
 def main(s, lg):
+    start = s + "="
     s = s.replace("b", "B")
     s = s.replace("s", "S")
     bell = re.compile('B\(-*\d+\)')
@@ -45,7 +46,7 @@ def main(s, lg):
         return None, ["n(k) can`t be bigger than 20 or smaller than 0", "n(k) не може бути більшим за 20 чи меншим 0"][lg]
     try:
         res = str(eval(s))
-        return [s.replace(" ",""), res if s != res else ""], None
+        return [start, res if s != res else "", s.replace(" ", "") + "="], None
     except:
         return None, ["Incorrect expression", "Некорентий вираз"][lg]
 
