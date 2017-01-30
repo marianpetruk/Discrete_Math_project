@@ -15,6 +15,7 @@ def read_file(smatrix, lg):
     inumr = 0
     bstartmatrix = False
     endmatrix = False
+    checknum = 0
     for el in smatrix:
         if el == ' ':
             pass
@@ -29,7 +30,10 @@ def read_file(smatrix, lg):
             bstartmatrix = True
             endmatrix = False
         elif not bstartmatrix:
-            pass
+            if (el != '{') and  (el != '(')  and (el != '[') :
+                return [ "  Your input is incorrect. Please check is your input starts with '(', '{' or '[' .",
+                    "  Ваш ввід некоректний. Будь ласка перевірте чи ваш ввід починається '(', '{' або '['."][lg]
+
         elif bCheckIsFirstEl and el != ',' and el != ')':
             stringF += el
         elif el == ',':
@@ -179,16 +183,16 @@ def start(inp, lg):
         l = copy.deepcopy(lsmatrix)
         l = [l] + warshella(lsmatrix)
         return l, None
-    elif lsmatrix[:12] == '  Your input' or lsmatrix[:12] == '  Ваш ввід ':
+    elif lsmatrix[:12] == '  Your input' or lsmatrix[:11] == '  Ваш ввід ':
         return None, lsmatrix
     else:
         return None, ["  Please change your input. I am not ready for these. ",
-                      "  Будь ласка змініть свій ввід. Я не готовий до такого. "]
+                      "  Будь ласка змініть свій ввід. Я не готовий до такого. "][lg], lsmatrix
 
 
 # print(print_matrix(read_file('{(5, 7), (4, 7), (0, 5), (0 , 7)}')))
 # [[0, 0, 1, 1], [0, 0, 0, 1], [0, 0, 0, 1], [0, 0, 0, 0]]
 # print(warshalla(print_matrix(read_file('{(5, 7), (4, 7), (0, 5), (5,4)}'))))
 
-# print(start('6(2,3)(3,2)(3,4)( 4, 2)(3,4)', 1))
+# print(start('0(2,5)(3,2)(3,4)( 4, 2)', 1))
 # print(start('((-6, 7)(5,6))', 0))
