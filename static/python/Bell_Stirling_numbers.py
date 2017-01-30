@@ -46,7 +46,8 @@ def main(s, lg):
         return None, ["n(k) can`t be bigger than 20 or smaller than 0", "n(k) не може бути більшим за 20 чи меншим 0"][lg]
     try:
         res = str(eval(s))
-        return [start, res if s != res else "", s.replace(" ", "") + "="], None
+        add = "=" if s != res else ""
+        return [start, res if s != res else "", s.replace(" ", "") + add], None
     except:
         return None, ["Incorrect expression", "Некорентий вираз"][lg]
 
