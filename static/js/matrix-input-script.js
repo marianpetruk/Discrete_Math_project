@@ -2,6 +2,7 @@ function inputSwitch() {
     $('#multi-string-matrix').toggle();
     $('#normal_input').toggle();
     changeSize(4);
+	
 }
 
 window.onload = function() {
