@@ -1,7 +1,7 @@
 import re
 
 def B(n):
-    if n > 20:
+    if n > 20 or n < 0:
         return "BIG"
     sum = 0
     try:
@@ -15,7 +15,7 @@ def B(n):
 def S(n, k):
     if k > n:
         return "ERR"
-    if n > 20:
+    if n > 20 or k > 20 or n < 0 or k < 0:
         return "BIG"
     if k == n:
         return 1
@@ -27,8 +27,8 @@ def S(n, k):
 def main(s, lg):
     s = s.replace("b", "B")
     s = s.replace("s", "S")
-    bell = re.compile('B\(\d+\)')
-    stirling = re.compile('S\(\d+,\s*\d+\)')
+    bell = re.compile('B\(-*\d+\)')
+    stirling = re.compile('S\(-*\d+,\s*-*\d+\)')
     res_bell = bell.findall(s)
     res_stirling = stirling.findall(s)
     for elem in res_bell:
@@ -42,7 +42,7 @@ def main(s, lg):
     if s.find("ERR") != -1:
         return None, ["n can`t be bigger than k", "n не може бути більшим за k"][lg]
     if s.find("BIG") != -1:
-        return None, ["n can`t be bigger than 20", "n не може бути більшим за 20"][lg]
+        return None, ["n(k) can`t be bigger than 20 or smaller than 0", "n(k) не може бути більшим за 20 чи меншим 0"][lg]
     try:
         res = str(eval(s))
         return [s.replace(" ",""), res if s != res else ""], None
