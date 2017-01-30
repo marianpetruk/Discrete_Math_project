@@ -309,6 +309,7 @@
                                 <li {% if request.endpoint=='bs_numbers' %} class="active" {% endif %}><a class="noselect" href="/bell_stirling_numbers?lg=uk"><i class="fa fa-bold" aria-hidden="true"></i> Числа Белла/Стірлінга</a></li>
                             </ul>
                         </li>
+                        <li {% if request.endpoint=='help' %} class="active" {% endif %}><a class="noselect" href="/help?lg=uk"><i class="fa fa-question" aria-hidden="true"></i> Допомога</a></li>
                         {%else%}
                         <li {% if request.endpoint=='home' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('home') }}"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
                         <li {% if request.endpoint=='about' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('about') }}"><i class="fa fa-info" aria-hidden="true"></i> About</a></li>
@@ -324,8 +325,9 @@
                                 <li {% if request.endpoint=='bs_numbers' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('bs_numbers') }}"><i class="fa fa-bold" aria-hidden="true"></i> Bell/Stirling numbers</a></li>
                             </ul>
                         </li>
-                        {%endif%}
-                    </ul>
+                         <li {% if request.endpoint=='help' %} class="active" {% endif %}><a class="noselect" href="/help"><i class="fa fa-question" aria-hidden="true"></i> Help</a></li>
+                       {%endif%}
+                      </ul>
 
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="https://github.com/marianpetruk/Discrete_Math_project" target="_blank"><i class="fa fa-github faa-parent animated-hover faa-tada fa-custom" aria-hidden="true"></i></a></li>

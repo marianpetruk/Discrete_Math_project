@@ -31,6 +31,15 @@ def about():
     return render_template(path, lg=lg)
 
 
+@app.route('/help')
+def help():
+    lg = request.args.get('lg')
+    add = "_uk" if lg == "uk" else ""
+    where = 'help'
+    path = 'pages/placeholder.' + where + add + '.html'
+    return render_template(path, lg=lg)
+
+
 @app.route('/truth_table', methods=['GET', 'POST'])
 def truth():
     if request.method == 'GET':
