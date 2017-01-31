@@ -1,11 +1,13 @@
+var sz = 4;
+
 function inputSwitch() {
     $('#multi-string-matrix').toggle();
     $('#normal_input').toggle();
-    changeSize(4);
+    changeSize(sz);
 }
 
 window.onload = function() {
-            changeSize(4);
+            changeSize(sz);
         };
         var table = document.getElementById('table_checkboxes');
 
@@ -15,6 +17,7 @@ window.onload = function() {
 
 
         function changeSize(value) {
+            sz = value;
             table.innerHTML = '';
             for (var j = 0; j < value; j++) {
                 for (var i = 0; i < value; i++) {
