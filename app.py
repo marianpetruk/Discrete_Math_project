@@ -180,12 +180,17 @@ def composition():
         pwr = int(pwr)
         e = None
         for i in range(pwr):
-            res, e = multimatrix.main(res, mat, lg)
+            if res == '' and e is None:
+                return render_template(path, result=[[0]], query1=mat.replace(" ", ""), query2=pwr, errors=None, lg=lg if lg else "en")
+            elif e is not None:
+                return render_template(path, result=None, query1=mat.replace(" ", ""), query2=pwr, errors=e, lg=lg if lg else "en")
+
+            res, e = multimatrix.main(res, mat, lg_val)
             res = multimatrix.rechange_matrix(res)
             tres = ''
-            for i in res:
-                tres += str(i)
-            res = tres
+            for j in res:
+                tres += str(j)
+            res = dc(tres)
         res = res.replace(')(', '),(')
         res = eval('[' + res + ']')
         res = multimatrix.change_matrix(res, [(1, 1)])[0]
