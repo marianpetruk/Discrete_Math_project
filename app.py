@@ -8,6 +8,7 @@ import Warshalla
 import Combinatorics
 import multimatrix
 import Bell_Stirling_numbers
+import fibonacci
 
 app = Flask(__name__)
 
@@ -26,6 +27,15 @@ def about():
     lg = request.args.get('lg')
     add = "_uk" if lg == "uk" else ""
     where = 'about'
+    path = 'pages/placeholder.' + where + add + '.html'
+    return render_template(path, lg=lg)
+
+
+@app.route('/help')
+def help():
+    lg = request.args.get('lg')
+    add = "_uk" if lg == "uk" else ""
+    where = 'help'
     path = 'pages/placeholder.' + where + add + '.html'
     return render_template(path, lg=lg)
 
@@ -98,6 +108,28 @@ def check_relation():
                                                                     "  Вираз не може бути пустим"][lg_val], lg=lg if lg else "en")
     else:
         res, e = relations.main(data, lg_val)
+        return render_template(path, result=res, query=data.replace(" ", ""), errors=e, lg=lg if lg else "en")
+
+
+@app.route('/fibonacci', methods=['GET', 'POST'])
+def fibo():
+    if request.method == 'GET':
+        lg = request.args.get('lg')
+        add = "_uk" if lg == "uk" else ""
+        where = 'fibonacci'
+        path = 'pages/placeholder.' + where + add + '.html'
+        return render_template(path, result=None, query="", errors=None, lg=lg if lg else "en")
+    data = request.form.get('fibo')
+    lg = request.form.get('lg')
+    add = "_uk" if lg == "uk" else ""
+    lg_val = 1 if lg == "uk" else 0
+    where = 'fibonacci'
+    path = 'pages/placeholder.' + where + add + '.html'
+    if data == "" or data is None:
+        return render_template(path, result=None, query="", errors=["  Expression can`t be empty",
+                                                                    "  Вираз не може бути пустим"][lg_val], lg=lg if lg else "en")
+    else:
+        res, e = fibonacci.fibo(data, lg_val)
         return render_template(path, result=res, query=data.replace(" ", ""), errors=e, lg=lg if lg else "en")
 
 

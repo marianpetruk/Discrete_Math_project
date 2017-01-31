@@ -301,13 +301,15 @@
                             <a class="dropdown-toggle noselect" data-toggle="dropdown"><i class="fa fa-cubes" aria-hidden="true"></i> Іструменти <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li {% if request.endpoint=='truth' %} class="active" {% endif %}><a class="noselect" href="/truth_table?lg=uk"><i class="fa fa-table" aria-hidden="true"></i> Таблиця істинності</a></li>
-                                <li {% if request.endpoint=='warshall' %} class="active" {% endif %}><a class="noselect" href="/warshall?lg=uk"><i class="fa fa-wikipedia-w" aria-hidden="true"></i> Алгоритм Уоршала</a></li>
+                                <li {% if request.endpoint=='warshall' %} class="active" {% endif %}><a class="noselect" href="/warshall?lg=uk"><i class="fa fa-wikipedia-w" aria-hidden="true"></i> Алгоритм Воршала</a></li>
                                 <li {% if request.endpoint=='relations' %} class="active" {% endif %}><a class="noselect" href="/relations?lg=uk"><i class="fa fa-arrows-h" aria-hidden="true"></i> Перевірка відношень</a></li>
                                 <li {% if request.endpoint=='combinatorics' %} class="active" {% endif %}><a class="noselect" href="/combinatorics?lg=uk"><i class="fa fa-sliders" aria-hidden="true"></i> Комбінаторика</a></li>
-                                <li {% if request.endpoint=='multiplication' %} class="active" {% endif %}><a class="noselect" href="/multiplication?lg=uk"><i class="fa fa-times" aria-hidden="true"></i>Множення матриць</a></li>
-                                <li {% if request.endpoint=='bs_numbers' %} class="active" {% endif %}><a class="noselect" href="/bell_stirling_numbers?lg=uk"><i class="fa fa-bold" aria-hidden="true"></i>Числа Белла/Стірлінга</a></li>
+                                <li {% if request.endpoint=='fibo' %} class="active" {% endif %}><a class="noselect" href="/fibonacci?lg=uk"><i class="fa fa-fonticons" aria-hidden="true"></i> Числа Фібоначчі</a></li>
+                                <li {% if request.endpoint=='multiplication' %} class="active" {% endif %}><a class="noselect" href="/multiplication?lg=uk"><i class="fa fa-times" aria-hidden="true"></i> Множення матриць</a></li>
+                                <li {% if request.endpoint=='bs_numbers' %} class="active" {% endif %}><a class="noselect" href="/bell_stirling_numbers?lg=uk"><i class="fa fa-bold" aria-hidden="true"></i> Числа Белла/Стірлінга</a></li>
                             </ul>
                         </li>
+                        <li {% if request.endpoint=='help' %} class="active" {% endif %}><a class="noselect" href="/help?lg=uk"><i class="fa fa-question" aria-hidden="true"></i> Допомога</a></li>
                         {%else%}
                         <li {% if request.endpoint=='home' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('home') }}"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
                         <li {% if request.endpoint=='about' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('about') }}"><i class="fa fa-info" aria-hidden="true"></i> About</a></li>
@@ -318,12 +320,14 @@
                                 <li {% if request.endpoint=='warshall' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('warshall') }}"><i class="fa fa-wikipedia-w" aria-hidden="true"></i> Warshall algorithm</a></li>
                                 <li {% if request.endpoint=='check_relation' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('check_relation') }}"><i class="fa fa-arrows-h" aria-hidden="true"></i> Relation checker</a></li>
                                 <li {% if request.endpoint=='combinatorics' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('combinatorics') }}"><i class="fa fa-sliders" aria-hidden="true"></i> Combinatorics</a></li>
+                                 <li {% if request.endpoint=='fibo' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('fibo') }}"><i class="fa fa-fonticons" aria-hidden="true"></i> Fibonacci numbers</a></li>
                                 <li {% if request.endpoint=='multiplication' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('multiplication') }}"><i class="fa fa-times" aria-hidden="true"></i> Multiplication</a></li>
                                 <li {% if request.endpoint=='bs_numbers' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('bs_numbers') }}"><i class="fa fa-bold" aria-hidden="true"></i> Bell/Stirling numbers</a></li>
                             </ul>
                         </li>
-                        {%endif%}
-                    </ul>
+                         <li {% if request.endpoint=='help' %} class="active" {% endif %}><a class="noselect" href="/help"><i class="fa fa-question" aria-hidden="true"></i> Help</a></li>
+                       {%endif%}
+                      </ul>
 
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="https://github.com/marianpetruk/Discrete_Math_project" target="_blank"><i class="fa fa-github faa-parent animated-hover faa-tada fa-custom" aria-hidden="true"></i></a></li>

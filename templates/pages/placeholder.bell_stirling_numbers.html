@@ -1,6 +1,6 @@
-{% extends 'layouts/main.html' %} {% block title %}Bell\Stirling numbers{% endblock %} {% block content %}
+{% extends 'layouts/main.html' %} {% block title %}Bell/Stirling numbers{% endblock %} {% block content %}
 <div class="page-header">
-   <h1><i class="fa fa-bold" aria-hidden="true"></i>  Bell\Stirling numbers</h1>
+   <h1><i class="fa fa-bold" aria-hidden="true"></i>  Bell/Stirling numbers</h1>
 </div>
 <div class="row">
 <div class="col-md-8">
@@ -21,14 +21,14 @@
 <div class="animated zoomOut alert alert-dismissible alert-info" id="info_table" style="display:none;">
    <p class="text-center font-custom" style="word-wrap: break-word">
       <strong><span class="lead"><i class="fa fa-hand-paper-o" aria-hidden="true"></i>Important!</span></strong>
-      <br> Your expression must be like 
+	  <br><span>Your expression must be like:</span>
    <pre>S(3,2) + B(3)</pre>
    <pre>B(8) - S(5,3) + B(2)</pre>
-   <br>
-   <pre>B(n)</pre>n Bell number
-   <br>
-   <pre>S(n, k)</pre>Stirling number (count the number of permutations of n elements with k disjoint cycles)
-   </pre>
+   <span class="font-custom"><b>Bell number</b> (the number of partitions of a set)</span>
+   <pre>B(n)</pre>
+   <span class="font-custom"><b>Stirling number</b> ( the number of permutations of n elements with k disjoint cycles)</span>
+   <pre>S(n, k)</pre>
+   </pre></p>
 </div>
 {%if errors%}
 <div class="panel panel-success animated fadeIn">
@@ -44,10 +44,13 @@
       <ul class="font-custom" style="margin: 5px; text-align: center">
          <b style="word-wrap: break-word">
          {{result[0]}}
+            <br>
+            {{result[2]}}
             {%if result[1]%}
          <br>
             {%endif%}
    {{result[1]}}
+            </br>
             </b>
       </ul>
       {%endif%}
