@@ -1,6 +1,6 @@
 {% extends 'layouts/main.html' %} {% block title %}Composition{% endblock %} {% block content %}
 <div class="page-header">
-   <h1><i class="fa fa-arrows-h" aria-hidden="true"></i>  Composition of a relation</h1>
+   <h1><i class="fa fa-superscript" aria-hidden="true"></i>  Composition of a relation</h1>
 </div>
 <div class="row">
 <div class="col-md-8">
@@ -8,11 +8,11 @@
    <br/><br/>
 <form action='composition' method='POST' id="normal_input" name="normal_input">
    <div class="form-group">
-      <label class="control-label lead">Enter a <b>relation</b> and <b>power</b> to find its composition:</label>
+      <label class="control-label lead">Enter a <b>relation M</b> and <b>power b</b> to find its composition:</label>
       <div class="input-group">
                     <span class="input-group-addon">M <i class="fa fa-caret-right" aria-hidden="true"></i></span>
                     <input class="form-control" type='text' name='matrix1' id='matrix1' {%if query1%}value={{ query1 }}{% endif %} placeholder="Enter the matrix here">
-                    <span class="input-group-addon"> <i class="fa fa-superscript" aria-hidden="true"></i></span>
+                    <span class="input-group-addon"> b <i class="fa fa-caret-right" aria-hidden="true"></i></span>
                     <select name="power" class="form-control" id="power">
                           <option value="2" selected>2</option>
                           <option value="3">3</option>
