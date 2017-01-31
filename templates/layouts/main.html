@@ -308,6 +308,7 @@
                                 <li {% if request.endpoint=='combinatorics' %} class="active" {% endif %}><a class="noselect" href="/combinatorics?lg=uk"><i class="fa fa-sliders" aria-hidden="true"></i> Комбінаторика</a></li>
                                 <li {% if request.endpoint=='multiplication' %} class="active" {% endif %}><a class="noselect" href="/multiplication?lg=uk"><i class="fa fa-circle-o" aria-hidden="true"></i> Множення матриць</a></li>
                                 <li {% if request.endpoint=='bs_numbers' %} class="active" {% endif %}><a class="noselect" href="/bell_stirling_numbers?lg=uk"><i class="fa fa-bold" aria-hidden="true"></i> Числа Белла/Стірлінга</a></li>
+                                <li {% if request.endpoint=='composition' %} class="active" {% endif %}><a class="noselect" href="/composition?lg=uk"><i class="fa fa-superscript" aria-hidden="true"></i> Знайти композицію відношень</a></li>
                             </ul>
                         </li>
 
@@ -342,6 +343,7 @@
                                 <li {% if request.endpoint=='fibo' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('fibo') }}"><i class="fa fa-fonticons" aria-hidden="true"></i> Fibonacci numbers</a></li>
                                 <li {% if request.endpoint=='multiplication' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('multiplication') }}"><i class="fa fa-circle-o" aria-hidden="true"></i> Multiplication</a></li>
                                 <li {% if request.endpoint=='bs_numbers' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('bs_numbers') }}"><i class="fa fa-bold" aria-hidden="true"></i> Bell/Stirling numbers</a></li>
+                                <li {% if request.endpoint=='composition' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('composition') }}"><i class="fa fa-circle-o" aria-hidden="true"></i> Composition</a></li>
                             </ul>
                         </li>
 
@@ -356,6 +358,7 @@
                                 <li><a class="noselect" href="/help#p5"><i class="fa fa-fonticons" aria-hidden="true"></i> Fibonacci numbers</a></li>
                                 <li><a class="noselect" href="/help#p6"><i class="fa fa-circle-o" aria-hidden="true"></i> Multiplication</a></li>
                                 <li><a class="noselect" href="/help#p7"><i class="fa fa-bold" aria-hidden="true"></i> Bell/Stirling numbers</a></li>
+                                <li><a class="noselect" href="/help#p8"><i class="fa fa-superscript" aria-hidden="true"></i> Composition</a></li>
                             </ul>
                         </li>
                         {%endif%}
