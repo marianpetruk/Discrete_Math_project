@@ -17,6 +17,7 @@ window.onload = function() {
 
 
 
+
         function changeSize(value) {
             sz = value;
             table.innerHTML = '';
