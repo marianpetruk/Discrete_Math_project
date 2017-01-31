@@ -55,7 +55,8 @@ def truth():
     where = 'truth_table'
     path = 'pages/placeholder.' + where + add + '.html'
     if data == "" or data is None:
-        return render_template(path, result=None, errors=["  Expression can`t be empty", "  Вираз не може бути пустим"][lg_val], query="", lg=lg if lg else "en")
+        return render_template(path, result=None, errors=["  Expression can`t be empty",
+                                                          "  Вираз не може бути порожнім"][lg_val], query="", lg=lg if lg else "en")
     else:
         try:
             res, e = truth_table.start(data, lg_val)
@@ -80,7 +81,7 @@ def warshall():
     path = 'pages/placeholder.' + where + add + '.html'
     if data == "" or data is None:
         return render_template(path, result=None, query="", errors=["  Expression can`t be empty",
-                                                                    "  Вираз не може бути пустим"][lg_val], lg=lg if lg else "en")
+                                                                    "  Вираз не може бути порожнім"][lg_val], lg=lg if lg else "en")
     else:
         try:
             res, e = Warshalla.start(data, lg_val)
@@ -105,7 +106,7 @@ def check_relation():
     path = 'pages/placeholder.' + where + add + '.html'
     if data == "" or data is None:
         return render_template(path, result=None, query="", errors=["  Expression can`t be empty",
-                                                                    "  Вираз не може бути пустим"][lg_val], lg=lg if lg else "en")
+                                                                    "  Вираз не може бути порожнім"][lg_val], lg=lg if lg else "en")
     else:
         res, e = relations.main(data, lg_val)
         return render_template(path, result=res, query=data.replace(" ", ""), errors=e, lg=lg if lg else "en")
@@ -127,7 +128,7 @@ def fibo():
     path = 'pages/placeholder.' + where + add + '.html'
     if data == "" or data is None:
         return render_template(path, result=None, query="", errors=["  Expression can`t be empty",
-                                                                    "  Вираз не може бути пустим"][lg_val], lg=lg if lg else "en")
+                                                                    "  Вираз не може бути порожнім"][lg_val], lg=lg if lg else "en")
     else:
         res, e = fibonacci.fibo(data, lg_val)
         return render_template(path, result=res, query=data.replace(" ", ""), errors=e, lg=lg if lg else "en")
@@ -149,7 +150,7 @@ def bs_numbers():
     path = 'pages/placeholder.' + where + add + '.html'
     if data == "" or data is None:
         return render_template(path, result=None, query="", errors=["  Expression can`t be empty",
-                                                                    "  Вираз не може бути пустим"][lg_val], lg=lg if lg else "en")
+                                                                    "  Вираз не може бути порожнім"][lg_val], lg=lg if lg else "en")
     else:
         res, e = Bell_Stirling_numbers.main(data, lg_val)
         return render_template(path, result=res, query=data.replace(" ", ""), errors=e, lg=lg if lg else "en")
@@ -172,7 +173,7 @@ def composition():
     path = 'pages/placeholder.' + where + add + '.html'
     if mat == "" or mat is None:
         return render_template(path, result=None, query1="", query2="", errors=["  Expression can`t be empty",
-                                                                                "  Вираз не може бути пустим"][lg_val], lg=lg if lg else "en")
+                                                                                "  Вираз не може бути порожнім"][lg_val], lg=lg if lg else "en")
     else:
         from copy import deepcopy as dc
         res = dc(mat)
@@ -201,7 +202,7 @@ def multiplication():
     path = 'pages/placeholder.' + where + add + '.html'
     if (data1 == "" or data1 is None) or (data2 == "" or data2 is None):
         return render_template(path, result=None, query1="", query2="", errors=["  Expression can`t be empty",
-                                                                                "  Вираз не може бути пустим"][lg_val], lg=lg if lg else "en")
+                                                                                "  Вираз не може бути порожнім"][lg_val], lg=lg if lg else "en")
     else:
         res, e = multimatrix.main(data1, data2, lg_val)
         return render_template(path, result=res, query1=data1.replace(" ", ""), query2=data2.replace(" ", ""), errors=e, lg=lg if lg else "en")
@@ -226,7 +227,7 @@ def combinatorics():
     path = 'pages/placeholder.' + where + add + '.html'
     if data_m == "" or data_m is None or data_n == "" or data_n is None:
         return render_template(path, result=None, query1="", query2="", query_repeat="yes", query_order="yes", errors=["  Expression can`t be empty",
-                                                                    "  Вираз не може бути пустим"][lg_val], lg=lg if lg else "en")
+                                                                                                                       "  Вираз не може бути порожнім"][lg_val], lg=lg if lg else "en")
     else:
         answer, res, e = Combinatorics.main(data_m, data_n, data_order, data_repeat, lg_val)
         data = [res, data_m, data_n, data_order, data_repeat, answer]
