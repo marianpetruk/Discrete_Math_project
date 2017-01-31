@@ -4,11 +4,11 @@ function inputSwitch() {
     $('#multi-string-matrix').toggle();
     $('#normal_input').toggle();
 
-    setTimeout(function() {changeSize(parseInt(document.getElementById('sel1').value));} , 100);
+    changeSize(4);
 }
 
 window.onload = function() {
-            changeSize(parseInt(document.getElementById('sel1').value));
+            changeSize(4);
         };
         var table = document.getElementById('table_checkboxes');
 
