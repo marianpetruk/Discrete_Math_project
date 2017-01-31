@@ -38,12 +38,12 @@ window.onload = function() {
 		info.style.display = "none";
 		info.className = "animated zoomOut alert alert-dismissible alert-info";
 	}}
-	/*
+	
 	if(document.title == "Композиція" || document.title == "Composition"){
 	if(document.getElementById("matrix1").value != ""){
 		info.style.display = "none";
 		info.className = "animated zoomOut alert alert-dismissible alert-info";
-	}}*/
+	}}
 
 	if(document.title == "Числа Фібоначчі" || document.title == "Fibonacci numbers"){
 	if(document.getElementById("fibo").value != ""){ 
