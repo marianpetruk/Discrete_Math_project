@@ -4,7 +4,7 @@ function inputSwitch() {
     $('#multi-string-matrix').toggle();
     $('#normal_input').toggle();
 
-    changeSize(parseInt(document.getElementById('sel1').value));
+    setTimeout(function() {changeSize(parseInt(document.getElementById('sel1').value));} , 100);
 }
 
 window.onload = function() {
