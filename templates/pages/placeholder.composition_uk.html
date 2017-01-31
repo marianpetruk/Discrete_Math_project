@@ -5,14 +5,13 @@
 <div class="row">
 <div class="col-md-8">
 <!--<button class="btn btn-primary" onclick="inputSwitch()">Змінити метод вводу</button> -->
-   <br/><br/>
 <form action='composition' method='POST' id="normal_input" name="normal_input">
    <div class="form-group">
-      <label class="control-label lead">Введіть <b>відношення</b> і <b>степінь</b> щоб знайти композицію:</label>
+      <label class="control-label lead">Введіть <b>відношення M</b> і <b>степінь b</b> щоб знайти композицію:</label>
       <div class="input-group">
                     <span class="input-group-addon">M <i class="fa fa-caret-right" aria-hidden="true"></i></span>
                     <input class="form-control" type='text' name='matrix1' id='matrix1' {%if query1%}value={{ query1 }}{% endif %} placeholder="Введіть матрицю тут">
-                    <span class="input-group-addon"> <i class="fa fa-superscript" aria-hidden="true"></i></span>
+                    <span class="input-group-addon"> b <i class="fa fa-caret-right" aria-hidden="true"></i></span>
                     <select name="power" class="form-control" id="power">
                           <option value="2" selected>2</option>
                           <option value="3">3</option>
@@ -67,7 +66,6 @@
    </div>
 </div>
 -->
-<br>
 <div class="animated zoomOut alert alert-dismissible alert-info" id="info_table" style="display:none;">
    <p class="text-center font-custom">
       <strong><span class="lead"><i class="fa fa-hand-paper-o" aria-hidden="true"></i>Важливо!</span></strong>
