@@ -34,7 +34,6 @@
 		<img style="width:200px" src="../../static/img/warshell2.jpg">
 		<img style="width:200px" src="../../static/img/warshell3.jpg">
 		<img style="width:250px" src="../../static/img/warshell4.jpg">
-
 	</li>
 	</ul>
 	<span></span>
@@ -67,6 +66,59 @@
 <h2>Комбінаторика</h2>
 	<pre><b>Комбінаторика</b> (Комбінаторний аналіз) - <i>розділ математики, присвячений розв'язанню задач вибору та розташування елементів деякої, зазвичай, скінченної множини відповідно до заданих правил. Кожне таке правило визначає спосіб побудови деякої конструкції із елементів вихідної множини, що зветься комбінаторною конфігурацією. Тому на меті комбінаторного аналізу стоїть дослідження комбінаторних конфігурацій, алгоритмів їх побудови, оптимізація таких алгоритмів, а також розв'язання задач переліку.</i></pre>
 Найпростішими прикладами комбінаторних конфігурацій є <i>перестановки</i>, <i>розміщення</i>, <i>комбінація</i> та <i>розбиття</i>.
+<ul class="font-custom">
+      <li>
+         Якщо порядок <i><b>важливий</b></i> - Розміщення:
+         <ul>
+            <li>
+               Якщо елементи <b>не можуть</b> повторюватися:
+               <math>
+                  <code style="padding:5px;"><span id="A"></span></code>
+                  <script>
+                     katex.render("A^m_n = n(n-1)...(n-r+1) = \\frac{n!}{(n-m)!}", document.getElementById("A"));
+                  </script>
+               </math>
+            </li>
+            <br>
+            <li>
+               Якщо елементи <b>можуть</b> повторюватися:
+               </span>
+               <math>
+                  <code style="padding:5px;"><span id="Ar"></span></code>
+                  <script>
+                     katex.render("\\tilde{A}^m_n = n^m", document.getElementById("Ar"));
+                  </script>
+               </math>
+            </li>
+         </ul>
+      </li>
+      <li>
+         Якщо порядок <i><b>не важливий</b></i> - Комбінації:
+         <ul>
+            <li>
+               Якщо елементи <b>не можуть</b> повторюватися:
+               <math>
+                  <code style="padding:5px;"><span id="C"></span></code>
+                  <script>
+                     katex.render("C^m_n = \\frac{A^m_n}{m!} = \\binom{n}{m} = \\frac{n!}{m!(n-m)!}", document.getElementById("C"));
+                  </script>
+               </math>
+            </li>
+            <br>
+            <li>
+               Якщо елементи <b>можуть</b> повторюватися:
+               <math>
+                  <code style="padding:5px;"><span id="CH"></span></code>
+                  <script>
+                     katex.render("H^m_n = C^m_{n+m-1}", document.getElementById("CH"));
+                  </script>
+               </math>
+            </li>
+         </ul>
+      </li>
+      </li>
+   </ul>
+
 </li>
 
 
