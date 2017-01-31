@@ -155,6 +155,34 @@ def bs_numbers():
         return render_template(path, result=res, query=data.replace(" ", ""), errors=e, lg=lg if lg else "en")
 
 
+@app.route('/composition', methods=['GET', 'POST'])
+def composition():
+    if request.method == 'GET':
+        lg = request.args.get('lg')
+        add = "_uk" if lg == "uk" else ""
+        where = 'composition'
+        path = 'pages/placeholder.' + where + add + '.html'
+        return render_template(path, result=None, query1="", query2="", errors=None, lg=lg if lg else "en")
+    mat = request.form.get('matrix1')
+    pwr = request.form.get('power')
+    lg = request.form.get('lg')
+    add = "_uk" if lg == "uk" else ""
+    lg_val = 1 if lg == "uk" else 0
+    where = 'composition'
+    path = 'pages/placeholder.' + where + add + '.html'
+    if mat == "" or mat is None:
+        return render_template(path, result=None, query1="", query2="", errors=["  Expression can`t be empty",
+                                                                                "  Вираз не може бути пустим"][lg_val], lg=lg if lg else "en")
+    else:
+        from copy import deepcopy as dc
+        res = dc(mat)
+        pwr = int(pwr)
+        e = None
+        for i in range(pwr):
+            res, e = multimatrix(res, mat)
+        return render_template(path, result=res, query1=mat.replace(" ", ""), query2=pwr, errors=e, lg=lg if lg else "en")
+
+
 @app.route('/multiplication', methods=['GET', 'POST'])
 def multiplication():
     if request.method == 'GET':
@@ -203,7 +231,6 @@ def combinatorics():
         answer, res, e = Combinatorics.main(data_m, data_n, data_order, data_repeat, lg_val)
         data = [res, data_m, data_n, data_order, data_repeat, answer]
         return render_template(path, result=data, errors=e, lg=lg if lg else "en",query1=data_m.replace(" ", ""), query2=data_n.replace(" ", ""), query_repeat=data_repeat, query_order=data_order)
-
 
 
 @app.errorhandler(500)
