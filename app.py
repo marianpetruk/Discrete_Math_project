@@ -175,7 +175,13 @@ def composition():
         return render_template(path, result=None, query1="", query2="", errors=["  Expression can`t be empty",
                                                                                 "  Вираз не може бути порожнім"][lg_val], lg=lg if lg else "en")
     else:
+        test_er = multimatrix.main(mat, '(1, 1)', lg_val)[1]
+        if test_er is not None:
+            e = test_er
+            return render_template(path, result=None, query1=mat.replace(" ", ""), query2=pwr, errors=e, lg=lg if lg else "en")
+
         from copy import deepcopy as dc
+        mat = mat.replace(')(', '),(')
         maxim = multimatrix.change_matrix(eval('[' + mat + ']'), [(1, 1)])[2]
         res = dc(mat)
         pwr = int(pwr)

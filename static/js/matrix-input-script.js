@@ -34,6 +34,7 @@ window.onload = function() {
 
         function format_to_str(form_name) {
             var size = document.getElementById('sel1').value;
+            var power = document.getElementById('sel2').value;
             var query = "";
             for(var i = 1; i <= size; i++){
                 for(var j = 1; j <= size; j++)
@@ -43,6 +44,7 @@ window.onload = function() {
                     }
                 }
             }
+            document.getElementById('power').value = power;
             document.getElementById(form_name).value = query;
             document.getElementById('submit').click();
 
