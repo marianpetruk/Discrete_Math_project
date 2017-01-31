@@ -310,6 +310,24 @@
                                 <li {% if request.endpoint=='bs_numbers' %} class="active" {% endif %}><a class="noselect" href="/bell_stirling_numbers?lg=uk"><i class="fa fa-bold" aria-hidden="true"></i> Числа Белла/Стірлінга</a></li>
                             </ul>
                         </li>
+
+
+
+                            <li class="active dropdown" class="dropdown">
+                            <a class="dropdown-toggle noselect" data-toggle="dropdown"><i class="fa fa-help" aria-hidden="true"></i> Допомога <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li class="active" {% endif %}><a class="noselect" href="/help?lg=uk#p1"><i class="fa fa-table" aria-hidden="true"></i> Таблиця істинності</a></li>
+                                <li class="active" {% endif %}><a class="noselect" href="/help?lg=uk#p2"><i class="fa fa-wikipedia-w" aria-hidden="true"></i> Алгоритм Воршала</a></li>
+                                <li class="active" {% endif %}><a class="noselect" href="/help?lg=uk#p3"><i class="fa fa-arrows-h" aria-hidden="true"></i> Relation checker</a></li>
+                                <li class="active" {% endif %}><a class="noselect" href="/help?lg=uk#p4"><i class="fa fa-sliders" aria-hidden="true"></i> Combinatorics</a></li>
+                                <li class="active" {% endif %}><a class="noselect" href="/help?lg=uk#p5"><i class="fa fa-fonticons" aria-hidden="true"></i> Fibonacci numbers</a></li>
+                                <li class="active" {% endif %}><a class="noselect" href="/help?lg=uk#p6"><i class="fa fa-circle-o" aria-hidden="true"></i> Multiplication</a></li>
+                                <li class="active" {% endif %}><a class="noselect" href="/help?lg=uk#p7"><i class="fa fa-bold" aria-hidden="true"></i> Bell/Stirling numbers</a></li>
+                            </ul>
+                        </li>
+
+
+
                         {%else%}
                         <li {% if request.endpoint=='home' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('home') }}"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
                         <li {% if request.endpoint=='about' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('about') }}"><i class="fa fa-info" aria-hidden="true"></i> About</a></li>
@@ -324,6 +342,20 @@
                                 <li {% if request.endpoint=='fibo' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('fibo') }}"><i class="fa fa-fonticons" aria-hidden="true"></i> Fibonacci numbers</a></li>
                                 <li {% if request.endpoint=='multiplication' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('multiplication') }}"><i class="fa fa-circle-o" aria-hidden="true"></i> Multiplication</a></li>
                                 <li {% if request.endpoint=='bs_numbers' %} class="active" {% endif %}><a class="noselect" href="{{ url_for('bs_numbers') }}"><i class="fa fa-bold" aria-hidden="true"></i> Bell/Stirling numbers</a></li>
+                            </ul>
+                        </li>
+
+
+                                <li class="active dropdown" class="dropdown">
+                            <a class="dropdown-toggle noselect" data-toggle="dropdown"><i class="fa fa-help" aria-hidden="true"></i> Допомога <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li class="active" {% endif %}><a class="noselect" href="/help?lg=uk#p1"><i class="fa fa-table" aria-hidden="true"></i> Таблиця істинності</a></li>
+                                <li class="active" {% endif %}><a class="noselect" href="/help?lg=uk#p2"><i class="fa fa-wikipedia-w" aria-hidden="true"></i> Алгоритм Воршала</a></li>
+                                <li class="active" {% endif %}><a class="noselect" href="/help?lg=uk#p3"><i class="fa fa-arrows-h" aria-hidden="true"></i> Relation checker</a></li>
+                                <li class="active" {% endif %}><a class="noselect" href="/help?lg=uk#p4"><i class="fa fa-sliders" aria-hidden="true"></i> Combinatorics</a></li>
+                                <li class="active" {% endif %}><a class="noselect" href="/help?lg=uk#p5"><i class="fa fa-fonticons" aria-hidden="true"></i> Fibonacci numbers</a></li>
+                                <li class="active" {% endif %}><a class="noselect" href="/help?lg=uk#p6"><i class="fa fa-circle-o" aria-hidden="true"></i> Multiplication</a></li>
+                                <li class="active" {% endif %}><a class="noselect" href="/help?lg=uk#p7"><i class="fa fa-bold" aria-hidden="true"></i> Bell/Stirling numbers</a></li>
                             </ul>
                         </li>
                         {%endif%}
