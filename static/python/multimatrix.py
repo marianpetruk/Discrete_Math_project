@@ -1,3 +1,19 @@
+def add_to(mat, m):
+    """
+    :param m: int
+    :param mat: list
+    :return: list
+    """
+    if len(mat) >= m or len(mat[0]) >= m:
+        return mat
+    for i in range(len(mat)):
+        while len(mat[i]) != m:
+            mat[i].append(0)
+    while len(mat) != m:
+        mat.append([0] * m)
+    return mat
+
+
 def change_matrix(mat1, mat2):
     """
     :param mat1: list(tuple(int, int))

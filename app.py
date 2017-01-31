@@ -176,13 +176,13 @@ def composition():
                                                                                 "  Вираз не може бути порожнім"][lg_val], lg=lg if lg else "en")
     else:
         from copy import deepcopy as dc
+        maxim = multimatrix.change_matrix(eval('[' + mat + ']'), [(1, 1)])[2]
         res = dc(mat)
         pwr = int(pwr)
         e = None
         for i in range(pwr - 1):
-            print(res)
             if res == '' and e is None:
-                return render_template(path, result=[[0]], query1=mat.replace(" ", ""), query2=pwr, errors=None, lg=lg if lg else "en")
+                return render_template(path, result=[[0]*maxim]*maxim, query1=mat.replace(" ", ""), query2=pwr, errors=None, lg=lg if lg else "en")
             elif e is not None:
                 return render_template(path, result=None, query1=mat.replace(" ", ""), query2=pwr, errors=e, lg=lg if lg else "en")
 
@@ -195,6 +195,7 @@ def composition():
         res = res.replace(')(', '),(')
         res = eval('[' + res + ']')
         res = multimatrix.change_matrix(res, [(1, 1)])[0]
+        res = multimatrix.add_to(res, maxim)
         return render_template(path, result=res, query1=mat.replace(" ", ""), query2=pwr, errors=e, lg=lg if lg else "en")
 
 
