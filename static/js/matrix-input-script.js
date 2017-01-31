@@ -1,10 +1,10 @@
-
+var val = document.getElementById('sel1');
 
 function inputSwitch() {
     $('#multi-string-matrix').toggle();
     $('#normal_input').toggle();
 
-    changeSize(4);
+    changeSize(val.value);
 }
 
 window.onload = function() {
@@ -20,7 +20,6 @@ window.onload = function() {
 
 
         function changeSize(value) {
-            sz = value;
             table.innerHTML = '';
             for (var j = 0; j < value; j++) {
                 for (var i = 0; i < value; i++) {
