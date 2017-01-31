@@ -31,7 +31,7 @@ def change_matrix(mat1, mat2):
             max_num = i[0]
         if i[1] > max_num:
             max_num = i[1]
-
+            
     new_matrix1 = [[0]*max_num for i in range(max_num)]
     new_matrix2 = [[0]*max_num for i in range(max_num)]
     for i in range(max_num):
@@ -45,8 +45,8 @@ def change_matrix(mat1, mat2):
             else:
                 new_matrix2[i][j] = 0
     return new_matrix1, new_matrix2, max_num
-
-
+    
+    
 def rechange_matrix(mat):
     """
     :param mat: list(list(1 or 0))
@@ -100,8 +100,8 @@ def compare_strings(s1, s2):
         if s1[i] == '1' and s2[i] == '1':
             return True
     return False
-
-
+    
+    
 def fails(mat):
     """
     :param mat: str
@@ -178,9 +178,9 @@ def main(mat1, mat2, lg):
                    " спробуйте ще раз",
                    "Матриця не може містити нуль спробуйте ще раз"]
                   ]
-
+                      
     mat1 = mat1.strip().replace(')(', '),(')
-    mat2 = mat2.strip().replace(')(', '),(')
+    mat2 = mat2.strip().replace(')(', '),(')    
     if mat1[:2] == '((' and mat1[-2:] == '))':
         mat1 = mat1[1:-1]
     if mat2[:2] == '((' and mat2[-2:] == '))':
@@ -193,7 +193,7 @@ def main(mat1, mat2, lg):
         return None, errorslist[lg][error2]
     mat1 = eval('[' + mat1 + ']')
     mat2 = eval('[' + mat2 + ']')
-
+    
     for i in mat1:
         if i[0] > 10 or i[1] > 10:
             return None, errorslist[lg][0]
@@ -201,7 +201,7 @@ def main(mat1, mat2, lg):
             return None, errorslist[lg][5]
         if i[0] == 0 or i[1] == 0:
             return None, errorslist[lg][6]
-
+    
     for i in mat2:
         if i[0] > 10 or i[1] > 10:
             return None, errorslist[lg][0]
@@ -209,13 +209,13 @@ def main(mat1, mat2, lg):
             return None, errorslist[lg][5]
         if i[0] == 0 or i[1] == 0:
             return None, errorslist[lg][6]
-
+            
     mat1, mat2, max_num = change_matrix(mat1, mat2)
-
+    
     ######################
     # ACTION STARTS HERE #
     ######################
-
+    
     new = []
     ch_mat1, ch_mat2 = break_matrix_a(mat1), break_matrix_b(mat2)
     for i in range(max_num):

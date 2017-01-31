@@ -246,7 +246,7 @@ def combinatorics():
     else:
         answer, res, e = Combinatorics.main(data_m, data_n, data_order, data_repeat, lg_val)
         data = [res, data_m, data_n, data_order, data_repeat, answer]
-        return render_template(path, result=data, errors=e, lg=lg if lg else "en", query1=data_m.replace(" ", ""), query2=data_n.replace(" ", ""), query_repeat=data_repeat, query_order=data_order)
+        return render_template(path, result=data, errors=e, lg=lg if lg else "en",query1=data_m.replace(" ", ""), query2=data_n.replace(" ", ""), query_repeat=data_repeat, query_order=data_order)
 
 
 @app.errorhandler(500)

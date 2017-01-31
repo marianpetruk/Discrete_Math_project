@@ -7,3 +7,5 @@ def fibo(n, lg):
         return [res, n], None
     except:
         return None, ["Please, enter a number", "Будь ласка, введіть число"][lg]
+
+

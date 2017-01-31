@@ -1,3 +1,5 @@
+
+
 def gen_vals(s, order):
     vals = list()
     symbs = ["(", ")", "^", "!", "V", ">", "~", "%", "T", "F"]
@@ -176,6 +178,7 @@ def start(exp, lg):
         order.append(saved)
 
     saved_prep = exp
+
 
     for curr in range(int(2 ** len(vals))):
         exp = saved_prep

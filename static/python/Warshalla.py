@@ -30,8 +30,8 @@ def read_file(smatrix, lg):
             bstartmatrix = True
             endmatrix = False
         elif not bstartmatrix:
-            if (el != '{') and (el != '(') and (el != '['):
-                return ["  Your input is incorrect. Please check is your input starts with '(', '{' or '[' .",
+            if (el != '{') and  (el != '(')  and (el != '[') :
+                return [ "  Your input is incorrect. Please check is your input starts with '(', '{' or '[' .",
                     "  Ваш ввід некоректний. Будь ласка перевірте чи ваш ввід починається '(', '{' або '['."][lg]
 
         elif bCheckIsFirstEl and el != ',' and el != ')':
@@ -78,6 +78,7 @@ def read_file(smatrix, lg):
             return ["  Your input is incorrect. Please try again.",
                     "  Ваш ввід некоректний. Спробуйте ще раз."][lg]
     return dmatrix
+
 
 
 def print_matrix(dmat):
