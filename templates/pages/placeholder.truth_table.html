@@ -1,61 +1,58 @@
 {% extends 'layouts/main.html' %} {% block title %}Table of truth{% endblock %} {% block content %}
-
 <div class="page-header">
     <h1><i class="fa fa-table" aria-hidden="true"></i> Truth table generator</h1>
 </div>
 <div class="row">
-    <div class="col-md-8">
-        <form action='truth_table' method='POST'>
-
-            <div class="form-group">
-                <label class="control-label lead">Enter a <b>formula</b> to generate the table of truth:</label>
-                <div class="input-group">
-                    <span class="input-group-addon">&#402; <i class="fa fa-caret-right" aria-hidden="true"></i></span>
-                    <input class="form-control" type='text' name='formula' id='formula' {%if query%}value={{ query }}{% endif %} placeholder="Enter the formula here">
-                    <span class="input-group-btn">
-      <button class="btn btn-primary" type="submit" name='submit'><i class="fa fa-hand-o-right" aria-hidden="true"></i> Enter</button>
-      <a href="#" class="btn btn-info" id="info_button"><i class="fa fa-question-circle" aria-hidden="true"></i> Info</a>
-    </span>
-                </div>
-            </div>
-        </form>
-        <br>
-
-        <div class="animated zoomOut alert alert-dismissible alert-info" id="info_table" style="display:none;">
-            <p class="text-center font-custom">
-                <strong><span class="lead"><i class="fa fa-hand-paper-o" aria-hidden="true"></i> Important!</span></strong>
-                <br><b>You can use</b>: <code>^</code> (and), <code>V</code> (or), <code>%</code> (xor), <code>~</code> (equal), <code>!(-)</code> (not), <code>->(>)</code> (implication), <code>()</code> (brackets), <code>T</code> (True), <code>F</code> (False).
-                <br> <b>Use one-character letters</b>, like: <code>!p</code> , <code>o^r</code> , <code>(a^b)Vc</code> , <code>!!x</code> , etc..
-                <br> <b>More examples</b>: <pre>AVB</pre>
-                <br> <pre>((A^B)->C)->D</pre></p>
+<div class="col-md-8">
+<form action='truth_table' method='POST'>
+    <div class="form-group">
+        <label class="control-label lead">Enter a <b>formula</b> to generate the table of truth:</label>
+        <div class="input-group">
+            <span class="input-group-addon">&#402; <i class="fa fa-caret-right" aria-hidden="true"></i></span>
+            <input class="form-control" type='text' name='formula' id='formula' {%if query%}value={{ query }}{% endif %} placeholder="Enter the formula here">
+            <span class="input-group-btn">
+            <button class="btn btn-primary" type="submit" name='submit'><i class="fa fa-hand-o-right" aria-hidden="true"></i> Enter</button>
+            <a href="#" class="btn btn-info" id="info_button"><i class="fa fa-question-circle" aria-hidden="true"></i> Info</a>
+            </span>
         </div>
-        {%if errors%}
-        <div class="panel panel-success animated fadeIn">
-            <div class="panel-heading">
-                <h3 class="panel-title">Error:</h3>
-            </div>
-            <p class="font-custom" style="margin-left: 20px;margin-top: 10px;">{{ errors }}</p>
-
-            {%endif%} {%if result%}
-            <div class="panel panel-success animated fadeIn">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Result:</h3>
-                </div>
-                <table class="table table-boardered">
-                    <tbody>
-                        {%for row in result%}
-                        <tr>
-                            {% for col in row%}
-                            <td class="text-center">{{col}}</td>
-                            {%endfor%}
-                        </tr>
-                        {%endfor%}
-                    </tbody>
-                </table>
-
-                {%endif%}
-
-            </div>
+    </div>
+</form>
+<br>
+<div class="animated zoomOut alert alert-dismissible alert-info" id="info_table" style="display:none;">
+    <p class="text-center font-custom">
+        <strong><span class="lead"><i class="fa fa-hand-paper-o" aria-hidden="true"></i> Important!</span></strong>
+        <br><b>You can use</b>: <code>^</code> (and), <code>V</code> (or), <code>%</code> (xor), <code>~</code> (equal), <code>!(-)</code> (not), <code>->(>)</code> (implication), <code>()</code> (brackets), <code>T</code> (True), <code>F</code> (False).
+        <br> <b>Use one-character letters</b>, like: <code>!p</code> , <code>o^r</code> , <code>(a^b)Vc</code> , <code>!!x</code> , etc..
+        <br> <b>More examples</b>: 
+    <pre>AVB</pre>
+    <br> 
+    <pre>((A^B)->C)->D</pre>
+    </p>
+</div>
+{%if errors%}
+<div class="panel panel-success animated fadeIn">
+    <div class="panel-heading">
+        <h3 class="panel-title">Error:</h3>
+    </div>
+    <p class="font-custom" style="margin-left: 20px;margin-top: 10px;">{{ errors }}</p>
+    {%endif%} {%if result%}
+    <div class="panel panel-success animated fadeIn">
+        <div class="panel-heading">
+            <h3 class="panel-title">Result:</h3>
         </div>
+        <table class="table table-boardered">
+            <tbody>
+                {%for row in result%}
+                <tr>
+                    {% for col in row%}
+                    <td class="text-center">{{col}}</td>
+                    {%endfor%}
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+        {%endif%}
+    </div>
+</div>
+{% endblock %}
 
-        {% endblock %}
