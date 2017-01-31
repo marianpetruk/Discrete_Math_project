@@ -179,7 +179,8 @@ def composition():
         res = dc(mat)
         pwr = int(pwr)
         e = None
-        for i in range(pwr):
+        for i in range(pwr - 1):
+            print(res)
             if res == '' and e is None:
                 return render_template(path, result=[[0]], query1=mat.replace(" ", ""), query2=pwr, errors=None, lg=lg if lg else "en")
             elif e is not None:
