@@ -175,7 +175,13 @@ def composition():
         return render_template(path, result=None, query1="", query2="", errors=["  Expression can`t be empty",
                                                                                 "  Вираз не може бути порожнім"][lg_val], lg=lg if lg else "en")
     else:
+        test_er = multimatrix.main(mat, '(1, 1)', lg_val)[1]
+        if test_er is not None:
+            e = test_er
+            return render_template(path, result=None, query1=mat.replace(" ", ""), query2=pwr, errors=e, lg=lg if lg else "en")
+
         from copy import deepcopy as dc
+        mat = mat.replace(')(', '),(')
         maxim = multimatrix.change_matrix(eval('[' + mat + ']'), [(1, 1)])[2]
         res = dc(mat)
         pwr = int(pwr)
@@ -246,7 +252,7 @@ def combinatorics():
     else:
         answer, res, e = Combinatorics.main(data_m, data_n, data_order, data_repeat, lg_val)
         data = [res, data_m, data_n, data_order, data_repeat, answer]
-        return render_template(path, result=data, errors=e, lg=lg if lg else "en",query1=data_m.replace(" ", ""), query2=data_n.replace(" ", ""), query_repeat=data_repeat, query_order=data_order)
+        return render_template(path, result=data, errors=e, lg=lg if lg else "en", query1=data_m.replace(" ", ""), query2=data_n.replace(" ", ""), query_repeat=data_repeat, query_order=data_order)
 
 
 @app.errorhandler(500)

@@ -1,30 +1,31 @@
- {% extends 'layouts/main.html' %} {% block title %}Discrete Calculator{% endblock %} {% block content %}
+{% extends 'layouts/main.html' %} {% block title %}Discrete Calculator{% endblock %} {% block content %}
 <div class="jumbotron">
     <h1><a href="http://cs.ucu.edu.ua/en/" target="_blank"><span style="color:#631F8B;">CS</span></a><span style="color:#8F9095;">@</span><a href="http://ucu.edu.ua/eng/" target="_blank"><span style="color:#84C543;">UCU</span></a> Discrete <i class="fa fa-calculator faa-parent animated-hover faa-flash" aria-hidden="true"></i> Calculator </h1>
     <p class="font-custom">Here you can :
+    <div class="btn-group-vertical">
         <ol>
-            <div class="btn-group-vertical">
-                {% if lg=="uk"%}
-                <li><a href="/truth_table?lg=uk" class="btn btn-default">Згенерувати таблицю істинності <i class="fa fa-table" aria-hidden="true"></i></a></li>
-                <li><a href="/warshall?lg=uk" class="btn btn-default">Запустити алгоритм Уоршала <i class="fa fa-wikipedia-w" aria-hidden="true"></i></a></li>
-                <li><a href="/relations?lg=uk" class="btn btn-default">Перевірити відношення <i class="fa fa-arrows-h" aria-hidden="true"></i></a></li>
-                <li><a href="/combinatorics?lg=uk" class="btn btn-default">Обчислити комбінаторику <i class="fa fa-sliders" aria-hidden="true"></i> </a></li>
-                <li><a href="/fibonacci?lg=uk" class="btn btn-default">Числа Фібоначчі <i class="fa fa-fonticons" aria-hidden="true"></i> </a></li>
-                <li><a href="/multiplication?lg=uk" class="btn btn-default">Знайти добуток матриць <i class="fa fa-circle-o" aria-hidden="true"></i> </a></li>
-                <li><a href="/bell_stirling_numbers?lg=uk" class="btn btn-default">Числа Белла/Стірлінга<i class="fa fa-bold" aria-hidden="true"></i> </a></li>
-                <li><a href="/composition?lg=uk" class="btn btn-default">Знайти композицію відношення <i class="fa fa-superscript" aria-hidden="true"></i> </a></li>
-                {%else%}
-                <li><a href="{{ url_for('truth') }}" class="btn btn-default">Generate Truth Table <i class="fa fa-table" aria-hidden="true"></i></a></li>
-                <li><a href="{{ url_for('warshall') }}" class="btn btn-default">Utilize Warshall Algorithm <i class="fa fa-wikipedia-w" aria-hidden="true"></i></a></li>
-                <li><a href="{{ url_for('check_relation') }}" class="btn btn-default">Check Relations <i class="fa fa-arrows-h" aria-hidden="true"></i></a></li>
-                <li><a href="{{ url_for('combinatorics') }}" class="btn btn-default">Compute combinatorics <i class="fa fa-sliders" aria-hidden="true"></i> </a></li>
-               <li><a href="{{ url_for('fibo') }}" class="btn btn-default">Fibonacci numbers <i class="fa fa-fonticons" aria-hidden="true"></i> </a></li>
-                <li><a href="{{ url_for('multiplication') }}" class="btn btn-default">Multiplicate matrixes <i class="fa fa-circle-o" aria-hidden="true"></i> </a></li>
-                <li><a href="{{ url_for('bs_numbers') }}" class="btn btn-default">Bell/Stirling numbers <i class="fa fa-bold" aria-hidden="true"></i> </a></li>
-                <li><a href="{{ url_for('composition') }}" class="btn btn-default">Find relation's composition <i class="fa fa-superscript" aria-hidden="true"></i> </a></li>
-                {%endif%}
-            </div>
+            {% if lg=="uk"%}
+            <li><a href="/truth_table?lg=uk" class="btn btn-default">Згенерувати таблицю істинності <i class="fa fa-table" aria-hidden="true"></i></a></li>
+            <li><a href="/warshall?lg=uk" class="btn btn-default">Запустити алгоритм Уоршала <i class="fa fa-wikipedia-w" aria-hidden="true"></i></a></li>
+            <li><a href="/relations?lg=uk" class="btn btn-default">Перевірити відношення <i class="fa fa-arrows-h" aria-hidden="true"></i></a></li>
+            <li><a href="/combinatorics?lg=uk" class="btn btn-default">Обчислити комбінаторику <i class="fa fa-sliders" aria-hidden="true"></i> </a></li>
+            <li><a href="/fibonacci?lg=uk" class="btn btn-default">Числа Фібоначчі <i class="fa fa-fonticons" aria-hidden="true"></i> </a></li>
+            <li><a href="/multiplication?lg=uk" class="btn btn-default">Знайти добуток матриць <i class="fa fa-circle-o" aria-hidden="true"></i> </a></li>
+            <li><a href="/bell_stirling_numbers?lg=uk" class="btn btn-default">Числа Белла/Стірлінга<i class="fa fa-bold" aria-hidden="true"></i> </a></li>
+            <li><a href="/composition?lg=uk" class="btn btn-default">Знайти композицію відношення <i class="fa fa-superscript" aria-hidden="true"></i> </a></li>
+            {%else%}
+            <li><a href="{{ url_for('truth') }}" class="btn btn-default">Generate Truth Table <i class="fa fa-table" aria-hidden="true"></i></a></li>
+            <li><a href="{{ url_for('warshall') }}" class="btn btn-default">Utilize Warshall Algorithm <i class="fa fa-wikipedia-w" aria-hidden="true"></i></a></li>
+            <li><a href="{{ url_for('check_relation') }}" class="btn btn-default">Check Relations <i class="fa fa-arrows-h" aria-hidden="true"></i></a></li>
+            <li><a href="{{ url_for('combinatorics') }}" class="btn btn-default">Compute combinatorics <i class="fa fa-sliders" aria-hidden="true"></i> </a></li>
+            <li><a href="{{ url_for('fibo') }}" class="btn btn-default">Fibonacci numbers <i class="fa fa-fonticons" aria-hidden="true"></i> </a></li>
+            <li><a href="{{ url_for('multiplication') }}" class="btn btn-default">Multiplicate matrixes <i class="fa fa-circle-o" aria-hidden="true"></i> </a></li>
+            <li><a href="{{ url_for('bs_numbers') }}" class="btn btn-default">Bell/Stirling numbers <i class="fa fa-bold" aria-hidden="true"></i> </a></li>
+            <li><a href="{{ url_for('composition') }}" class="btn btn-default">Find relation's composition <i class="fa fa-superscript" aria-hidden="true"></i> </a></li>
+            {%endif%}
         </ol>
+    </div>
     </p>
 </div>
 {% endblock %}
+
