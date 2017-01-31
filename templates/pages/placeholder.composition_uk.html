@@ -4,7 +4,7 @@
 </div>
 <div class="row">
 <div class="col-md-8">
-<!--<button class="btn btn-primary" onclick="inputSwitch()">Змінити метод вводу</button> -->
+<button class="btn btn-primary" onclick="inputSwitch()">Змінити метод вводу</button>
 <form action='composition' method='POST' id="normal_input" name="normal_input">
    <div class="form-group">
       <label class="control-label lead">Введіть <b>відношення M</b> і <b>степінь b</b> щоб знайти композицію:</label>
@@ -13,7 +13,7 @@
                     <input class="form-control" type='text' name='matrix1' id='matrix1' {%if query1%}value={{ query1 }}{% endif %} placeholder="Введіть матрицю тут">
                     <span class="input-group-addon"> b <i class="fa fa-caret-right" aria-hidden="true"></i></span>
                     <select name="power" class="form-control" id="power">
-                          <option value="2" selected>2</option>
+                          <option value="2">2</option>
                           <option value="3">3</option>
                           <option value="4">4</option>
                           <option value="5">5</option>
@@ -29,7 +29,7 @@
       </div>
    </div>
 </form>
-<!--
+
 <div id="multi-string-matrix" style="display:none; text-align: center">
    <div class="form-group">
       <label class="control-label lead">Оберіть <b>розмір</b> матриці та <b>степінь</b> щоб знайти композицію:</label>
@@ -47,7 +47,7 @@
                </select>
 
              <select  style="width:30%" name="power" class="form-control" id="sel2">
-                <option value="2" selected>2</option>
+                <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
                 <option value="5">5</option>
@@ -65,7 +65,7 @@
    <div id="table_checkboxes">
    </div>
 </div>
--->
+<br>
 <div class="animated zoomOut alert alert-dismissible alert-info" id="info_table" style="display:none;">
    <p class="text-center font-custom">
       <strong><span class="lead"><i class="fa fa-hand-paper-o" aria-hidden="true"></i>Важливо!</span></strong>
