@@ -1,5 +1,6 @@
 import re
 
+
 def B(n):
     if n > 20 or n < 0:
         return "BIG"
@@ -50,5 +51,3 @@ def main(s, lg):
         return [start, res if s != res else "", s.replace(" ", "") + add], None
     except:
         return None, ["Incorrect expression", "Некорентий вираз"][lg]
-
-
