@@ -2,10 +2,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
 <div class="page-header">
-    <h1>Додаткова інформація - "Шпаргалка"</h1>
+    <h1 id="p1">Додаткова інформація - "Шпаргалка"</h1>
 </div>
 <ul class="lead navbar">
-    <li id="p1">
+    <li>
         <h2>Таблиця істинності</h2>
         <pre><b>Таблиця істинності</b> — <i>це математична таблиця, що виражає відповідність між усіма наборами величин змінних формули.</i></pre>
         <span>Для складання та заповнення таблиці істинності потрібно:</span>
@@ -22,12 +22,12 @@
             </li>
             <li> Обчислити кількість логічних операцій у логічному виразі. Ця кількість плюс кількість логічних змінних визначає кількість стовпців таблиці. </li>
             <li> Заповнити перші n стовпців усіма можливими наборами значень логічних змінних.</li>
-            <li> Заповнити кожний наступний стовпець значеннями, отриманими при виконанні чергової логічної операції.  
+            <li id="p2"> Заповнити кожний наступний стовпець значеннями, отриманими при виконанні чергової логічної операції.  
                 В останньому стовпці таблиці будуть отримані усі можливі значення істинності заданого логічного виразу. 
             </li>
         </ol>
     </li>
-    <li id="p2">
+    <li>
         <h2>Алгоритм Воршала</h2>
         <pre><b>Алгоритм Воршала</b> — це ефективний метод побудови транзитивного замикання на відношенні R. Дія цього алгоритму полягає в перетворенні вхідної матриці M<sub>R</sub>, яка відображає відношення R, в вихідну транспоновану матрицю M<sub>R<sup>*</sup></sub> на відношенні R*. В свою чергу R* є транзитивним замкненням від відношення R.
 </pre>
@@ -38,12 +38,12 @@
                 <img style="width:250px" src="../../static/img/warshell1.jpg">
                 <img style="width:200px" src="../../static/img/warshell2.jpg">
                 <img style="width:200px" src="../../static/img/warshell3.jpg">
-                <img style="width:250px" src="../../static/img/warshell4.jpg">
+                <img style="width:250px" id="p3" src="../../static/img/warshell4.jpg">
             </li>
         </ul>
         <span></span>
     </li>
-    <li id="p3">
+    <li>
         <h2>Бінарні відношення</h2>
         <pre><b>Бінарне відношення з множини A в множину B</b> — <i>це підмножина R декартового добутку <b>AxB</b> цих множин: <code style="padding:5px;"><span id="rel"></span></code>
   <script>
@@ -60,10 +60,10 @@
             <li><b>асиметричність</b>:  відношення асиметричне, якщо для будь-якої пари xRy з відношення не існує пари yRx, наприклад: {(3,6),(6,3)} - не асиметричне, {(2,2),(6,6),(3,3)} - не асиметричне, а {(2,6),(5,6)} - асиметричне.</li>
             <li><b>антисиметричність</b>: відношення антисиметричне, якщо для будь-якої пари xRy з відношення не існує пари yRx такої, що х не дорівнює у. Тобто від асиметричного відношення відрізняється лише тим, що тут можуть бути такі пари, як (1,1),(5,5),(7,7) і т.д. Наприклад: {(2,6),(6,3)} - антисиметричне, {(2,2),(6,2),(3,3)} - не антисиметричне, {(6,5),(5,6)} - не  антисиметричне.</li>
             <li><b>транзитивність</b>: якщо існують пари xRy та yRz, то існує пара xRz. В такому випадку відношення - транзитивне. {(1,3),(3,4),(1,4),(10,2500)} - транзитивне, а {(10,2),(2,5)} - ні, бо не вистарчає пари (10,5).</li>
-            <li><b>антитранзитивність</b>: якщо існують пари xRy та yRz, то не існує пара xRz. В такому випадку відношення - антитранзитивне. {(1,3),(3,4),(1,4),(10,2500)} - не антитранзитивне, а {(10,2),(2,5)} - так, бо пари (10,5) в даному відношенні немає.</li>
+            <li id="p4"><b>антитранзитивність</b>: якщо існують пари xRy та yRz, то не існує пара xRz. В такому випадку відношення - антитранзитивне. {(1,3),(3,4),(1,4),(10,2500)} - не антитранзитивне, а {(10,2),(2,5)} - так, бо пари (10,5) в даному відношенні немає.</li>
         </ul>
     </li>
-    <li id="p4">
+    <li>
         <h2>Комбінаторика</h2>
         <pre><b>Комбінаторика</b> (Комбінаторний аналіз) - <i>розділ математики, присвячений розв'язанню задач вибору та розташування елементів деякої, зазвичай, скінченної множини відповідно до заданих правил. Кожне таке правило визначає спосіб побудови деякої конструкції із елементів вихідної множини, що зветься комбінаторною конфігурацією. Тому на меті комбінаторного аналізу стоїть дослідження комбінаторних конфігурацій, алгоритмів їх побудови, оптимізація таких алгоритмів, а також розв'язання задач переліку.</i></pre>
         Найпростішими прикладами комбінаторних конфігурацій є <i>перестановки</i>, <i>розміщення</i>, <i>комбінація</i> та <i>розбиття</i>.
@@ -106,7 +106,7 @@
                         </math>
                     </li>
                     <br>
-                    <li>
+                    <li id="p5">
                         Якщо елементи <b>можуть</b> повторюватися:
                         <math>
                             <code style="padding:5px;"><span id="CH"></span></code>
@@ -120,7 +120,7 @@
             </li>
         </ul>
     </li>
-    <li id="p5">
+    <li>
         <h2>Числа Фібоначчі</h2>
         <pre><b>Послідо́вність Фібона́ччі, чи́сла Фібона́ччі</b> — у математиці числова послідовність <code>F<sub>n</sub></code>, задана рекурентним співвідношенням другого порядку <math><code style="padding:5px;"><span id="fibo2"></span></code><script>
             katex.render("F_1 = 1, F_2 = 1, F_{n+2} = F_n + F_{n+1}, n = 1, 2, 3..., F_1 = 1, F_2 = 1, F_3 = 2, F_4 = 3, F_5 = 5, F_6 = 8, F_7 = 13, F_8 = 21, ...", document.getElementById("fibo2"));
@@ -132,9 +132,15 @@
                     katex.render("0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ...", document.getElementById("fibo3"));
                 </script>
             </math>
-        </span>
-        <img src="../../static/img/fibo.gif">
+                </span>
+        <img id="p6" src="../../static/img/fibo.gif">
     </li>
+<li>
+    <h2>Множення матриці</h2>
+    <pre><b>Множе́ння ма́триць</b> — це бінарна операція, яка використовуючи дві матриці, утворює нову матрицю, яка називається <b>доб́утком ма́триць</b>.</pre>
+    <span>Множення двох матриць проілюстровано на прикладі <i>4×3<i> та <i>3×2</i> матриць з довільними символами:</span>
+    <img id="p7" src="../../static/img/multiplications.png">
+</li>
     <li id="p6">
         <h2>Числа Белла</h2>
         <pre><b>Число Белла B<sub>n</sub></b> дорівнює кількості розбиттів множини з <b>n</b> елементів на довільну кількість не порожніх підмножин, що не перетинаються. </pre>
@@ -211,7 +217,7 @@
                 </script>
             </math>
         </li>
-        <li>
+        <li id="p8">
             <math>
                 <code style="padding:5px;"><span id="stirling8"></span></code>
                 <script>
@@ -230,6 +236,17 @@
         </math>
     </span>
     </li>
+<li>
+<h2>Композиція відношення</h2>
+<pre>У математиці, <b>композиція бінарних відношень</b> це формування нового відношення <b><math><code style="padding:5px;"><span id="rela1"></span></code><script>katex.render("S \\circ R", document.getElementById("rela1"));</script></math></b> з двох заданих відношень <b>R</b> та <b>S</b>.</pre>
+<span>
+Якщо <math><code style="padding:5px;"><span id="com1"></span></code><script>katex.render("{R\\subseteq X\\times Y}", document.getElementById("com1"));</script></math> та <math><code style="padding:5px;"><span id="com2"></span></code><script>katex.render("{S\\subseteq Y\\times Z}", document.getElementById("com2"));</script></math> є бінарними відношеннями, тоді їхня композиція <math><code style="padding:5px;"><span id="com3"></span></code><script>katex.render("S\\circ R", document.getElementById("com3"));</script></math> є це відношення <math><code style="padding:5px;"><span id="com4"></span></code><script>katex.render("S\\circ R=\\{(x,z)\\in X\\times Z\\mid \\exists y\\in Y:(x,y)\\in R\\land (y,z)\\in S\\}.", document.getElementById("com4"));</script></math> 
+Іншими словами, <math><code style="padding:5px;"><span id="com5"></span></code><script>katex.render("S\\circ R\\subseteq X\\times Z", document.getElementById("com5"));</script></math> визначено за правилом, яке каже що <math><code style="padding:5px;"><span id="com6"></span></code><script>katex.render("(x,z)\\in S\\circ R", document.getElementById("com6"));</script></math> якщо, і тільки якщо, існує елемент <math><code style="padding:5px;"><span id="com7"></span></code><script>katex.render("y\\in Y", document.getElementById("com7"));</script></math> such that <math><code style="padding:5px;"><span id="com8"></span></code><script>katex.render("x\\,R\\,y\\,S\\,z", document.getElementById("com8"));</script></math>   (наприклад <math><code style="padding:5px;"><span id="com9"></span></code><script>katex.render("(x,y)\\in R ", document.getElementById("com9"));</script></math> and <math><code style="padding:5px;"><span id="com10"></span></code><script>katex.render("(y,z)\\in S", document.getElementById("com10"));</script></math>.
+
+</span>
+
+
+</li>
 </ul>
 {% endblock %}
 

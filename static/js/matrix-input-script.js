@@ -3,7 +3,7 @@ var val = document.getElementById('sel1');
 function inputSwitch() {
     $('#multi-string-matrix').toggle();
     $('#normal_input').toggle();
-
+    $('#info_table').toggle();
     changeSize(val.value);
 }
 

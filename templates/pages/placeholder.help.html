@@ -2,10 +2,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
 <div class="page-header">
-    <h1>Help - "Cheatsheet"</h1>
+    <h1 id="p1">Help - "Cheatsheet"</h1>
 </div>
 <ul class="lead navbar">
-    <li id="p1">
+    <li>
         <h2>Table of truth</h2>
         <pre><b>Table of truth</b> — <i>is a mathematical table used in logic—specifically, which sets out the functional values of logical expressions on each of their functional arguments, that is, for each combination of values taken by their logical variables.</i></pre>
         <span>For creating and filling the table of truth you need:</span>
@@ -22,12 +22,12 @@
             </li>
             <li> Evaluate the number of logical operations in the formula. This number plus the number of logical variables define the number of columns in the table. </li>
             <li> Fill the first n columns with all possible sets of values of logical variables.</li>
-            <li> Fill each next column with values from execution of the next logical operation.  
+            <li id="p2"> Fill each next column with values from execution of the next logical operation.  
                 In the last column of the table there will be all possible values of truth from the given logical formula.
             </li>
         </ol>
     </li>
-    <li id="p2">
+    <li>
         <h2>Warshell Algorithm</h2>
         <pre><b>Warshell Algorithm</b> — it is an effective method of generating a transitive closure on the relation R. The main idea of the algorithm is in transforming inputted matrix M<sub>R</sub>, which represents the relation R, into output of transposed matrix M<sub>R<sup>*</sup></sub> on the relation R*. R* is the transitive closure from relation R.
 </pre>
@@ -38,11 +38,11 @@
                 <img style="width:250px" src="../../static/img/warshell1.jpg">
                 <img style="width:200px" src="../../static/img/warshell2.jpg">
                 <img style="width:200px" src="../../static/img/warshell3.jpg">
-                <img style="width:250px" src="../../static/img/warshell4.jpg">
+                <img style="width:250px" id="p3" src="../../static/img/warshell4.jpg">
             </li>
         </ul>
     </li>
-    <li id="p3">
+    <li>
         <h2>Binary relations</h2>
         <pre><b>Binary relation from set A into set B</b> — <i>is the subset R of Cartesin product <b>AxB</b> of these sets: <code style="padding:5px;"><span id="rel"></span></code>
   <script>
@@ -59,10 +59,10 @@
             <li><b>asymmetry</b>: a relation is asymmetrical if for any pair xRy from the relation there is no such pair as yRx, e.g.: {(3,6),(6,3)} - is not asymmetrical, {(2,2),(6,6),(3,3)} - is not asymmetrica, but {(2,6),(5,6)} - is asymmetrical.</li>
             <li><b>antisymmetry</b>: a relation is antisymmetrical if for any pair xRy from the relation there is no such pair as yRx that x is not equal y. That from asymmetrical relation it differs only with that there can be such pairs as (1,1),(5,5),(7,7) and so on. E.g.: {(2,6),(6,3)} - is antisymmetrical, {(2,2),(6,2),(3,3)} - is not antisymmetrical, {(6,5),(5,6)} - is not antisymmetrical.</li>
             <li><b>transitivity</b>: if there are pairs such as xRy and yRz, then there exists the pair xRz. In this case the relation is transitive. {(1,3),(3,4),(1,4),(10,2500)} - is transitive, but {(10,2),(2,5)} - is not, because there is missing the pair (10,5).</li>
-            <li><b>antitransitivity</b>: if there are such pairs as xRy and yRz, then there is no pair as xRz. In this case the realtion is antitransitive. {(1,3),(3,4),(1,4),(10,2500)} - is not antitransitive, but {(10,2),(2,5)} - is, because there is no pair (10,5).</li>
+            <li id="p4"><b>antitransitivity</b>: if there are such pairs as xRy and yRz, then there is no pair as xRz. In this case the realtion is antitransitive. {(1,3),(3,4),(1,4),(10,2500)} - is not antitransitive, but {(10,2),(2,5)} - is, because there is no pair (10,5).</li>
         </ul>
     </li>
-    <li id="p4">
+    <li>
         <h2>Combinatorics</h2>
         <pre><b>Combinatorics</b> (Combinatorical analysis) - <i>is a branch of mathematics concerning the study of finite or countable discrete structures. Aspects of combinatorics include counting the structures of a given kind and size (enumerative combinatorics), deciding when certain criteria can be met, and constructing and analyzing objects meeting the criteria (as in combinatorial designs and matroid theory), finding "largest", "smallest", or "optimal" objects (extremal combinatorics and combinatorial optimization), and studying combinatorial structures arising in an algebraic context, or applying algebraic techniques to combinatorial problems (algebraic combinatorics).</i></pre>
         The most easiest examples of combinatorical configurations are <i>permutations</i>, <i>arrangements</i>, <i>combinations</i> and <i>partitioning</i>.
@@ -95,7 +95,7 @@
         <li>
             If order <i><b>does not matter</b></i> - Combinations:
             <ul>
-                <li>
+                <li id="p5">
                     If the items <b>cannot</b> be repeated:
                     <math>
                         <code style="padding:5px;"><span id="C"></span></code>
@@ -119,7 +119,7 @@
         </li>
     </ul>
     </li>
-    <li id="p5">
+    <li>
         <h2>Fibonacci number</h2>
         <pre><b>Fibonacci numbers</b> — are the numbers in the following integer sequence, called the Fibonacci sequence, and characterized by the fact that every number after the first two is the sum of the two preceding ones: <math><code style="padding:5px;"><span id="fibo2"></span></code><script>
             katex.render("F_1 = 1, F_2 = 1, F_{n+2} = F_n + F_{n+1}, n = 1, 2, 3..., F_1 = 1, F_2 = 1, F_3 = 2, F_4 = 3, F_5 = 5, F_6 = 8, F_7 = 13, F_8 = 21, ...", document.getElementById("fibo2"));
@@ -131,9 +131,16 @@
                 </script>
             </math>
         </span>
-        <img src="../../static/img/fibo.gif">
+        <img id="p6" src="../../static/img/fibo.gif">
     </li>
-    <li id="p6">
+<li>
+    <h2>Matrix multiplication</h2>
+    <pre>In mathematics, <b>matrix multiplication</b> or <b>the matrix product</b> is a binary operation that produces a matrix from two matrices. </pre>
+    <span>Multiplication of two matrices illustrated with a <i>4×3<i> and a <i>3×2</i> matrix with arbitrary symbols:</span>
+    <img id="p7" src="../../static/img/multiplications.png">
+</li>
+
+    <li>
         <h2>Bell numbers</h2>
         <pre><b>Bell number B<sub>n</sub></b> counts the number of partitions of a set. </pre>
         <span>
@@ -206,7 +213,7 @@
                 </script>
             </math>
         </li>
-        <li>
+        <li id="p8">
             <math>
                 <code style="padding:5px;"><span id="stirling8"></span></code>
                 <script>
@@ -225,6 +232,20 @@
         </math>
     </span>
     </li>
+<li>
+<h2>Composition of relations</h2>
+<pre>In mathematics, the <b>composition of binary relations</b> is a concept of forming a new relation <b><math><code style="padding:5px;"><span id="rela1"></span></code><script>katex.render("S \\circ R", document.getElementById("rela1"));</script></math></b> from two given relations <b>R</b> and <b>S</b>, having as its best-known special case the composition of functions.</pre>
+<span>
+If <math><code style="padding:5px;"><span id="com1"></span></code><script>katex.render("{R\\subseteq X\\times Y}", document.getElementById("com1"));</script></math> and <math><code style="padding:5px;"><span id="com2"></span></code><script>katex.render("{S\\subseteq Y\\times Z}", document.getElementById("com2"));</script></math> are two binary relations, then their composition <math><code style="padding:5px;"><span id="com3"></span></code><script>katex.render("S\\circ R", document.getElementById("com3"));</script></math> is the relation
+
+<math><code style="padding:5px;"><span id="com4"></span></code><script>katex.render("S\\circ R=\\{(x,z)\\in X\\times Z\\mid \\exists y\\in Y:(x,y)\\in R\\land (y,z)\\in S\\}.", document.getElementById("com4"));</script></math> 
+In other words,<math><code style="padding:5px;"><span id="com5"></span></code><script>katex.render("S\\circ R\\subseteq X\\times Z", document.getElementById("com5"));</script></math> is defined by the rule that says <math><code style="padding:5px;"><span id="com6"></span></code><script>katex.render("(x,z)\\in S\\circ R", document.getElementById("com6"));</script></math> if and only if there is an element <math><code style="padding:5px;"><span id="com7"></span></code><script>katex.render("y\\in Y", document.getElementById("com7"));</script></math> such that <math><code style="padding:5px;"><span id="com8"></span></code><script>katex.render("x\\,R\\,y\\,S\\,z", document.getElementById("com8"));</script></math>   (i.e. <math><code style="padding:5px;"><span id="com9"></span></code><script>katex.render("(x,y)\\in R ", document.getElementById("com9"));</script></math> and <math><code style="padding:5px;"><span id="com10"></span></code><script>katex.render("(y,z)\\in S", document.getElementById("com10"));</script></math>.
+
+</span>
+
+
+</li>
+
 </ul>
 {% endblock %}
 
