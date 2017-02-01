@@ -21,112 +21,110 @@
                 . This number defines the number of rows in a table.
             </li>
             <li> Evaluate the number of logical operations in the formula. This number plus the number of logical variables define the number of columns in the table. </li>
-            <li> Заповнити перші n стовпців усіма можливими наборами значень логічних змінних.</li>
-            <li> Заповнити кожний наступний стовпець значеннями, отриманими при виконанні чергової логічної операції.  
-                В останньому стовпці таблиці будуть отримані усі можливі значення істинності заданого логічного виразу. 
+            <li> Fill the first n columns with all possible sets of values of logical variables.</li>
+            <li> Fill each next column with values from execution of the next logical operation.  
+                In the last column of the table there will be all possible values of truth from the given logical formula.
             </li>
         </ol>
     </li>
     <li id="p2">
-        <h2>Алгоритм Воршала</h2>
-        <pre><b>Алгоритм Воршала</b> — це ефективний метод побудови транзитивного замикання на відношенні R. Дія цього алгоритму полягає в перетворенні вхідної матриці M<sub>R</sub>, яка відображає відношення R, в вихідну транспоновану матрицю M<sub>R<sup>*</sup></sub> на відношенні R*. В свою чергу R* є транзитивним замкненням від відношення R.
+        <h2>Warshell Algorythm</h2>
+        <pre><b>Warshell Algorythm</b> — it is an effective method of generating a transitive closure on the relation R. The main idea of the algorithm is in transforming inputted matrix M<sub>R</sub>, which represents the relation R, into output of transposed matrix M<sub>R<sup>*</sup></sub> on the relation R*. R* is the transitive closure from relation R.
 </pre>
-        Приклади:
+        Examples:
         <ul>
-            <li>Анімовано: <img src="../../static/img/warshell.gif"></li>
-            <li>Покроково:
+            <li>Animated: <img src="../../static/img/warshell.gif"></li>
+            <li>Step-by-step:
                 <img style="width:250px" src="../../static/img/warshell1.jpg">
                 <img style="width:200px" src="../../static/img/warshell2.jpg">
                 <img style="width:200px" src="../../static/img/warshell3.jpg">
                 <img style="width:250px" src="../../static/img/warshell4.jpg">
             </li>
         </ul>
-        <span></span>
     </li>
     <li id="p3">
-        <h2>Бінарні відношення</h2>
-        <pre><b>Бінарне відношення з множини A в множину B</b> — <i>це підмножина R декартового добутку <b>AxB</b> цих множин: <code style="padding:5px;"><span id="rel"></span></code>
+        <h2>Binary relations</h2>
+        <pre><b>Binary relation from set A into set B</b> — <i>is the subset R of Cartesin product <b>AxB</b> of these sets: <code style="padding:5px;"><span id="rel"></span></code>
   <script>
             katex.render("R \\subset A \\times B", document.getElementById("rel"));
-        </script>Інакше кажучи, бінарне відношення з <b>A</b> в <b>B</b> – це якась множина впорядкованих пар, у якій перший елемент пари належить множині <b>A</b>, а другий – множині <b>B</b>. <br>Пишуть <b>aRb</b> якщо <code style="padding:5px;"><span id="rel1"></span></code>
+        </script>In other words, binary relation from <b>A</b> into <b>B</b> – it is a set of ordered pairs, in which the first element of a pair belongs to set <b>A</b>, аnd the second one – to set <b>B</b>. <br>Then write <b>aRb</b> if <code style="padding:5px;"><span id="rel1"></span></code>
   <script>
             katex.render("(a, b) \\Subset R", document.getElementById("rel1"));
         </script></i></pre>
-        Якщо <b>а</b> та <b>b</b> знаходяться у відношенні (<, >, <=, >=, =), то пишуть <b>aRb</b>, наприклад на множині {1,3,8} існують такі відношення: (1,3),(1,8),(3,1),(3,8),(8,1),(8,3). <br>{(2,6),(4,2),(1,1)} - бінарне відношення.<br> Бінарні відношення мають свої властивості:
+        If <b>а</b> and <b>b</b> are in a relation (<, >, <=, >=, =), then write <b>aRb</b>, e.g. on the set {1,3,8} there are these relations: (1,3),(1,8),(3,1),(3,8),(8,1),(8,3). <br>{(2,6),(4,2),(1,1)} - binary relation.<br> Binary relations have their own properties:
         <ul>
-            <li><b>рефлексивність</b>: якщо для будь-якого числа х з відношення, існує пара хRx, то відношення рефлексивне, наприклад: {(2,6),(2,2),(6,6)} - рефлексивне, а {(2,6),(6,6)} - ні.</li>
-            <li><b>антирефлексивність</b>: якщо для будь-якого числа х з відношення, не існує жодної пари хRx, то відношення антирефлексивне, наприклад: {(2,6),(2,2),(6,6)} - не антирефлексивне, {(2,7),(6,6)} - не антирефлексивне, а {(2,6),(6,7)} {(2,6),(6,6)}- антирефлексивне. Відношення може бути одночасно не рефлексивним і не антирефлексивним, але мати обох власнивостей не може.</li>
-            <li><b>симетричність</b>: відношення симетричне, якщо для будь-якої пари xRy з відношення існує пара yRx, наприклад: {(2,6),(6,2)} - симетричне, {(2,2),(6,6),(3,3)} - симетричне, а {(2,6),(6,6)} - не симетричне</li>
-            <li><b>асиметричність</b>:  відношення асиметричне, якщо для будь-якої пари xRy з відношення не існує пари yRx, наприклад: {(3,6),(6,3)} - не асиметричне, {(2,2),(6,6),(3,3)} - не асиметричне, а {(2,6),(5,6)} - асиметричне.</li>
-            <li><b>антисиметричність</b>: відношення антисиметричне, якщо для будь-якої пари xRy з відношення не існує пари yRx такої, що х не дорівнює у. Тобто від асиметричного відношення відрізняється лише тим, що тут можуть бути такі пари, як (1,1),(5,5),(7,7) і т.д. Наприклад: {(2,6),(6,3)} - антисиметричне, {(2,2),(6,2),(3,3)} - не антисиметричне, {(6,5),(5,6)} - не  антисиметричне.</li>
-            <li><b>транзитивність</b>: якщо існують пари xRy та yRz, то існує пара xRz. В такому випадку відношення - транзитивне. {(1,3),(3,4),(1,4),(10,2500)} - транзитивне, а {(10,2),(2,5)} - ні, бо не вистарчає пари (10,5).</li>
-            <li><b>антитранзитивність</b>: якщо існують пари xRy та yRz, то не існує пара xRz. В такому випадку відношення - транзитивне. {(1,3),(3,4),(1,4),(10,2500)} - не антитранзитивне, а {(10,2),(2,5)} - так, бо пари (10,5) в даному відношенні немає.</li>
+            <li><b>reflexivity</b>: if for any number х from the relation there is a pair xRx, then the relation is reflexive, e.g.: {(2,6),(2,2),(6,6)} - is reflexive, but {(2,6),(6,6)} - is not.</li>
+            <li><b>antireflexivity</b>: if for any number x from the relation there is no such pair as xRx, then the relation is antirivlexive, e.g.: {(2,6),(2,2),(6,6)} - is not antireflexive, {(2,7),(6,6)} - is not antireflexive, but {(2,6),(6,7)} {(2,6),(6,6)} - is antireflexive. The relation can be both not reflexive and not antireflexive, but cannot be both reflexive and antireflexive.</li>
+            <li><b>symmetry</b>: a relation is symmetrical if for any pair xRy from the relation there is a pair yxR, e.g.: {(2,6),(6,2)} - is symmetrical, {(2,2),(6,6),(3,3)} - is symmetrical, but {(2,6),(6,6)} - not symmetrical</li>
+            <li><b>asymmetry</b>: a relation is asymmetrical if for any pair xRy from the relation there is no such pair as yRx, e.g.: {(3,6),(6,3)} - is not asymmetrical, {(2,2),(6,6),(3,3)} - is not asymmetrica, but {(2,6),(5,6)} - is asymmetrical.</li>
+            <li><b>antisymmetry</b>: a relation is antisymmetrical if for any pair xRy from the relation there is no such pair as yRx that x is not equal y. That from asymmetrical relation it differs only with that there can be such pairs as (1,1),(5,5),(7,7) and so on. E.g.: {(2,6),(6,3)} - is antisymmetrical, {(2,2),(6,2),(3,3)} - is not antisymmetrical, {(6,5),(5,6)} - is not antisymmetrical.</li>
+            <li><b>transitivity</b>: if there are pairs such as xRy and yRz, then there exists the pair xRz. In this case the relation is transitive. {(1,3),(3,4),(1,4),(10,2500)} - is transitive, but {(10,2),(2,5)} - is not, because there is missing the pair (10,5).</li>
+            <li><b>antitransitivity</b>: if there are such pairs as xRy and yRz, then there is no pair as xRz. In this case the realtion is antitransitive. {(1,3),(3,4),(1,4),(10,2500)} - is not antitransitive, but {(10,2),(2,5)} - is, because there is no pair (10,5).</li>
         </ul>
     </li>
     <li id="p4">
-        <h2>Комбінаторика</h2>
-        <pre><b>Комбінаторика</b> (Комбінаторний аналіз) - <i>розділ математики, присвячений розв'язанню задач вибору та розташування елементів деякої, зазвичай, скінченної множини відповідно до заданих правил. Кожне таке правило визначає спосіб побудови деякої конструкції із елементів вихідної множини, що зветься комбінаторною конфігурацією. Тому на меті комбінаторного аналізу стоїть дослідження комбінаторних конфігурацій, алгоритмів їх побудови, оптимізація таких алгоритмів, а також розв'язання задач переліку.</i></pre>
-        Найпростішими прикладами комбінаторних конфігурацій є <i>перестановки</i>, <i>розміщення</i>, <i>комбінація</i> та <i>розбиття</i>.
+        <h2>Combinatorics</h2>
+        <pre><b>Combinatorics</b> (Combinatorical analysis) - <i>is a branch of mathematics concerning the study of finite or countable discrete structures. Aspects of combinatorics include counting the structures of a given kind and size (enumerative combinatorics), deciding when certain criteria can be met, and constructing and analyzing objects meeting the criteria (as in combinatorial designs and matroid theory), finding "largest", "smallest", or "optimal" objects (extremal combinatorics and combinatorial optimization), and studying combinatorial structures arising in an algebraic context, or applying algebraic techniques to combinatorial problems (algebraic combinatorics).</i></pre>
+        The most easiest examples of combinatorical configurations are <i>permutations</i>, <i>arrangements</i>, <i>combinations</i> and <i>partitioning</i>.
         <ul class="font-custom">
-            <li>
-                Якщо порядок <i><b>важливий</b></i> - Розміщення:
-                <ul>
-                    <li>
-                        Якщо елементи <b>не можуть</b> повторюватися:
-                        <math>
-                            <code style="padding:5px;"><span id="A"></span></code>
-                            <script>
-                                katex.render("A^m_n = n(n-1)...(n-r+1) = \\frac{n!}{(n-m)!}", document.getElementById("A"));
-                            </script>
-                        </math>
-                    </li>
-                    <br>
-                    <li>
-                        Якщо елементи <b>можуть</b> повторюватися:
-                        </span>
-                        <math>
-                            <code style="padding:5px;"><span id="Ar"></span></code>
-                            <script>
-                                katex.render("\\tilde{A}^m_n = n^m", document.getElementById("Ar"));
-                            </script>
-                        </math>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                Якщо порядок <i><b>не важливий</b></i> - Комбінації:
-                <ul>
-                    <li>
-                        Якщо елементи <b>не можуть</b> повторюватися:
-                        <math>
-                            <code style="padding:5px;"><span id="C"></span></code>
-                            <script>
-                                katex.render("C^m_n = \\frac{A^m_n}{m!} = \\binom{n}{m} = \\frac{n!}{m!(n-m)!}", document.getElementById("C"));
-                            </script>
-                        </math>
-                    </li>
-                    <br>
-                    <li>
-                        Якщо елементи <b>можуть</b> повторюватися:
-                        <math>
-                            <code style="padding:5px;"><span id="CH"></span></code>
-                            <script>
-                                katex.render("H^m_n = C^m_{n+m-1}", document.getElementById("CH"));
-                            </script>
-                        </math>
-                    </li>
-                </ul>
-            </li>
-            </li>
-        </ul>
+        <li>
+            If order <i><b>matters</b></i> - Permutations:
+            <ul>
+                <li>
+                    If the items <b>cannot</b> be repeated:
+                    <math>
+                        <code style="padding:5px;"><span id="A"></span></code>
+                        <script>
+                            katex.render("A^m_n = n(n-1)...(n-r+1) = \\frac{n!}{(n-m)!}", document.getElementById("A"));
+                        </script>
+                    </math>
+                </li>
+                <br>
+                <li>
+                    If the items <b>can</b> be repeated:
+                    </span>
+                    <math>
+                        <code style="padding:5px;"><span id="Ar"></span></code>
+                        <script>
+                            katex.render("\\tilde{A}^m_n = n^m", document.getElementById("Ar"));
+                        </script>
+                    </math>
+                </li>
+            </ul>
+        </li>
+        <li>
+            If order <i><b>does not matter</b></i> - Combinations:
+            <ul>
+                <li>
+                    If the items <b>cannot</b> be repeated:
+                    <math>
+                        <code style="padding:5px;"><span id="C"></span></code>
+                        <script>
+                            katex.render("C^m_n = \\frac{A^m_n}{m!} = \\binom{n}{m} = \\frac{n!}{m!(n-m)!}", document.getElementById("C"));
+                        </script>
+                    </math>
+                </li>
+                <br>
+                <li>
+                    If the items <b>can</b> be repeated:
+                    <math>
+                        <code style="padding:5px;"><span id="CH"></span></code>
+                        <script>
+                            katex.render("H^m_n = C^m_{n+m-1}", document.getElementById("CH"));
+                        </script>
+                    </math>
+                </li>
+            </ul>
+        </li>
+        </li>
+    </ul>
     </li>
     <li id="p5">
-        <h2>Числа Фібоначчі</h2>
-        <pre><b>Послідо́вність Фібона́ччі, чи́сла Фібона́ччі</b> — у математиці числова послідовність <code>F<sub>n</sub></code>, задана рекурентним співвідношенням другого порядку <math><code style="padding:5px;"><span id="fibo2"></span></code><script>
+        <h2>Fibonacci number</h2>
+        <pre><b>Fibonacci numbers</b> — are the numbers in the following integer sequence, called the Fibonacci sequence, and characterized by the fact that every number after the first two is the sum of the two preceding ones: <math><code style="padding:5px;"><span id="fibo2"></span></code><script>
             katex.render("F_1 = 1, F_2 = 1, F_{n+2} = F_n + F_{n+1}, n = 1, 2, 3..., F_1 = 1, F_2 = 1, F_3 = 2, F_4 = 3, F_5 = 5, F_6 = 8, F_7 = 13, F_8 = 21, ...", document.getElementById("fibo2"));
         </script></math></pre>
         <span>
-            Ця послідовність виникає у найрізноманітніших математичних ситуаціях — комбінаторних, числових, геометричних.Простіше кажучи, перші два члени послідовності — одиниці, а кожний наступний — сума значень двох попередніх чисел:
             <math>
                 <code style="padding:5px;"><span id="fibo3"></span></code><script>
                     katex.render("0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ...", document.getElementById("fibo3"));
@@ -136,15 +134,13 @@
         <img src="../../static/img/fibo.gif">
     </li>
     <li id="p6">
-        <h2>Числа Белла</h2>
-        <pre><b>Число Белла B<sub>n</sub></b> дорівнює кількості розбиттів множини з <b>n</b> елементів на довільну кількість не порожніх підмножин, що не перетинаються. </pre>
+        <h2>Bell numbers</h2>
+        <pre><b>Bell number B<sub>n</sub></b> counts the number of partitions of a set. </pre>
         <span>
-            Наприклад, <b>B<sub>3</sub> = 5</b>, оскільки існує 5 можливих розбиттів множини 
+            E.g., <b>B<sub>3</sub> = 5</b>, because there are 5 possible partitions of the set 
             <b>
-                <pre>{a, b, c}
-            </b>
-            : <i>{ {a}, {b}, {c} }<b><sup>1</sup></b>, { {a, b}, {c} }<b><sup>2</sup></b>, { {a, c}, {b} }<b><sup>3</sup></b>, { {a}, {b, c} }<b><sup>4</sup></b>, { {a, b, c} }<b><sup>5</sup></b></i></pre>Додатково вважаємо, що <b>B<sub>0</sub> = 1</b>.<br>
-            Число Белла можна обчислити як суму чисел Стірлінга другого роду
+                <pre>{a, b, c}</b>: <i>{ {a}, {b}, {c} }<b><sup>1</sup></b>, { {a, b}, {c} }<b><sup>2</sup></b>, { {a, c}, {b} }<b><sup>3</sup></b>, { {a}, {b, c} }<b><sup>4</sup></b>, { {a, b, c} }<b><sup>5</sup></b></i></pre>It is considered, that <b>B<sub>0</sub> = 1</b>.<br>
+            Bell number can be computed as the sum of the Stirling numbers of the second kind
             <math>
                 <code style="padding:5px;"><span id="bell"></span></code>
                 <script>
@@ -152,16 +148,15 @@
                 </script>
             </math>
         </span>
-        <h3>Числа Стірлінга другого роду</h3>
-        <pre>В комбінаториці <b>числом Стірлінга другого роду <i>S(n, k)</i></b> називається число невпорядкованих розбиттів n-елементної множини на k непустих підмножин.
-</pre>
+        <h3>Stirling numbers of the second kind</h3>
+        <pre>In mathematics, particularly in combinatorics <b>a Stirling number of the second kind</b> (or Stirling partition number) is the number of ways to partition a set of n objects into k non-empty subsets denoted by S(n, k).</pre>
         <b>
     <li>S(n, n) = 1, n >= 0</li>
     <li>S(n, 0) = 0, n > 0</li> 
     <li>S(n, k) = S(n - 1, k - 1) + k * S(n-1, k)</li></b>
     <br>
     <span>
-    Існує 7 способів розбити 4-ох елементну множину на 2 підмножини: </span>
+    There are 7 ways to partition 4-elements set into 2 subsets: </span>
     <ol>
         <li>
             <math>
