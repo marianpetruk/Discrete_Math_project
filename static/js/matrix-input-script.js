@@ -16,6 +16,7 @@ function changeNumber(el) {
     document.getElementById('lb_id' + el.id.slice(5)).innerHTML = el.checked ? '1' : '0';
 }
 
+
 function changeSize(value) {
     table.innerHTML = '';
     for (var j = 0; j < value; j++) {
@@ -26,9 +27,11 @@ function changeSize(value) {
     }
 }
 
+
+
+
 function format_to_str(form_name) {
     var size = document.getElementById('sel1').value;
-    var power = document.getElementById('sel2').value;
     var query = "";
     for (var i = 1; i <= size; i++) {
         for (var j = 1; j <= size; j++) {
@@ -37,7 +40,7 @@ function format_to_str(form_name) {
             }
         }
     }
-    document.getElementById('power').value = power;
+    inputSwitch();
     document.getElementById(form_name).value = query;
     document.getElementById('submit').click();
 
