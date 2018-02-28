@@ -1,6 +1,8 @@
 # Discrete_Math_project
 CS@UCU first-year project for Discrete Mathematics
 
+http://discalc.pythonanywhere.com/
+
 ## Tools:
 1. Table of truth
 2. Worshell algorithm
