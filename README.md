@@ -16,4 +16,6 @@ http://discalc.pythonanywhere.com/
 
 
 ## Mockup:
-[![1.png](https://s27.postimg.org/g5gs6chgj/image.png)](https://postimg.org/image/rhtdo4q5b/)
+[![laptop_discrete.png](https://marianpetruk.github.io/img/laptop_discrete.png)](https://marianpetruk.github.io/img/laptop_discrete.png)
+[![mobile_discrete.png](https://marianpetruk.github.io/img/mobile_discrete.png)](https://marianpetruk.github.io/img/mobile_discrete.png)
+[![combination_discrete.png](https://marianpetruk.github.io/img/combination_discrete.png)](https://marianpetruk.github.io/img/combination_discrete.png)
