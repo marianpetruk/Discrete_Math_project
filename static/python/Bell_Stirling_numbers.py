@@ -4,11 +4,11 @@ import re
 def B(n):
     if n > 20 or n < 0:
         return "BIG"
-    sum = 0
+    total_sum = 0
     try:
         for i in range(n + 1):
-            sum += S(n, i)
-        return sum
+            total_sum += S(n, i)
+        return total_sum
     except:
         return "INVALID"
 

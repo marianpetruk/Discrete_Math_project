@@ -109,4 +109,6 @@ def main(m, n, order, repeat, lg):
         answer, result = combinations(n, m, repeat, lg)
     elif order == "yes":
         answer, result = permutations(n, m, repeat, lg)
+    else:
+        answer, result = None, None
     return answer, result, None
