@@ -13,47 +13,36 @@ import fibonacci
 app = Flask(__name__)
 
 
+def compose_path(where, lang):
+    return 'pages/placeholder.' + where + ("_"+lang)*bool(lang) + '.html'
+
+
 @app.route('/')
 def home():
     lg = request.args.get('lg')
-    add = "_uk" if lg == "uk" else ""
-    where = 'home'
-    path = 'pages/placeholder.' + where + add + '.html'
-    return render_template(path, lg=lg)
+    return render_template(compose_path('home', lg), lg=lg)
 
 
 @app.route('/about')
 def about():
     lg = request.args.get('lg')
-    add = "_uk" if lg == "uk" else ""
-    where = 'about'
-    path = 'pages/placeholder.' + where + add + '.html'
-    return render_template(path, lg=lg)
+    return render_template(compose_path('about', lg), lg=lg)
 
 
 @app.route('/help')
 def help():
     lg = request.args.get('lg')
-    add = "_uk" if lg == "uk" else ""
-    where = 'help'
-    path = 'pages/placeholder.' + where + add + '.html'
-    return render_template(path, lg=lg)
+    return render_template(compose_path('help', lg), lg=lg)
 
 
 @app.route('/truth_table', methods=['GET', 'POST'])
 def truth():
+    lg = request.form.get('lg')
+    path = compose_path('truth_table', lg)
     if request.method == 'GET':
-        lg = request.args.get('lg')
-        add = "_uk" if lg == "uk" else ""
-        where = 'truth_table'
-        path = 'pages/placeholder.' + where + add + '.html'
         return render_template(path, result=None, errors=None, query="", lg=lg if lg else "en")
     data = request.form.get('formula')
-    lg = request.form.get('lg')
-    add = "_uk" if lg == "uk" else ""
     lg_val = 1 if lg == "uk" else 0
-    where = 'truth_table'
-    path = 'pages/placeholder.' + where + add + '.html'
     if data == "" or data is None:
         return render_template(path, result=None, errors=["  Expression can`t be empty",
                                                           "  Вираз не може бути порожнім"][lg_val], query="", lg=lg if lg else "en")
@@ -67,18 +56,12 @@ def truth():
 
 @app.route('/warshall', methods=['GET', 'POST'])
 def warshall():
+    lg = request.form.get('lg')
+    path = compose_path('warshall', lg)
     if request.method == 'GET':
-        lg = request.args.get('lg')
-        add = "_uk" if lg == "uk" else ""
-        where = 'warshall'
-        path = 'pages/placeholder.' + where + add + '.html'
         return render_template(path, result=None, errors=None, query="", lg=lg if lg else "en")
     data = request.form.get('warshalla')
-    lg = request.form.get('lg')
-    add = "_uk" if lg == "uk" else ""
     lg_val = 1 if lg == "uk" else 0
-    where = 'warshall'
-    path = 'pages/placeholder.' + where + add + '.html'
     if data == "" or data is None:
         return render_template(path, result=None, query="", errors=["  Expression can`t be empty",
                                                                     "  Вираз не може бути порожнім"][lg_val], lg=lg if lg else "en")
@@ -92,18 +75,12 @@ def warshall():
 
 @app.route('/relations', methods=['GET', 'POST'])
 def check_relation():
+    lg = request.args.get('lg')
+    path = compose_path('relations', lg)
     if request.method == 'GET':
-        lg = request.args.get('lg')
-        add = "_uk" if lg == "uk" else ""
-        where = 'relations'
-        path = 'pages/placeholder.' + where + add + '.html'
         return render_template(path, result=None, query="", errors=None, lg=lg if lg else "en")
     data = request.form.get('relation')
-    lg = request.form.get('lg')
-    add = "_uk" if lg == "uk" else ""
     lg_val = 1 if lg == "uk" else 0
-    where = 'relations'
-    path = 'pages/placeholder.' + where + add + '.html'
     if data == "" or data is None:
         return render_template(path, result=None, query="", errors=["  Expression can`t be empty",
                                                                     "  Вираз не може бути порожнім"][lg_val], lg=lg if lg else "en")
@@ -114,18 +91,12 @@ def check_relation():
 
 @app.route('/fibonacci', methods=['GET', 'POST'])
 def fibo():
+    lg = request.args.get('lg')
+    path = compose_path("fibonacci", lg)
     if request.method == 'GET':
-        lg = request.args.get('lg')
-        add = "_uk" if lg == "uk" else ""
-        where = 'fibonacci'
-        path = 'pages/placeholder.' + where + add + '.html'
         return render_template(path, result=None, query="", errors=None, lg=lg if lg else "en")
     data = request.form.get('fibo')
-    lg = request.form.get('lg')
-    add = "_uk" if lg == "uk" else ""
     lg_val = 1 if lg == "uk" else 0
-    where = 'fibonacci'
-    path = 'pages/placeholder.' + where + add + '.html'
     if data == "" or data is None:
         return render_template(path, result=None, query="", errors=["  Expression can`t be empty",
                                                                     "  Вираз не може бути порожнім"][lg_val], lg=lg if lg else "en")
@@ -136,18 +107,12 @@ def fibo():
 
 @app.route('/bell_stirling_numbers', methods=['GET', 'POST'])
 def bs_numbers():
+    lg = request.args.get('lg')
+    path = compose_path("bell_stirling_numbers", lg)
     if request.method == 'GET':
-        lg = request.args.get('lg')
-        add = "_uk" if lg == "uk" else ""
-        where = 'bell_stirling_numbers'
-        path = 'pages/placeholder.' + where + add + '.html'
         return render_template(path, result=None, query="", errors=None, lg=lg if lg else "en")
     data = request.form.get('bs_numbers')
-    lg = request.form.get('lg')
-    add = "_uk" if lg == "uk" else ""
     lg_val = 1 if lg == "uk" else 0
-    where = 'bell_stirling_numbers'
-    path = 'pages/placeholder.' + where + add + '.html'
     if data == "" or data is None:
         return render_template(path, result=None, query="", errors=["  Expression can`t be empty",
                                                                     "  Вираз не може бути порожнім"][lg_val], lg=lg if lg else "en")
@@ -158,19 +123,13 @@ def bs_numbers():
 
 @app.route('/composition', methods=['GET', 'POST'])
 def composition():
+    lg = request.args.get('lg')
+    path = compose_path("composition", lg)
     if request.method == 'GET':
-        lg = request.args.get('lg')
-        add = "_uk" if lg == "uk" else ""
-        where = 'composition'
-        path = 'pages/placeholder.' + where + add + '.html'
         return render_template(path, result=None, query1="", query2="", errors=None, lg=lg if lg else "en")
     mat = request.form.get('matrix1')
     pwr = request.form.get('power')
-    lg = request.form.get('lg')
-    add = "_uk" if lg == "uk" else ""
     lg_val = 1 if lg == "uk" else 0
-    where = 'composition'
-    path = 'pages/placeholder.' + where + add + '.html'
     if mat == "" or mat is None:
         return render_template(path, result=None, query1="", query2="", errors=["  Expression can`t be empty",
                                                                                 "  Вираз не може бути порожнім"][lg_val], lg=lg if lg else "en")
@@ -207,20 +166,14 @@ def composition():
 
 @app.route('/multiplication', methods=['GET', 'POST'])
 def multiplication():
+    lg = request.args.get('lg')
+    path = compose_path("multiplicaton", lg)
     if request.method == 'GET':
-        lg = request.args.get('lg')
-        add = "_uk" if lg == "uk" else ""
-        where = 'multiplication'
-        path = 'pages/placeholder.' + where + add + '.html'
         return render_template(path, result=None, query1="", query2="", errors=None, lg=lg if lg else "en")
 
     data1 = request.form.get('matrix1')
     data2 = request.form.get('matrix2')
-    lg = request.form.get('lg')
-    add = "_uk" if lg == "uk" else ""
     lg_val = 1 if lg == "uk" else 0
-    where = 'multiplication'
-    path = 'pages/placeholder.' + where + add + '.html'
     if (data1 == "" or data1 is None) or (data2 == "" or data2 is None):
         return render_template(path, result=None, query1="", query2="", errors=["  Expression can`t be empty",
                                                                                 "  Вираз не може бути порожнім"][lg_val], lg=lg if lg else "en")
@@ -231,21 +184,15 @@ def multiplication():
 
 @app.route('/combinatorics', methods=['GET', 'POST'])
 def combinatorics():
+    lg = request.args.get('lg')
+    path = compose_path("combinatorics", lg)
     if request.method == 'GET':
-        lg = request.args.get('lg')
-        add = "_uk" if lg == "uk" else ""
-        where = 'combinatorics'
-        path = 'pages/placeholder.' + where + add + '.html'
         return render_template(path, result=None, query1="", query2="", query_repeat="yes", query_order="yes", errors=None, lg=lg if lg else "en")
     data_m = request.form.get('M_value')
     data_n = request.form.get('N_value')
     data_repeat = request.form.get('repeat')
     data_order = request.form.get('order')
-    lg = request.form.get('lg')
-    add = "_uk" if lg == "uk" else ""
     lg_val = 1 if lg == "uk" else 0
-    where = 'combinatorics'
-    path = 'pages/placeholder.' + where + add + '.html'
     if data_m == "" or data_m is None or data_n == "" or data_n is None:
         return render_template(path, result=None, query1="", query2="", query_repeat="yes", query_order="yes", errors=["  Expression can`t be empty",
                                                                                                                        "  Вираз не може бути порожнім"][lg_val], lg=lg if lg else "en")

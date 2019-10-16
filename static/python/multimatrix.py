@@ -32,8 +32,8 @@ def change_matrix(mat1, mat2):
         if i[1] > max_num:
             max_num = i[1]
 
-    new_matrix1 = [[0]*max_num for i in range(max_num)]
-    new_matrix2 = [[0]*max_num for i in range(max_num)]
+    new_matrix1 = [[0]*max_num for _ in range(max_num)]
+    new_matrix2 = [[0]*max_num for _ in range(max_num)]
     for i in range(max_num):
         for j in range(max_num):
             if (i + 1, j + 1) in mat1:
@@ -52,12 +52,7 @@ def rechange_matrix(mat):
     :param mat: list(list(1 or 0))
     :return: list(tuple(int, int))
     """
-    l = []
-    for i in range(len(mat)):
-        for j in range(len(mat)):
-            if mat[i][j] == 1:
-                l.append((i + 1, j + 1))
-    return l
+    return [(i + 1, j + 1) for i in range(len(mat)) for j in range(len(mat)) if mat[i][j] == 1]
 
 
 def break_matrix_a(mat):
@@ -65,13 +60,7 @@ def break_matrix_a(mat):
     :param mat:  list(list(1 or 0))
     :return: list(string)
     """
-    l = []
-    for i in mat:
-        s = ''
-        for j in i:
-            s += str(j)
-        l.append(s)
-    return l
+    return ["".join(map(str, i)) for i in mat]
 
 
 def break_matrix_b(mat):
