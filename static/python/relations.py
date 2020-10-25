@@ -82,9 +82,7 @@ def asymmetric_relation(mat):
     >>> asymmetric_relation([(2,3), (3,4), (4,3)])
     False
     """
-    pool = []
-    for i in mat:
-        pool.append((i[1], i[0]))
+    pool = [(i[1], i[0]) for i in mat]
     for i in pool:
         if i in mat:
             return False
@@ -106,10 +104,7 @@ def anti_symmetric_relation(mat):
     >>> anti_symmetric_relation([(2,3), (3,4), (4,3)])
     False
     """
-    pool = []
-    for i in mat:
-        if i[0] != i[1]:
-            pool.append((i[1], i[0]))
+    pool = [(i[1], i[0]) for i in mat if i[0] != i[1]]
     for i in pool:
         if i in mat:
             return False
