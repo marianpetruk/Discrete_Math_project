@@ -15,16 +15,15 @@ def read_file(smatrix, lg):
     inumr = 0
     bstartmatrix = False
     endmatrix = False
-    checknum = 0
+
     for el in smatrix:
-        if el == ' ':
-            pass
+        if el == ' ' or endmatrix:
+            continue
         elif el in ascii_letters or el.lower() in 'йцукенгшщзхїфівапролджєячсмитью':
             return ["  Your input is incorrect. Please don\'t use letters and try again.",
                     "  Ваш ввід некоректний. Не використвуйте букви та спробуйте ще раз."][lg]
         elif el == '(':
             bCheckIsFirstEl = True
-            # if write {(2,4),(5,6)}
             bCheckIsSecondEl = False
             inuml += 1
             bstartmatrix = True
@@ -63,7 +62,6 @@ def read_file(smatrix, lg):
 
                     else:
                         dmatrix[int(stringF)] = [int(stringS), ]
-                    # print(dmatrix)
                     stringF = ''
                     stringS = ''
                 else:
@@ -72,8 +70,6 @@ def read_file(smatrix, lg):
             else:
                 return ["  Your input is incorrect. Please check '(' and ')'.",
                         "  Ваш ввід некоректний. Перевірте '(' і ')'."][lg]
-        elif endmatrix:
-            pass
         else:
             return ["  Your input is incorrect. Please try again.",
                     "  Ваш ввід некоректний. Спробуйте ще раз."][lg]
@@ -86,11 +82,9 @@ def print_matrix(dmat):
     '''
     dpmmat = {}
     lmat = []
-    # print(dmat)
     pmmin = min(dmat)
     pmmax = max(dmat)
     for key in sorted(dmat):
-        # print(key)
         lmat += dmat[key]
         lmat.append(key)
         dpmmat[key] = sorted(dmat[key])
@@ -98,27 +92,10 @@ def print_matrix(dmat):
             pmmin = dpmmat[key][0]
         if dpmmat[key][-1] > pmmax:
             pmmax = dpmmat[key][-1]
-    # print(lmat)
-    lmat = sorted(list(set(lmat)))
-    # print(lmat)
-    '''
-        n = len(lmat)
-        lmatrix2 = []
-        for i in range(n):
-            lmatrix2.append([0] * n)
-        for key in dpmmat:
-            for el in dpmmat[key]:
-                # print(lmatrix2)
-                lmatrix2[lmat.index(key)][lmat.index(el)] = 1
-        # print(lmatrix2)
-        '''
     n = pmmax
-    lmatrix2 = []
-    for i in range(n):
-        lmatrix2.append([0] * n)
+    lmatrix2 = [[0] * n for _ in range(n)]
     for key in dpmmat:
         for el in dpmmat[key]:
-            # print(lmatrix2)
             lmatrix2[key-1][el-1] = 1
     return lmatrix2
 
@@ -133,7 +110,6 @@ def warshella_for_1_turn(lmatrix, k, n, i):
     '''
     for j in range(n):
         lmatrix[i][j] = 1 if lmatrix[i][j] or (lmatrix[i][k] and lmatrix[k][j]) else 0
-    # print(lmatrix, 'n =', n, ' i = ', i)
     return lmatrix
 
 
@@ -150,8 +126,6 @@ def warshella(lmatrix):
         for i in range(nlen):
             lmatrix1 = warshella_for_1_turn(lmatrix1, k, nlen, i)
         lmats.append(copy.deepcopy(lmatrix1))
-        # print(lmats)
-        # print_matrix_col( lmatrix)
     return lmats
 
 
@@ -177,8 +151,6 @@ def start(inp, lg):
     lsmatrix = read_file(inp, lg)
     if type(lsmatrix) != str:
         lsmatrix = print_matrix(lsmatrix)
-        # print(lsmatrix)
-        # print_matrix_col(lsmatrix)
         l = copy.deepcopy(lsmatrix)
         l = [l] + warshella(lsmatrix)
         return l, None
@@ -187,11 +159,3 @@ def start(inp, lg):
     else:
         return None, ["  Please change your input. I am not ready for these. ",
                       "  Будь ласка змініть свій ввід. Я не готовий до такого. "][lg], lsmatrix
-
-
-# print(print_matrix(read_file('{(5, 7), (4, 7), (0, 5), (0 , 7)}')))
-# [[0, 0, 1, 1], [0, 0, 0, 1], [0, 0, 0, 1], [0, 0, 0, 0]]
-# print(warshalla(print_matrix(read_file('{(5, 7), (4, 7), (0, 5), (5,4)}'))))
-
-# print(start('0(2,5)(3,2)(3,4)( 4, 2)', 1))
-# print(start('((-6, 7)(5,6))', 0))
